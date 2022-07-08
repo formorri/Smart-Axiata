@@ -161,41 +161,43 @@
 
 //   Any text with running numbers
 @mixin card-text {
-
+$large-text:30px;
+$medium-text:22px;
+$small-text: 18px;
   // large text
   h1 {
     font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: $large-text;
+    line-height: $large-text;
   }
 
   .h1-span{
     font-weight: bold;
-    font-size: 18px;
-    line-height: 21px;
+    font-size: $large-text;
+    line-height: $large-text;
   }
 
   // medium text
   h2 {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
+    font-weight: bold;
+    font-size: $medium-text;
+    line-height: $medium-text;
   }
   .h2-span{
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 18px;
+    font-weight: bold;
+    font-size: $medium-text;
+    line-height: $medium-text;
   }
 
   // bold smaller text
   h3 {
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 18px;
+    font-weight: 500;
+    font-size: $small-text;
+    line-height: $small-text;
   }
   .h3-span{
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 18px;
+    font-weight: 500;
+    font-size: $small-text;
+    line-height: $small-text;
   }
 }
