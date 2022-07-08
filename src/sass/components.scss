@@ -1,0 +1,148 @@
+@use 'colors' as *;
+
+@mixin navbar-top{
+ width: 100vw;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    overflow-x: hidden;
+    filter: drop-shadow(0 40px 40px rgba(0, 0, 0, 0.15));
+    &__container {
+        position: relative;
+        &--background {
+            z-index: 2;
+            // object-fit: fill;
+            svg {
+                max-height: 15vh;
+                width: 100%;
+            }
+        }
+        &--logos {
+            position: absolute;
+            z-index: 3;
+            left: 5%;
+            top: min(5%, 3vh);
+            display: inline-block;
+            align-items: baseline;
+
+            :nth-child(1) {
+                padding: 0 0.5rem;
+                margin-bottom: -15px;
+                height: 3vh;
+            }
+
+            :nth-child(2) {
+                height: 8vh;
+                padding-left: 0.5rem;
+            }
+        }
+    }
+}
+
+@mixin navbar-bottom{
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    width: 100vw;
+
+    &__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &--icons {
+            overflow: hidden;
+            align-items: center;
+            cursor: pointer;
+            border: 3px solid $white;
+            border-radius: 5rem;
+            background-color: $green-primary;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.35);
+            transition: .6s;
+
+            .icon-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .shiny {
+                position: relative;
+                background-color: rgba(255, 255, 255, 1);
+            }
+
+            &:hover {
+                transform: scale(1.1);
+
+                .shiny {
+                    background-color: rgba(255, 255, 255, 0.2);
+                    transition: ease-in-out .7s;
+                }
+            }
+        }
+    }
+}
+
+@mixin video-button {
+    transition : .6s;
+    svg{
+        width: 15vw;
+    }
+
+    .play{
+        fill: #fdd300;
+        transition : .6s;
+    }
+    
+    .circle {
+        fill: #1fad52;
+        transition : .6s;
+    }
+    
+    .words{
+        animation: words 5s linear infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+        fill: #fdd300;
+        transition : .6s;
+    }
+    
+    @keyframes words {
+        from {
+            transform: rotateZ(0deg);
+        }
+    
+        to {
+            transform: rotateZ(360deg);
+        }
+    }
+    &:hover{
+        transform: scale(1.1);
+        .play{
+            fill: #1fad52;
+        }
+        
+        .circle {
+            fill: #fdd300;
+        }
+    
+        .words{
+            fill: #1fad52;
+        }
+    }
+}
+
+@mixin cards{
+    margin: 0 0 1rem 0;
+    border-radius: 20px;
+    padding: 2rem;
+
+}
+
+// special class for the front page CEO
+@mixin cards-with-picture{
+    margin: 0 0 1rem 0;
+    border-radius: 0 0 20px 20px;
+    padding: 2rem;
+}

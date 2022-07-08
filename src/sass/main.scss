@@ -1,0 +1,538 @@
+@use 'config';
+@use 'colors' as *;
+@use 'fonts' as *;
+@use 'components' as c;
+@use 'media-query' as *;
+
+body {
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.green-background{
+    background-color: $green-primary;
+}
+
+.navbar-top {
+    @include c.navbar-top;
+}
+
+.navbar-bottom {
+    @include c.navbar-bottom;
+    // controls size of button
+    $btn-size: 5rem;
+    // controls bottom padding
+    $bottom-padding: 1rem;
+    // controls spacing between buttons
+    $space-between: 1rem;
+    // controls size of icons
+    $icon-size: 1.8rem;
+    // controls width of shiny
+    $shiny-width: 30px;
+    &__container {
+        padding: 0 0 $bottom-padding 0;
+        &--icons {
+            margin: 0 $space-between 0 $space-between;
+            width: $btn-size;
+            height: $btn-size;
+            .icon-container {
+                height: $btn-size - 0.5rem;
+                img {
+                    height: $icon-size;
+                }
+            }
+            .shiny {
+                width: $shiny-width;
+                height: 2 * $btn-size;
+                // controls where shiny is before hover
+                transform: skew(-20deg) translate(-$btn-size, -$btn-size);
+            }
+            
+            &:hover {
+                .shiny {
+                    // controls where shiny is before hover
+                    transform: skew(-20deg) translate($btn-size, -$btn-size);
+                }
+            }
+        }
+    }
+}
+  
+
+.absolute-elements {
+    position: relative;
+    &__gold-ribbon {
+        svg {
+            position: absolute;
+            z-index: 2;
+            width: 100vw;
+        }
+    }
+    &__waves {
+        background-color: $green-primary;
+        position: absolute;
+        z-index: 1;
+        width: 100vw;
+        top: 23vh;
+        img{
+            width: 100vw; 
+        }
+    }
+    
+}
+
+.relative-elements {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+
+    &__artwork {
+        position: relative;
+        z-index: 2;
+        width: 100vw;
+        margin: 0;
+    }
+
+    &__title {
+        align-items: center;
+        position: relative;
+        z-index: 3;
+        width: 80vw;
+        padding: 0 1rem 3rem 2rem;
+    }
+
+    .video-button {
+        position: absolute;
+        right: 2rem;
+        z-index: 5;
+        margin-bottom: -2rem;
+        @include c.video-button;
+    }
+
+}
+
+// to overcome uk-grid's margin spillover
+.navigation-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-card {
+    @include c.cards;
+    @include non-card-text;
+    position: relative;
+    z-index: 5;
+    background-color: $yellow-primary;
+
+    // title-text for normal headers, sustainable cards
+    h1 {
+        color: $dark-text;
+    }
+
+    // normal paragraph text
+    h2 {
+        color: $dark-text;
+    }
+
+    // link text, i.e the text that says "more"
+    h3 {
+        color: $pink-text;
+
+        &:hover {
+            color: $green-primary;
+        }
+    }
+}
+
+.CEO-image {
+    z-index: 5;
+    width: 100vw;
+    position: relative;
+    border-radius: 20px 20px 0 0;
+}
+
+.navigation-card-CEO {
+    z-index: 5;
+    @include c.cards-with-picture;
+    @include non-card-text;
+    position: relative;
+    background-color: $yellow-primary;
+
+    // title-text for normal headers, sustainable cards
+    h1 {
+        color: $dark-text;
+    }
+
+    // normal paragraph text
+    h2 {
+        color: $dark-text;
+    }
+
+    // link text, i.e the text that says "more"
+    h3 {
+        color: $pink-text;
+
+        &:hover {
+            color: $green-primary;
+        }
+    }
+}
+
+.sustainable-pillars-container {
+    z-index: 5;
+    @include non-card-text;
+    border-radius: 20px;
+    padding: 25px;
+    position: relative;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px);
+
+    // section header and card title text
+    h1 {
+        color: $white;
+    }
+
+    // "more" text
+    h3 {
+        color: $yellow-primary;
+
+        &:hover {
+            color: $green-primary;
+        }
+    }
+
+    &__card {
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        border-radius: 20px;
+    }
+
+    .darken {
+        border-radius: 20px;
+        background: rgba(0, 0, 0, .6);
+        padding: 2rem 0.8rem 2rem 0.8rem;
+
+        &:hover {
+            background: rgba(0, 0, 0, .4);
+            transition: .7s;
+        }
+    }
+
+    .card-1 {
+        background-image: url(../assets/images/frontpage-sustainability-1.svg);
+    }
+
+    .card-2 {
+        background-image: url(../assets/images/frontpage-sustainability-2.svg);
+    }
+
+    .card-3 {
+        background-image: url(../assets/images/frontpage-sustainability-3.svg);
+    }
+
+    .card-4 {
+        background-image: url(../assets/images/frontpage-sustainability-4.svg);
+    }
+}
+
+
+// phone sizes
+@include lt-md {
+    .navbar-bottom-spacing {
+        margin-bottom: 1rem !important;
+    }
+
+    .sustainable-pillars-container {
+        h3 {
+            padding-top: 2.5rem;
+        }
+
+        .darken {
+            padding: 1.5rem;
+        }
+    }
+}
+
+// larger than phone sizes, i.e. ipads onward
+@include gt-sm {
+    .global-container {
+        padding: 0 4rem 0 4rem;
+    }
+
+
+    .navbar-bottom {
+        @include c.navbar-bottom;
+        // controls size of button
+        $btn-size: 5rem;
+        // controls bottom padding
+        $bottom-padding: 1rem;
+        // container left right padding
+        $left-right-padding:3.5rem;
+        // controls spacing between buttons
+        $space-between: 1.5rem;
+        // controls size of icons
+        $icon-size: 1.8rem;
+        // controls width of shiny
+        $shiny-width: 30px;
+        &__container {
+            padding: 0 $left-right-padding $bottom-padding $left-right-padding;
+            &--icons {
+                margin: 0 $space-between 0 $space-between;
+                width: $btn-size;
+                height: $btn-size;
+                .icon-container {
+                    height: $btn-size - 0.5rem;
+                    img {
+                        height: $icon-size;
+                    }
+                }
+                .shiny {
+                    width: $shiny-width;
+                    height: 2 * $btn-size;
+                    // controls where shiny is before hover
+                    transform: skew(-20deg) translate(-$btn-size, -$btn-size);
+                }
+                
+                &:hover {
+                    .shiny {
+                        // controls where shiny is before hover
+                        transform: skew(-20deg) translate($btn-size, -$btn-size);
+                    }
+                }
+            }
+        }
+    }
+
+    .absolute-elements {
+        &__gold-ribbon {
+            svg {
+                top: -12rem;
+                height: 50rem;
+                width: 60vw;
+            }
+        }
+    }
+
+    .sticky-large {
+        position: sticky;
+        top: 15rem;
+        z-index: 5;
+    }
+
+    .relative-elements {
+        &__artwork {
+            width: 40vw;
+        }
+
+        &__title {
+            padding: 0;
+            width: 40vw;
+            left: 2rem;
+        }
+
+        .video-button {
+            right: 5rem;
+            width: 6rem;
+        }
+    }
+
+
+}
+
+// super large sizes. To make all fonts bigger and increase padding to fill space
+
+@include gt-lg {
+    body {
+        overflow-y: scroll;
+    }
+
+    .global-container {
+        padding: 0 8rem 0 8rem;
+    }
+
+    .absolute-elements {
+        &__gold-ribbon {
+            svg {
+                top: -12rem;
+                height: 65rem;
+                width: 50vw;
+            }
+        }
+
+        &__waves {
+            max-height: 55rem;
+            overflow-y: hidden;
+        }
+    }
+
+    .relative-elements {
+        height: 100%;
+        &__title {
+            width: 60vw;
+            padding: 0 1rem 3rem 2rem;
+        }
+
+        .video-button {
+            right: 1.5rem;
+            width: 8rem;
+        }
+
+    }
+
+    .navbar-top {
+        .container {
+            &__logos {
+                :nth-child(1) {
+                    padding: 0 4rem;
+                    margin-bottom: -15px;
+                    height: 3rem;
+                }
+
+                :nth-child(2) {
+                    height: 8rem;
+                }
+            }
+        }
+    }
+
+    .navbar-bottom {
+        // controls size of button
+        $btn-size: 6rem;
+        // controls bottom padding
+        $bottom-padding: 1.5rem;
+        // controls spacing between buttons
+        $space-between: 2rem;
+        // controls size of icons
+        $icon-size: 2rem;
+        // controls width of shiny
+        $shiny-width: 40px;
+        &__container {
+            padding: 0 0 $bottom-padding 0;
+            &--icons {
+                margin: 0 $space-between 0 $space-between;
+                width: $btn-size;
+                height: $btn-size;
+                .icon-container {
+                    height: $btn-size - 0.5rem;
+                    img {
+                        height: $icon-size;
+                    }
+                }
+                .shiny {
+                    width: $shiny-width;
+                    height: 2 * $btn-size;
+                    // controls where shiny is before hover
+                    transform: skew(-20deg) translate(-$btn-size, -$btn-size);
+                }
+                
+                &:hover {
+                    .shiny {
+                        // controls where shiny is before hover
+                        transform: skew(-20deg) translate($btn-size, -$btn-size);
+                    }
+                }
+            }
+        }
+    }
+
+    .navigation-container {
+        padding-left: 3rem;
+    }
+
+    .navigation-card,
+    .navigation-card-CEO,
+    .sustainable-pillars-container {
+        @include non-card-text-xl;
+    }
+
+    .navigation-card,
+    .navigation-card-CEO {
+        padding: 2.5rem;
+
+        h1,
+        h2 {
+            padding-bottom: 0.1rem;
+        }
+    }
+
+    .sustainable-pillars-container {
+        h3 {
+            padding-top: 2rem;
+        }
+
+        .darken {
+            padding: 2.5rem;
+        }
+    }
+
+    // to overcome the margin important gap override for smaller sizes
+    .column-gap {
+        padding: 1rem;
+    }
+}
+
+
+// ! SASS FOR ABOUT PAGE
+.about-container{
+    background-image: url(../assets/images/about-background.png);
+    background-repeat: repeat-y;
+    z-index: 1;
+}
+
+
+.about-title{
+    @include non-card-text;
+    @include c.cards; 
+    margin: 2rem 2rem 1rem 2rem;
+    background-color: $green-primary;
+    border: 1px solid $dark-text;
+    position: relative;
+    h1{
+        color: $dark-text;
+        padding: 0.4rem 0 0.4rem 0;
+        margin: 0;
+    }
+    h2{
+        color: $white;
+    }
+    &__container{
+        position: relative;
+        border-radius: 20px;
+        background-color: $white;
+        text-align: center;
+        border: 1px solid $dark-text;
+        margin-bottom: 1rem;
+        .icon-about-search:before {
+            font-family: "icomoon";
+            content: "\e900";
+            color: #0fae4d;
+            padding-right: 1rem;
+          }
+    }
+}
+
+.about-content{
+    @include c.cards;
+    @include card-text;
+    margin: 2rem 2rem 1rem 2rem;
+    background-color: $mint-secondary;
+    border: 1px solid $mint-primary;
+    &__title{
+        display: inline-flex;
+        img{
+            width: 5rem;
+        }
+        &--text{
+            h2{
+                margin: 0;
+                padding: 1rem;
+            }
+        }
+    }
+}
