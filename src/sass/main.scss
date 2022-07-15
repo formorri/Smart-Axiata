@@ -990,14 +990,30 @@ body {
     }
 }
 
-// ! ---------------------------------------SASS FOR CEO---------------------------------------------------
-.CEO-container {
+// ! -----------------------------------------------Global internal container-------------------------------------------------------
+
+.global-inner-container{
     margin-top: -10rem;
     margin-bottom: -10rem;
     padding: 10rem 2rem 12rem 2rem;
     @include non-card-text;
     position: relative;
 }
+
+@include gt-sm{
+    .global-inner-container{
+        padding: 10rem 4rem 31rem 4rem;
+    }
+}
+
+@include gt-xl{
+    .global-inner-container{
+        padding: 10rem 8rem 12rem 8rem;
+        @include non-card-text-xl;
+    }
+}
+
+// ! ---------------------------------------SASS FOR CEO---------------------------------------------------
 
 .CEO-title {
     @include non-card-text;
@@ -1244,11 +1260,6 @@ body {
 }
 
 @include gt-xl {
-    .CEO-container {
-        padding: 10rem 8rem 12rem 8rem;
-        @include non-card-text-xl;
-    }
-
     .CEO-title {
         @include non-card-text-xl;
     }
@@ -1380,3 +1391,6 @@ body {
         }
     }
 }
+
+
+// ! ---------------------------------------Beyond---------------------------------------------------
