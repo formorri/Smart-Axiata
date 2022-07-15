@@ -85,30 +85,27 @@
 }
 
 @mixin video-button {
+    transition: .6s;
+    background-color: $green-primary;
+    border: 5px solid $white;
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.3));
     transition : .6s;
-    svg{
-        width: 15vw;
-    }
 
-    .play{
-        fill: #fdd300;
+    .play::before{
+        font-family: "icomoon";
+        content: "\e901";
+        color: #fdd300;
         transition : .6s;
     }
     
-    .circle {
-        fill: #1fad52;
-        transition : .6s;
-    }
-    
-    .words{
+    .words{//
         animation: words 5s linear infinite;
+        font-weight: bold;
         transform-origin: center;
-        transform-box: fill-box;
         fill: #fdd300;
         transition : .6s;
     }
-    
-    @keyframes words {
+    @keyframes words {//
         from {
             transform: rotateZ(0deg);
         }
@@ -119,19 +116,14 @@
     }
     &:hover{
         transform: scale(1.1);
-        .play{
-            fill: #1fad52;
-        }
-        
-        .circle {
-            fill: #fdd300;
-        }
-    
-        .words{
-            fill: #1fad52;
+        background-color: $yellow-primary;
+        .play::before, .words{
+            fill: $green-primary;
+            color: $green-primary;
         }
     }
 }
+
 
 @mixin cards{
     margin: 0 0 1rem 0;
@@ -146,3 +138,35 @@
     border-radius: 0 0 20px 20px;
     padding: 2rem;
 }
+
+@mixin download {
+    background-color: $white;
+    justify-content: space-around;
+    text-align: center;
+    position: relative;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
+    transition: 0.6s;
+    h2{
+        display: inline-block;
+        vertical-align: middle;
+        color: black;
+        transition: 0.6s;
+    }
+
+    h2::before{
+        font-family: 'icomoon';
+        content: "\e91e";
+        color: black;
+        display: inline-block;
+        vertical-align: middle;
+        transition: 0.6s;
+    }
+
+    &:hover{
+        h2::before{
+            background-color: black;
+            color: $white;
+        }
+    }
+}
+
