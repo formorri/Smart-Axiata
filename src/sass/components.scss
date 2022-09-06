@@ -1,7 +1,7 @@
 @use 'colors' as *;
 
-@mixin navbar-top{
- width: 100vw;
+@mixin navbar-top {
+    width: 100vw;
     position: sticky;
     top: 0px;
     z-index: 10;
@@ -11,12 +11,12 @@
         position: relative;
         &--background {
             z-index: 2;
-            // object-fit: fill;
             svg {
-                max-height: 15vh;
+                height: 8rem;
                 width: 100%;
             }
         }
+
         &--logos {
             position: absolute;
             z-index: 3;
@@ -28,18 +28,18 @@
             :nth-child(1) {
                 padding: 0 0.5rem;
                 margin-bottom: -15px;
-                height: 3vh;
+                height: 2rem;
             }
 
             :nth-child(2) {
-                height: 8vh;
+                height: 5rem;
                 padding-left: 0.5rem;
             }
         }
     }
 }
 
-@mixin navbar-bottom{
+@mixin navbar-bottom {
     position: sticky;
     bottom: 0;
     z-index: 10;
@@ -89,35 +89,42 @@
     background-color: $green-primary;
     border: 5px solid $white;
     filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.3));
-    transition : .6s;
+    transition: .6s;
 
-    .play::before{
+    .play::before {
         font-family: "icomoon";
         content: "\e901";
         color: #fdd300;
-        transition : .6s;
+        transition: .6s;
     }
-    
-    .words{//
+
+    .words {
+        //
         animation: words 5s linear infinite;
         font-weight: bold;
         transform-origin: center;
         fill: #fdd300;
-        transition : .6s;
+        transition: .6s;
     }
-    @keyframes words {//
+
+    @keyframes words {
+
+        //
         from {
             transform: rotateZ(0deg);
         }
-    
+
         to {
             transform: rotateZ(360deg);
         }
     }
-    &:hover{
+
+    &:hover {
         transform: scale(1.1);
         background-color: $yellow-primary;
-        .play::before, .words{
+
+        .play::before,
+        .words {
             fill: $green-primary;
             color: $green-primary;
         }
@@ -125,7 +132,7 @@
 }
 
 
-@mixin cards{
+@mixin cards {
     margin: 0 0 1rem 0;
     border-radius: 20px;
     padding: 2rem;
@@ -133,7 +140,7 @@
 }
 
 // special class for the front page CEO
-@mixin cards-with-picture{
+@mixin cards-with-picture {
     margin: 0 0 1rem 0;
     border-radius: 0 0 20px 20px;
     padding: 2rem;
@@ -146,14 +153,15 @@
     position: relative;
     filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
     transition: 0.6s;
-    h2{
+
+    h2 {
         display: inline-block;
         vertical-align: middle;
         color: black;
         transition: 0.6s;
     }
 
-    h2::before{
+    h2::before {
         font-family: 'icomoon';
         content: "\e91e";
         color: black;
@@ -162,11 +170,38 @@
         transition: 0.6s;
     }
 
-    &:hover{
-        h2::before{
+    &:hover {
+        h2::before {
             background-color: black;
             color: $white;
         }
     }
 }
 
+// The animation of circle growing up from left corner
+@mixin card-animation-before {
+    transition: 0.6s;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        bottom: -2rem;
+        left: -2rem;
+        transform: scale(1);
+        transform-origin: 50% 50%;
+        transition: transform 0.4s ease-in-out;
+    }
+}
+
+
+// animation with shadow and grows slightly
+@mixin card-animation-after {
+    filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.2));
+    &::before {
+        transform: scale(60);
+    }
+}

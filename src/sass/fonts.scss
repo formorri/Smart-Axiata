@@ -219,7 +219,7 @@
 
 //   Any text with running numbers
 @mixin card-text {
-  $large-text: 40px;
+  $large-text: 25px;
   $medium-text: 22px;
   $small-text: 18px;
 
@@ -234,7 +234,7 @@
   // medium text
   h2,
   .h2-span {
-    font-weight: bold;
+    font-weight: 500;
     font-size: $medium-text;
     line-height: $medium-text;
   }
@@ -272,7 +272,7 @@
   // medium text
   h2,
   .h2-span {
-    font-weight: bold;
+    font-weight: 500;
     font-size: $medium-text;
     line-height: $medium-text;
   }
@@ -310,7 +310,7 @@
   // medium text
   h2,
   .h2-span {
-    font-weight: bold;
+    font-weight: 500;
     font-size: $medium-text;
     line-height: $medium-text;
   }
