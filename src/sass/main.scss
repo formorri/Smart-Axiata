@@ -263,19 +263,19 @@ body {
     }
 
     .card-1 {
-        background-image: url(../assets/images/frontpage-sustainability-1.jpg);
+        background-image: url(../assets/images/beyond-header.webp);
     }
 
     .card-2 {
-        background-image: url(../assets/images/frontpage-sustainability-2.jpg);
+        background-image: url(../assets/images/nurturing-header.webp);
     }
 
     .card-3 {
-        background-image: url(../assets/images/frontpage-sustainability-3.jpg);
+        background-image: url(../assets/images/process-header.webp);
     }
 
     .card-4 {
-        background-image: url(../assets/images/frontpage-sustainability-4.jpg);
+        background-image: url(../assets/images/planet-header.webp);
     }
 }
 
@@ -565,7 +565,7 @@ body {
 }
 
 .fallback-background {
-    background-image: url(../assets/images/frontpage-waves.svg);
+    background-image: url(../assets/images/frontpage-waves.webp);
     background-position: 50% 50%;
     background-repeat: none;
     background-size: cover;
@@ -602,7 +602,7 @@ body {
 
 // ! -------------------------------------SASS FOR ABOUT PAGE-----------------------------------------------
 .about-container {
-    background-image: url(../assets/images/about-background.png);
+    background-image: url(../assets/images/about-background.webp);
     margin-bottom: -10rem;
     padding: 2rem $s-padding 12rem $s-padding;
 }
@@ -1053,7 +1053,7 @@ body {
     position: relative;
 
     &__picture {
-        background-image: url(../assets/images/about-CEO-background.jpg);
+        background-image: url(../assets/images/about-CEO-background.webp);
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
@@ -1065,6 +1065,7 @@ body {
             position: relative;
             margin-top: -4rem;
             right: 5%;
+            height: 20rem;
         }
 
         .button-positioning {
@@ -1471,27 +1472,27 @@ body {
 }
 
 .beyond-header {
-    background-image: url(../assets/images/beyond-header.jpg);
+    background-image: url(../assets/images/beyond-header.webp);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .nurturing-header {
-    background-image: url(../assets/images/nurturing-header.jpg);
+    background-image: url(../assets/images/nurturing-header.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;
 }
 
 .process-header {
-    background-image: url(../assets/images/process-header.jpg);
+    background-image: url(../assets/images/process-header.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;
 }
 
 .planet-header {
-    background-image: url(../assets/images/planet-header.jpg);
+    background-image: url(../assets/images/planet-header.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;
@@ -1781,7 +1782,7 @@ body {
 
 .humanitarian-header {
     @include c.cards;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/humanitarian-thumbnail.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/humanitarian-thumbnail.webp);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;

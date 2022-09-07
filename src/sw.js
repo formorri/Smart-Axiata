@@ -73,22 +73,13 @@ const assets = [
     (directoryName + "/assets/images/navbar-download.svg"),
     (directoryName + "/assets/images/navbar-home.svg"),
     (directoryName + "/assets/images/navbar-share.svg"),
-    (directoryName + "/assets/images/frontpage-artwork.png"),
-    (directoryName + "/assets/images/frontpage-CEO.jpg"),
-    (directoryName + "/assets/images/frontpage-sustainability-1.jpg"),
-    (directoryName + "/assets/images/frontpage-sustainability-2.jpg"),
-    (directoryName + "/assets/images/frontpage-sustainability-3.jpg"),
-    (directoryName + "/assets/images/frontpage-sustainability-4.jpg"),
+    (directoryName + "/assets/images/frontpage-artwork.webp"),
+    (directoryName + "/assets/images/frontpage-CEO.webp"),
     (directoryName + "/assets/images/frontpage-waves.svg"),
     (directoryName + "/assets/images/frontpage-title.svg"),
 
     // UIKIT
     (directoryName + "/assets/UIKIT/uikit.min.css"),
-
-    // ALL VIDEO
-    // "/assets/video/ceo.mp4",
-    // "/assets/video/testimonial.mp4",
-    // (directoryName + "/assets/video/year-in-review.mp4"),
 
     // ALL EXTERNAL LINKS
     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js",
