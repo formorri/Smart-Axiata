@@ -1,7 +1,12 @@
-const staticCacheName = "site-static-v5";
-const dynamicCacheName = "site-dynamic-v5";
-// const directoryName= "/development/PWA-test";
-const directoryName = "";
+const staticCacheName = "site-static-v2";
+const dynamicCacheName = "site-dynamic-v2";
+const directoryName= "/development/PWA-test";
+// const directoryName = "";
+const assetExclude = [
+    (directoryName + "/assets/video/ceo.mp4"),
+    (directoryName + "/assets/video/testimonial.mp4"),
+    (directoryName + "/assets/video/year-in-review.mp4"),
+];
 const assets = [
     (directoryName + "/"),
     (directoryName + "/index.html"),
@@ -65,8 +70,6 @@ const assets = [
     // ALL IMAGES
     (directoryName + "/assets/images/logo-1.svg"),
     (directoryName + "/assets/images/logo-2.svg"),
-    // (directoryName + "/assets/images/play.svg"),
-    // (directoryName + "/assets/images/navbar-background.svg"),
     (directoryName + "/assets/images/navbar-download.svg"),
     (directoryName + "/assets/images/navbar-home.svg"),
     (directoryName + "/assets/images/navbar-share.svg"),
@@ -105,7 +108,6 @@ const limitCacheSize = (name, size) => {
 };
 
 
-
 // install service worker
 self.addEventListener("install", evt => {
     console.log("Service event has been installed");
@@ -132,6 +134,12 @@ self.addEventListener("activate", evt => {
     )
 });
 
+
+// const hasUrlCacheExcludeMatch = (url) => {
+//     return assetExclude.some(path => url.endsWith(path));
+// };
+
+// console.log(hasUrlCacheExcludeMatch);
 // Fetch event
 // Using the fetch function to look into the server and check if current cached matches fetch request
 // If matches exist, returns cached resource to user
@@ -142,18 +150,19 @@ self.addEventListener("activate", evt => {
 self.addEventListener("fetch", evt => {
     // console.log("fetch event", evt);
     evt.respondWith(
-        caches.match(evt.request).then(cacheRes => {
-            return cacheRes || fetch(evt.request).then(fetchRes => {
-                return caches.open(dynamicCacheName).then(cache => {
-                    cache.put(evt.request.url, fetchRes.clone());
-                    limitCacheSize(dynamicCacheName, 40);
-                    return fetchRes;
-                })
-            });
-        }).catch(() => {
-            if (evt.request.url.indexOf(".html") > -1) {
-                return caches.match(directoryName + "/fallback.html");
-            }
-        })
+    // caches.filter(() => dynamicCacheName !== assetExclude)
+    caches.match(evt.request).then(cacheRes => {
+        return cacheRes || fetch(evt.request).then(fetchRes => {
+            return caches.open(dynamicCacheName).then(cache => {
+                cache.put(evt.request.url, fetchRes.clone());
+                limitCacheSize(dynamicCacheName, 40);
+                return fetchRes;
+            })
+        });
+    }).catch(() => {
+        if (evt.request.url.indexOf(".html") > -1) {
+            return caches.match(directoryName + "/fallback.html");
+        }
+    })
     )
 });
