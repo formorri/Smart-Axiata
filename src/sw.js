@@ -1,5 +1,5 @@
-const staticCacheName = "site-static-v2";
-const dynamicCacheName = "site-dynamic-v2";
+const staticCacheName = "site-static-v5";
+const dynamicCacheName = "site-dynamic-v5";
 // const directoryName= "/development/PWA-test";
 const directoryName = "";
 const assets = [
@@ -65,8 +65,8 @@ const assets = [
     // ALL IMAGES
     (directoryName + "/assets/images/logo-1.svg"),
     (directoryName + "/assets/images/logo-2.svg"),
-    (directoryName + "/assets/images/play.svg"),
-    (directoryName + "/assets/images/navbar-background.svg"),
+    // (directoryName + "/assets/images/play.svg"),
+    // (directoryName + "/assets/images/navbar-background.svg"),
     (directoryName + "/assets/images/navbar-download.svg"),
     (directoryName + "/assets/images/navbar-home.svg"),
     (directoryName + "/assets/images/navbar-share.svg"),
@@ -85,7 +85,7 @@ const assets = [
     // ALL VIDEO
     // "/assets/video/ceo.mp4",
     // "/assets/video/testimonial.mp4",
-    (directoryName + "/assets/video/year-in-review.mp4"),
+    // (directoryName + "/assets/video/year-in-review.mp4"),
 
     // ALL EXTERNAL LINKS
     "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js",
@@ -146,7 +146,7 @@ self.addEventListener("fetch", evt => {
             return cacheRes || fetch(evt.request).then(fetchRes => {
                 return caches.open(dynamicCacheName).then(cache => {
                     cache.put(evt.request.url, fetchRes.clone());
-                    limitCacheSize(dynamicCacheName, 20);
+                    limitCacheSize(dynamicCacheName, 40);
                     return fetchRes;
                 })
             });

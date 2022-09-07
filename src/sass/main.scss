@@ -263,19 +263,19 @@ body {
     }
 
     .card-1 {
-        background-image: url(../assets/images/frontpage-sustainability-1.svg);
+        background-image: url(../assets/images/frontpage-sustainability-1.jpg);
     }
 
     .card-2 {
-        background-image: url(../assets/images/frontpage-sustainability-2.svg);
+        background-image: url(../assets/images/frontpage-sustainability-2.jpg);
     }
 
     .card-3 {
-        background-image: url(../assets/images/frontpage-sustainability-3.svg);
+        background-image: url(../assets/images/frontpage-sustainability-3.jpg);
     }
 
     .card-4 {
-        background-image: url(../assets/images/frontpage-sustainability-4.svg);
+        background-image: url(../assets/images/frontpage-sustainability-4.jpg);
     }
 }
 
@@ -605,8 +605,6 @@ body {
     background-image: url(../assets/images/about-background.png);
     margin-bottom: -10rem;
     padding: 2rem $s-padding 12rem $s-padding;
-    // overflow: hidden;
-    // height: 100vh;
 }
 
 .about-title {
@@ -632,7 +630,8 @@ body {
         position: relative;
         border-radius: 20px;
         background-color: $white;
-        text-align: center;
+        text-align: left;
+        padding: 0.5rem;
         border: 1px solid $dark-text;
         margin-bottom: 1rem;
 
@@ -667,7 +666,7 @@ body {
             display: inline-block;
             width: 60%;
             vertical-align: middle;
-            padding: 1rem;
+            padding: 1rem 0 1rem 0;
 
             h1,
             h2,
@@ -1054,7 +1053,7 @@ body {
     position: relative;
 
     &__picture {
-        background-image: url(../assets/images/about-CEO-background.svg);
+        background-image: url(../assets/images/about-CEO-background.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
@@ -1472,27 +1471,27 @@ body {
 }
 
 .beyond-header {
-    background-image: url(../assets/images/beyond-header.svg);
+    background-image: url(../assets/images/beyond-header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .nurturing-header {
-    background-image: url(../assets/images/nurturing-header.svg);
+    background-image: url(../assets/images/nurturing-header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;
 }
 
 .process-header {
-    background-image: url(../assets/images/process-header.svg);
+    background-image: url(../assets/images/process-header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;
 }
 
 .planet-header {
-    background-image: url(../assets/images/planet-header.svg);
+    background-image: url(../assets/images/planet-header.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;
@@ -1782,7 +1781,7 @@ body {
 
 .humanitarian-header {
     @include c.cards;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/humanitarian-thumbnail.png);
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/humanitarian-thumbnail.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0%;
