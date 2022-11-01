@@ -11,13 +11,11 @@ $l-top-padding: 12rem;
 $xl-padding: 18rem;
 $xl-top-padding: 12rem;
 
-
-body {
-    height: 100%;
-    min-height: 100%;
-    max-width: 100%;
-    border: 1px solid transparent;
+html,
+body{
     overflow-x: hidden;
+    position: relative;
+    height: 100%;
 }
 
 .green-background {
@@ -255,6 +253,7 @@ body {
         border-radius: 20px;
         background: rgba(0, 0, 0, .6);
         padding: 2rem 0.8rem 2rem 0.8rem;
+        min-height: 10rem;
 
         &:hover {
             background: rgba(0, 0, 0, .4);
@@ -605,6 +604,7 @@ body {
     background-image: url(../assets/images/about-background.webp);
     margin-bottom: -10rem;
     padding: 2rem $s-padding 12rem $s-padding;
+    // height: 100vh;
 }
 
 .about-title {
@@ -1038,6 +1038,7 @@ body {
     padding: $s-top-padding $s-padding 12rem $s-padding;
     @include non-card-text;
     position: relative;
+
 }
 
 .CEO-title {
@@ -1221,7 +1222,8 @@ body {
 
 @include gt-sm {
     .CEO-container {
-        padding: $l-top-padding $l-padding 35rem $l-padding;
+        padding: $l-top-padding $l-padding 5rem $l-padding;
+        height: 110vh;
     }
 
     .CEO-title {
@@ -1283,6 +1285,7 @@ body {
     .CEO-container {
         padding: $xl-top-padding $xl-padding 15rem $xl-padding;
         @include non-card-text-xl;
+        
     }
 
     .CEO-title {
@@ -1641,10 +1644,6 @@ body {
     }
 }
 
-.responsive-grid-padding {
-    padding-left: 1rem;
-}
-
 
 @include gt-sm {
     .sustainable-container {
@@ -1671,6 +1670,7 @@ body {
 
         &__card {
             padding: calc($l-padding - 1rem);
+            @include card-text-lg;
 
             h1,
             h2,
@@ -1678,12 +1678,6 @@ body {
             .h2-span {
                 margin: 0 0 0.5rem 0;
             }
-        }
-    }
-
-    .responsive-grid-padding {
-        :nth-child(1) {
-            padding-right: 1rem;
         }
     }
 
@@ -1728,11 +1722,11 @@ body {
     .sustainable-content {
         padding: 4rem calc($xl-padding - 1rem) 4rem calc($xl-padding - 1rem);
         $border-weight: 2px;
-
+        
         &__card {
-            @include card-text-xl;
             border: $border-weight solid $dark-text;
-
+            @include card-text-xl;
+            
             h1,
             h2,
             .h1-span,
@@ -1742,11 +1736,6 @@ body {
         }
     }
 
-    .responsive-grid-padding {
-        :nth-child(1) {
-            padding-right: 1rem;
-        }
-    }
 
     .sustainable-items {
         $border-weight: 2px;

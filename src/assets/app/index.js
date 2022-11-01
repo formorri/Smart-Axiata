@@ -14,6 +14,7 @@ tl1.from("#reveal", {delay:.5, duration:2, width: 0, ease: "easeInOut"})
 //     card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
 // });
 
+
 /*****CountUp Number****/
 $(".count").countUp({
 	delay: 10,
@@ -21,6 +22,8 @@ $(".count").countUp({
 	time: 2300,
 	/*The total duration of the count up animation */
 });
+
+
 
 $(".slider-counter a").click(function() {
     jQuery(document).ready(function($) {
