@@ -21,8 +21,8 @@ $(".count").countUp({
 	/* The delay in milliseconds per number count up */
 	time: 2300,
 	/*The total duration of the count up animation */
-});
 
+});
 
 
 $(".slider-counter a").click(function() {
