@@ -7,10 +7,13 @@
     z-index: 10;
     overflow-x: hidden;
     filter: drop-shadow(0 40px 40px rgba(0, 0, 0, 0.15));
+
     &__container {
         position: relative;
+
         &--background {
             z-index: 2;
+
             svg {
                 height: 8rem;
                 width: 100%;
@@ -82,6 +85,36 @@
                 }
             }
         }
+
+        // .share-button {
+        //     position: relative;
+        //     &__socmed {
+        //         // visibility: hidden;
+        //         position: absolute;
+        //         top: -10rem;
+        //         width: 100%;
+        //         transform: translateX(50%);
+        //         background-color: $white;
+        //         width: 50%;
+        //         display: flex;
+        //         flex-direction: column;
+        //         vertical-align: middle;
+        //         align-items: center;
+        //         justify-content: center;
+        //         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        //         padding: 0.8rem 0;
+        //         border-radius: 2rem;
+        //         transition: .6s;
+
+        //         a{
+        //             padding: 0.3rem;
+        //         }
+        //         &:hover{
+        //             // visibility: visible;
+        //             top: -15rem;
+        //         }
+        //     }
+        // }
     }
 }
 
@@ -201,6 +234,7 @@
 // animation with shadow and grows slightly
 @mixin card-animation-after {
     filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.2));
+
     &::before {
         transform: scale(60);
     }
