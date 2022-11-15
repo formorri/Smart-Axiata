@@ -1,5 +1,12 @@
 @use 'colors' as *;
 
+$border-radius: 10px;
+$edge-cut: 30px;
+
+@mixin shadow {
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
+}
+
 @mixin navbar-top {
     width: 100vw;
     position: fixed;
@@ -165,17 +172,33 @@
 }
 
 
-@mixin cards {
+@mixin clip-path {
+    clip-path: polygon(0 0,
+            calc(100% - $edge-cut) 0%,
+            100% $edge-cut,
+            100% 100%,
+            0 100%);
+}
+
+@mixin clip-path-cards {
+    @include clip-path;
     margin: 0 0 1rem 0;
-    border-radius: 20px;
     padding: 2rem;
 
 }
 
+@mixin cards {
+    @include shadow;
+    margin: 0 0 1rem 0;
+    border-radius: $border-radius;
+    padding: 2rem;
+}
+
 // special class for the front page CEO
 @mixin cards-with-picture {
+    @include shadow;
     margin: 0 0 1rem 0;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 $border-radius $border-radius;
     padding: 2rem;
 }
 

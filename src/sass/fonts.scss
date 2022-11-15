@@ -134,14 +134,14 @@
   $line-multiplier: 1.5;
 
   // title-text for normal headers, sustainable cards
-  h1 {
+  h1, .h1-span {
     font-weight: bold;
     font-size: $title-text;
     line-height: calc($title-text * $line-multiplier);
   }
 
   // normal paragraph text
-  h2 {
+  h2, .h2-span {
     font-weight: normal;
     font-size: $paragraph-text;
     line-height: calc($paragraph-text * $line-multiplier);
@@ -149,7 +149,7 @@
   }
 
   // link text, i.e the text that says "more"
-  h3 {
+  h3, .h3-span {
     font-weight: bold;
     font-size: $link-text;
     line-height: calc($link-text * $line-multiplier);
@@ -164,14 +164,14 @@
   $line-multiplier: 1.5;
 
   // title-text for normal headers, sustainable cards
-  h1 {
+  h1, .h1-span {
     font-weight: bold;
     font-size: $title-text;
     line-height: calc($title-text * $line-multiplier);
   }
 
   // normal paragraph text
-  h2 {
+  h2, .h2-span {
     font-weight: normal;
     font-size: $paragraph-text;
     line-height: calc($paragraph-text * $line-multiplier);
@@ -179,7 +179,7 @@
   }
 
   // link text, i.e the text that says "more"
-  h3 {
+  h3, .h3-span {
     font-weight: bold;
     font-size: $link-text;
     line-height: calc($link-text * $line-multiplier);
@@ -194,14 +194,14 @@
   $line-multiplier: 1.5;
 
   // title-text for normal headers, sustainable cards
-  h1 {
+  h1, .h1-span {
     font-weight: bold;
     font-size: $title-text;
     line-height: calc($title-text * $line-multiplier);
   }
 
   // normal paragraph text
-  h2 {
+  h2, .h2-span {
     font-weight: normal;
     font-size: $paragraph-text;
     line-height: calc($paragraph-text * $line-multiplier);
@@ -209,7 +209,7 @@
   }
 
   // link text, i.e the text that says "more"
-  h3 {
+  h3, .h3-span {
     font-weight: bold;
     font-size: $link-text;
     line-height: calc($link-text * $line-multiplier);
