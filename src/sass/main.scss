@@ -1228,14 +1228,14 @@ body {
 
 }
 
-.CEO-title {
-    @include non-card-text;
-    padding: 2rem 0 4rem 0;
+// .CEO-title {
+//     @include non-card-text;
+//     padding: 2rem 0 4rem 0;
 
-    h1 {
-        color: $dark-text;
-    }
-}
+//     h1 {
+//         color: $dark-text;
+//     }
+// }
 
 .CEO-card {
     position: relative;
@@ -1285,20 +1285,34 @@ body {
     }
 
     &__content {
-        margin-top: -2.5rem;
+        margin-top: -2.5rem; 
+        @include c.clip-path;
+        padding: 2rem;
         z-index: 2;
         width: 100%;
         height: auto;
         position: relative;
+        background-color: $green-primary;
 
-        &--title {
+        &--description {
+            // background-color: $green-primary;
+            // padding: 1rem;
+            // border-radius: 20px;
+            
+            h1, h2 {
+                font-weight: 300;
+                color: $white;
+            }
+        }
+
+        .CEO-title {
             @include non-card-text;
-            background-color: $green-primary;
-            display: flex;
-            justify-content: space-around;
-            padding: 0.4rem 0 0.4rem 0;
-            border-radius: 20px;
-            filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
+            padding-top: 1rem;
+            // display: flex;
+            // justify-content: space-around;
+            // padding: 0.4rem 0 0.4rem 0;
+            // border-radius: 20px;
+            // filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
 
             h2 {
                 color: $white;
@@ -1306,7 +1320,7 @@ body {
 
             .name-CEO {
                 font-weight: bold;
-                padding-left: 1rem;
+                // padding-left: 1rem;
             }
 
             .title-CEO {
@@ -1314,15 +1328,6 @@ body {
             }
         }
 
-        &--description {
-            background-color: $white;
-            color: $grey-text;
-            padding: 1rem 2rem;
-
-            h2 {
-                font-weight: 300;
-            }
-        }
     }
 }
 
