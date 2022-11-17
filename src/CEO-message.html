@@ -66,57 +66,61 @@
         </div>
     </nav>
     <div class="mint-background CEO-container">
-        <div class="CEO-title">
-            <h1>MESSAGE FROM OUR ACTING CEO</h1>
-        </div>
         <div class="uk-grid-collapse" uk-grid>
             <div class="uk-width-2-5@m">
                 <div class="CEO-card">
-                    <div class="CEO-card__picture">
-                        <img src="assets/images/about-CEO.png" alt="">
-                        <a href="#CEO-message" uk-toggle>
-                            <div class="button-positioning">
-                                <div class="CEO-video-button uk-position-relative">
-                                    <div class="uk-position-center play">
+                    <div class="CEO-header">
+                        <h1>MESSAGE FROM OUR ACTING CEO</h1>
+                    </div>
+                    <div class="CEO-card__card"
+                        uk-scrollspy="cls: uk-animation-slide-bottom-small; target: .CEO-animate; delay: 300; repeat: true">
+                        <div class="CEO-card__picture">
+                            <img class="CEO-animate" src="assets/images/about-CEO.png" alt="">
+                            <a class="CEO-animate" href="#CEO-message" uk-toggle>
+                                <div class="button-positioning">
+                                    <div class="CEO-video-button uk-position-relative">
+                                        <div class="uk-position-center play">
+                                        </div>
+                                        <svg viewBox="0 0 150 150">
+                                            <path id="curve" fill="transparent"
+                                                d="M 75 75 m -50, 0 a 50, 50 0 1, 1 100, 0 a 50, 50 0 1, 1 -100, 0" />
+                                            <text class="words">
+                                                <textPath xlink:href="#curve">
+                                                    PLAY VIDEO
+                                                </textPath>
+                                            </text>
+                                        </svg>
                                     </div>
-                                    <svg viewBox="0 0 150 150">
-                                        <path id="curve" fill="transparent"
-                                            d="M 75 75 m -50, 0 a 50, 50 0 1, 1 100, 0 a 50, 50 0 1, 1 -100, 0" />
-                                        <text class="words">
-                                            <textPath xlink:href="#curve">
-                                                PLAY VIDEO
-                                            </textPath>
-                                        </text>
-                                    </svg>
+                                </div>
+                            </a>
+                            <div id="CEO-message" class="uk-flex-top" uk-modal>
+                                <div class="uk-modal-dialog uk-width-auto uk-margin-auto-vertical">
+                                    <button class="uk-modal-close-outside" type="button" uk-close></button>
+                                    <video src="assets/video/ceo.mp4" width="1920" height="1080" controls playsinline
+                                        preload="none" uk-video></video>
                                 </div>
                             </div>
-                        </a>
-                        <div id="CEO-message" class="uk-flex-top" uk-modal>
-                            <div class="uk-modal-dialog uk-width-auto uk-margin-auto-vertical">
-                                <button class="uk-modal-close-outside" type="button" uk-close></button>
-                                <video src="assets/video/ceo.mp4" width="1920" height="1080" controls playsinline
-                                    preload="none" uk-video></video>
-                            </div>
                         </div>
-                    </div>
-                    <div class="CEO-card__content">
-                        <div class="CEO-card__content--description">
-                            <img src="../assets/icons/8-quotes.svg" alt="">
-                            <h1>Dear Stakeholders,</h1>
-                            <h2>In what has been another challenging year as the world continued to grapple with the
-                                effects of the pandemic, Smart Axiata has remained steadfast in its support of the
-                                Kingdom’s efforts to bolster, protect and develop the economy and its citizens.</h2>
-                            <div class="CEO-title">
-                                <h2 class="name-CEO">MR. FEIRUZ IKHWAN</h2>
-                                <h2 class="title-CEO">Acting Chief Executive Officer</h2>
+                        <div class="CEO-card__content">
+                            <div class="CEO-card__content--description CEO-animate">
+                                <img src="../assets/icons/8-quotes.svg" alt="">
+                                <h1>Dear Stakeholders,</h1>
+                                <h2>In what has been another challenging year as the world continued to grapple with the
+                                    effects of the pandemic, Smart Axiata has remained steadfast in its support of the
+                                    Kingdom’s efforts to bolster, protect and develop the economy and its citizens.</h2>
+                                <div class="CEO-title">
+                                    <h2 class="name-CEO">MR. FEIRUZ IKHWAN</h2>
+                                    <h2 class="title-CEO">Acting Chief Executive Officer</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="uk-width-3-5@m">
-                <div class="CEO-large-flex">
-                    <div class="CEO-data">
+                <div class="CEO-large-flex"
+                    uk-scrollspy="cls: uk-animation-slide-bottom-small; target: .CEO-animate; delay: 300; repeat: true">
+                    <div class="CEO-data CEO-animate">
                         <div class="CEO-data__header header-1">
                             <h3>SIPAR VOCATIONAL OPRIENTATION</h3>
                         </div>
@@ -131,7 +135,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="CEO-data">
+                    <div class="CEO-data CEO-animate">
                         <div class="CEO-data__header header-2">
                             <h3>IMPACT+ PROGRAM</h3>
                         </div>
@@ -147,7 +151,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="CEO-data">
+                    <div class="CEO-data CEO-animate">
                         <div class="CEO-data__header header-3">
                             <h3>TECHNO INNOVATION CENTRE</h3>
                         </div>
@@ -163,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="CEO-data">
+                    <div class="CEO-data CEO-animate">
                         <div class="CEO-data__header header-4">
                             <h3>CED21</h3>
                         </div>

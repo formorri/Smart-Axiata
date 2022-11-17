@@ -158,9 +158,12 @@
 }
 
 @mixin non-card-text-lg {
-  $title-text: 30px;
-  $paragraph-text: 20px;
-  $link-text: 25px;
+  // $title-text: 18px;
+  // $paragraph-text: 14px;
+  // $link-text: 16px;
+  $title-text: 20px;
+  $paragraph-text: 16px;
+  $link-text: 18px;
   $line-multiplier: 1.5;
 
   // title-text for normal headers, sustainable cards
@@ -187,35 +190,35 @@
   }
 }
 
-@mixin non-card-text-xl {
-  $title-text: 30px;
-  $paragraph-text: 20px;
-  $link-text: 25px;
-  $line-multiplier: 1.5;
+// @mixin non-card-text-xl {
+//   $title-text: 30px;
+//   $paragraph-text: 20px;
+//   $link-text: 25px;
+//   $line-multiplier: 1.5;
 
-  // title-text for normal headers, sustainable cards
-  h1, .h1-span {
-    font-weight: bold;
-    font-size: $title-text;
-    line-height: calc($title-text * $line-multiplier);
-  }
+//   // title-text for normal headers, sustainable cards
+//   h1, .h1-span {
+//     font-weight: bold;
+//     font-size: $title-text;
+//     line-height: calc($title-text * $line-multiplier);
+//   }
 
-  // normal paragraph text
-  h2, .h2-span {
-    font-weight: normal;
-    font-size: $paragraph-text;
-    line-height: calc($paragraph-text * $line-multiplier);
-    margin: 0;
-  }
+//   // normal paragraph text
+//   h2, .h2-span {
+//     font-weight: normal;
+//     font-size: $paragraph-text;
+//     line-height: calc($paragraph-text * $line-multiplier);
+//     margin: 0;
+//   }
 
-  // link text, i.e the text that says "more"
-  h3, .h3-span {
-    font-weight: bold;
-    font-size: $link-text;
-    line-height: calc($link-text * $line-multiplier);
-    margin: 0;
-  }
-}
+//   // link text, i.e the text that says "more"
+//   h3, .h3-span {
+//     font-weight: bold;
+//     font-size: $link-text;
+//     line-height: calc($link-text * $line-multiplier);
+//     margin: 0;
+//   }
+// }
 
 //   Any text with running numbers
 @mixin card-text {

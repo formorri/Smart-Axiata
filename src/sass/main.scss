@@ -241,7 +241,6 @@ body {
     }
 
     .video-button {
-
         @include c.video-button;
         $button-size: 6.5rem;
         border: 5px solid $white;
@@ -658,7 +657,7 @@ body {
     .navigation-card,
     .navigation-card-CEO,
     .sustainable-pillars-container {
-        @include non-card-text-xl;
+        @include non-card-text-lg;
     }
 
     .navigation-card,
@@ -1165,10 +1164,10 @@ body {
 
     .about-container {
         padding: $xl-top-padding $xl-padding 4rem $xl-padding;
-        @include non-card-text-xl;
+        @include non-card-text-lg;
 
         .vision-mission {
-            @include non-card-text-xl;
+            @include non-card-text-lg;
             margin: 1rem 0;
 
 
@@ -1265,20 +1264,19 @@ body {
 
 }
 
-// .CEO-title {
-//     @include non-card-text;
-//     padding: 2rem 0 4rem 0;
-
-//     h1 {
-//         color: $dark-text;
-//     }
-// }
-
 .CEO-card {
     position: relative;
     margin-top: 2rem;
     @include c.shadow;
-    @include c.hover;
+
+    .CEO-header{
+        @include non-card-text;
+        padding-bottom: 2rem;
+    }
+
+    &__card{
+        @include c.hover;
+    }
 
     &__picture {
         background-image: url(../assets/images/about-CEO-background.png);
@@ -1312,7 +1310,7 @@ body {
             }
 
             .play::before {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
 
             .words {
@@ -1322,6 +1320,7 @@ body {
     }
 
     &__content {
+        @include c.hover;
         margin-top: -8%;
         @include c.clip-path;
         padding: 2rem;
@@ -1539,6 +1538,11 @@ body {
         padding: 0 1.5rem 0 0;
         position: fixed;
         width: 35%;
+        margin: 0;
+
+        .CEO-header{
+            padding-bottom: 2rem;
+        }
 
         &__content {
             &--description {
@@ -1621,12 +1625,13 @@ body {
 @include gt-xl {
     .CEO-container {
         padding: $xl-top-padding $xl-padding 15rem $xl-padding;
-        @include non-card-text-xl;
+        @include non-card-text-lg;
 
     }
 
     .CEO-title {
-        @include non-card-text-xl;
+        @include non-card-text-lg;
+        padding-bottom: 2rem;
     }
 
     .CEO-card {
@@ -1634,18 +1639,42 @@ body {
         position: relative;
         width: auto;
 
+        .CEO-header{
+            @include non-card-text-lg;
+        }
+        
         &__picture{
             // background-size: 150%;
+            margin-top: 1rem;
             height: 24rem;
             img{
                 object-fit: cover;
                 height: 25rem;
                 // width: 100rem;
             }
+            .CEO-video-button {
+                @include c.video-button;
+                $button-size: 8rem;
+                border: 5px solid $white;
+                border-radius: $button-size ;
+                width: $button-size;
+    
+                svg {
+                    width: $button-size;
+                }
+    
+                .play::before {
+                    font-size: 2rem;
+                }
+    
+                .words {
+                    font-size: 1.3rem;
+                }
+            }
         }
 
         &__content {
-            padding: 4rem;
+            padding: 3rem;
             &--description {
                 border-radius: 0 0 $border-radius $border-radius;
                 height: fit-content;
@@ -1697,7 +1726,7 @@ body {
         $icon-size: 24px;
         $padding-top-bottom: 0.5rem;
         $border-weight: 2px;
-        $spacing-top: 1rem;
+        $spacing-top: 6rem;
         padding: $padding-top-bottom 0 $padding-top-bottom 0;
         border-radius: $icon-size;
         border: $border-weight solid black;
@@ -1995,11 +2024,11 @@ body {
 @include gt-xl {
     .sustainable-container {
         padding: $xl-top-padding 0 10rem 0;
-        @include non-card-text-xl;
+        @include non-card-text-lg;
     }
 
     .sustainable-title {
-        @include non-card-text-xl;
+        @include non-card-text-lg;
         padding: 2rem $xl-padding 2rem $xl-padding;
     }
 
@@ -2250,7 +2279,7 @@ body {
 
 @include gt-xl {
     .humanitarian-container {
-        @include non-card-text-xl;
+        @include non-card-text-lg;
         padding: $xl-top-padding 0 0 0;
     }
 
@@ -2283,12 +2312,12 @@ body {
     }
 
     .humanitarian-text {
-        @include non-card-text-xl;
+        @include non-card-text-lg;
         padding: 5rem $xl-padding;
     }
 
     .humanitarian-content {
-        @include non-card-text-xl;
+        @include non-card-text-lg;
         padding: 4rem $xl-padding 10rem $xl-padding;
 
         .donate {
