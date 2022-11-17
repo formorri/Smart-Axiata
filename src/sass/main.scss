@@ -693,7 +693,7 @@ body {
     background-color: $mint-secondary;
     margin-bottom: 0rem;
     padding: $s-top-padding $s-padding $s-top-padding $s-padding;
-    height: 100%;
+    height: 100vh;
 }
 
 .about-shadow {
@@ -746,9 +746,14 @@ body {
     @include c.clip-path-cards;
     background-color: $yellow-secondary;
 
+    &__0, &__1, &__2, &__3, &__4{
+        @include c.hover;
+    }
+
     &__0 {
         @include card-text;
         background-color: $green-primary;
+        border-radius: $border-radius $border-radius 0 0;
 
         h2 {
             color: $white;
@@ -791,7 +796,7 @@ body {
 }
 
 .about-content {
-    @include c.cards;
+    @include c.cards-no-shadow;
     @include card-text;
     position: relative;
     padding: 1rem;
@@ -799,7 +804,7 @@ body {
     vertical-align: middle;
     align-items: center;
     text-align: center;
-    
+
     gap: 1.2rem;
 
     &__title {
@@ -809,7 +814,7 @@ body {
     }
 
     &__content {
-        h2{
+        h2 {
             margin: 0;
         }
     }
@@ -817,15 +822,18 @@ body {
 
 
 @include gt-sm {
-    $petal-size: 17rem;
+    $petal-size: 18rem;
     $petal-radius: calc($petal-size / 2);
 
     .about-container {
         padding: calc($l-top-padding + 2rem) $l-padding 4rem $l-padding;
-        height: 110vh;
+        height: 100vh;
+        display: flex;
 
         .about-title {
             margin: 0;
+            width: 100%;
+            height: fit-content;
         }
 
         .vision-mission {
@@ -835,22 +843,28 @@ body {
             position: relative;
 
             .vision-color {
-                &__title{
+                @include c.hover;
+                &__title {
                     background-color: $green-primary;
                 }
-                &__desc{
-                    h3, .h1-span{
+
+                &__desc {
+
+                    h3,
+                    .h1-span {
                         color: $green-primary;
                     }
                 }
             }
 
             .mission-color {
-                &__title{
+                @include c.hover;
+                &__title {
                     background-color: $purple-primary;
                 }
-                &__desc{
-                    h1{
+
+                &__desc {
+                    h1 {
                         color: $purple-primary;
                         text-transform: uppercase;
                     }
@@ -858,11 +872,15 @@ body {
             }
 
             .value-color {
-                &__title{
+                @include c.hover;
+                &__title {
                     background-color: $pink-primary;
                 }
-                &__desc{
-                    h2, .h1-span{
+
+                &__desc {
+
+                    h2,
+                    .h1-span {
                         color: $pink-primary;
                     }
                 }
@@ -901,6 +919,7 @@ body {
 
 
     .petal-container {
+        height: fit-content;
         display: grid;
         place-items: center;
         margin: 0 0 0 1rem;
@@ -962,7 +981,7 @@ body {
 
         &__3,
         &__4 {
-            grid-row: 5/-1;
+            grid-row: 6/-1;
         }
 
 
@@ -1004,15 +1023,32 @@ body {
     }
 }
 
+@include md{
+    $petal-size: 18rem;
+    $petal-radius: calc($petal-size / 2);
+
+    .about-title{
+        margin-bottom: 2rem !important;
+    }
+    .petal-container {
+        height: fit-content;
+        width: 100%;
+        margin: 1rem 0;
+        padding: 1.5rem 10rem;
+
+    }
+}
+
+
 @include gt-lg {
-    $petal-size: 22rem;
+    $petal-size: 25rem;
     $petal-radius: calc($petal-size / 2);
 
     .about-container {
         padding: calc($l-top-padding + 2rem) $l-padding 4rem $l-padding;
         height: 100vh;
         @include non-card-text-lg;
-        
+
         .vision-mission {
             @include non-card-text-lg;
             margin: 1rem 0 1rem 0;
@@ -1041,7 +1077,7 @@ body {
         margin: 0 0 0 2rem;
         padding: 5rem 1.5rem;
         grid-template-columns: repeat(11, 1fr);
-        grid-template-rows: repeat(10, 1fr);
+        grid-template-rows: repeat(11, 1fr);
 
         &__0 {
             grid-column: 4/9;
@@ -1049,15 +1085,15 @@ body {
             z-index: 10;
             height: 5rem;
             width: 5rem;
-            width: calc($petal-size * 0.65);
-            height: calc($petal-size * 0.65);
+            width: calc($petal-size * 0.55);
+            height: calc($petal-size * 0.55);
             margin: 0;
 
             .about-header-content {
                 border-radius: $petal-radius;
                 border: 3px solid $green-primary;
-                width: calc($petal-size * 0.6);
-                height: calc($petal-size * 0.6);
+                width: calc($petal-size * 0.5);
+                height: calc($petal-size * 0.5);
 
                 h2 {
                     font-size: 130%;
@@ -1130,7 +1166,7 @@ body {
     .about-container {
         padding: $xl-top-padding $xl-padding 4rem $xl-padding;
         @include non-card-text-xl;
-        
+
         .vision-mission {
             @include non-card-text-xl;
             margin: 1rem 0;
@@ -1157,23 +1193,23 @@ body {
 
     .petal-container {
         margin: 0 0 0 3rem;
-        padding: 0rem 5rem;
+        padding: 2rem 5rem;
         grid-template-columns: repeat(11, 1fr);
-        grid-template-rows: repeat(10, 1fr);
+        grid-template-rows: repeat(11, 1fr);
 
         &__0 {
             z-index: 10;
             height: 5rem;
             width: 5rem;
-            width: calc($petal-size * 0.65);
-            height: calc($petal-size * 0.65);
+            width: calc($petal-size * 0.6);
+            height: calc($petal-size * 0.6);
             margin: 0;
 
             .about-header-content {
                 border-radius: $petal-radius;
                 border: 3px solid $green-primary;
-                width: calc($petal-size * 0.6);
-                height: calc($petal-size * 0.6);
+                width: calc($petal-size * 0.55);
+                height: calc($petal-size * 0.55);
 
                 h2 {
                     font-size: 140%;
@@ -1182,6 +1218,7 @@ body {
                 }
             }
         }
+
         &__0,
         &__1,
         &__2,
@@ -1196,7 +1233,7 @@ body {
         @include card-text-xl;
         width: $petal-size;
         height: $petal-size;
-        padding:9rem 7rem;
+        padding: 9rem 7rem;
 
         &__content {
             padding: 1rem 0;
@@ -1217,7 +1254,7 @@ body {
 
 
 // ! ---------------------------------------SASS FOR CEO---------------------------------------------------
-.mint-background{
+.mint-background {
     background-color: $mint-secondary;
 }
 
@@ -1239,21 +1276,21 @@ body {
 
 .CEO-card {
     position: relative;
+    margin-top: 2rem;
+    @include c.shadow;
+    @include c.hover;
 
     &__picture {
-        background-image: url(../assets/images/about-CEO-background.jpg);
+        background-image: url(../assets/images/about-CEO-background.png);
+        background-position: top;
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
-        border-radius: 20px 20px 0 0;
-        align-items: center;
-        text-align: center;
+        border-radius: $border-radius $border-radius 0 0;
 
         img {
             position: relative;
-            margin-top: -4rem;
-            right: 5%;
-            height: 20rem;
+            margin-top: -10%;
         }
 
         .button-positioning {
@@ -1285,7 +1322,7 @@ body {
     }
 
     &__content {
-        margin-top: -2.5rem; 
+        margin-top: -8%;
         @include c.clip-path;
         padding: 2rem;
         z-index: 2;
@@ -1295,24 +1332,19 @@ body {
         background-color: $green-primary;
 
         &--description {
-            // background-color: $green-primary;
-            // padding: 1rem;
-            // border-radius: 20px;
-            
-            h1, h2 {
-                font-weight: 300;
+            h1 {
+                margin: 1rem 0;
+            }
+
+            h1,
+            h2 {
+                @include non-card-text;
                 color: $white;
             }
         }
 
         .CEO-title {
-            @include non-card-text;
             padding-top: 1rem;
-            // display: flex;
-            // justify-content: space-around;
-            // padding: 0.4rem 0 0.4rem 0;
-            // border-radius: 20px;
-            // filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
 
             h2 {
                 color: $white;
@@ -1320,7 +1352,6 @@ body {
 
             .name-CEO {
                 font-weight: bold;
-                // padding-left: 1rem;
             }
 
             .title-CEO {
@@ -1332,55 +1363,124 @@ body {
 }
 
 .CEO-data {
-    @include card-text;
-    background-color: $mint-secondary;
-    border-radius: 0 0 20px 20px;
-    padding: 2rem;
+    padding: 0.8rem 0;
+    width: 100%;
+    @include c.hover;
+
+    &__header {
+        @include card-text;
+        padding: 0.4rem 0.8rem;
+        width: fit-content;
+    }
+
+    .header-1 {
+        background-color: $green-primary;
+
+        h3 {
+            color: $yellow-primary;
+        }
+    }
+
+    .header-2 {
+        background-color: $yellow-primary;
+
+        h3 {
+            color: $pink-primary;
+        }
+    }
+
+    .header-3 {
+        background-color: $mint-primary;
+
+        h3 {
+            color: $purple-primary;
+        }
+    }
+
+    .header-4 {
+        background-color: $purple-primary;
+
+        h3 {
+            color: $green-primary;
+        }
+    }
+
+    &__icons {
+        width: auto;
+
+        img {
+            width: 5rem;
+        }
+    }
+
+    &__info {
+        width: 60%;
+    }
 
     &__card {
-        @include c.cards;
-        background-color: $white;
-        border: 1px solid $grey-text;
+        @include card-text;
+        @include c.clip-path;
+        padding: 1.5rem;
+        width: 100%;
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+        gap: 1rem;
+
+        h1 {
+            :nth-child(1) {
+                padding: 0.5rem 0;
+                border: $border-radius $border-radius 0 0;
+            }
+        }
 
         h1,
         h2,
         h4 {
             margin: 0;
         }
+    }
 
-        // animation begin
-        @include c.card-animation-before;
+    &__color-1 {
+        background-color: $yellow-primary;
 
-        h1 {
-            color: $yellow-primary;
-        }
-
+        h1,
         h2,
         h4 {
             color: $green-primary;
         }
 
-        // &::before {
-        //     background: $yellow-primary;
-        //     height: 2rem;
-        //     width: 2rem;
-        //     border-radius: 2rem;
-        // }
-
     }
 
-    // &__card:hover {
-    //     @include c.card-animation-after;
+    &__color-2 {
+        background-color: $pink-primary;
 
-    //     h1 {
-    //         color: $green-primary;
-    //     }
+        h1,
+        h2,
+        h4 {
+            color: $yellow-primary;
+        }
+    }
 
-    //     h2,
-    //     h4 {
-    //         color: $dark-text;
-    //     }
-    // }
+    &__color-3 {
+        background-color: $purple-primary;
+
+        h1,
+        h2,
+        h4 {
+            color: $mint-primary;
+        }
+    }
+
+    &__color-4 {
+        background-color: $green-primary;
+
+        h1,
+        h2,
+        h4 {
+            color: $purple-primary;
+        }
+    }
 }
 
 .download {
@@ -1426,61 +1526,53 @@ body {
 
 @include gt-sm {
     .CEO-container {
-        padding: $l-top-padding $l-padding 5rem $l-padding;
-        height: 110vh;
+        padding: calc($l-top-padding + 2rem) $l-padding 8rem $l-padding;
+        height: 100%;
     }
 
     .CEO-title {
-        @include non-card-text-lg;
+        @include non-card-text;
     }
 
+
     .CEO-card {
-        padding: 0 1rem 0 0;
-        transition: 0.6s;
+        padding: 0 1.5rem 0 0;
+        position: fixed;
+        width: 35%;
 
         &__content {
             &--description {
-                border-radius: 0 0 20px 20px;
-                padding: 2rem;
+                border-radius: 0 0 $border-radius $border-radius;
                 height: fit-content;
-                width: 100%;
                 position: relative;
-
-                h1 {
-                    color: $green-primary;
-                }
             }
         }
-
-        &:hover {
-            filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.2));
-        }
     }
 
-    .CEO-content-container {
-        padding: 0 0 0 1rem;
-    }
 
-    .CEO-data {
-        padding: 0;
-        background-color: transparent;
-        position: relative;
+    .CEO-large-flex {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
 
-        :nth-child(1) {
-            width: 48%;
-            text-align: left;
-        }
-
-        :nth-child(2) {
-            width: 49%;
-        }
-
-        :nth-child(3) {
+        .CEO-data {
             width: 100%;
-        }
+            height: auto;
+            padding: 0;
 
-        &__card {
-            margin: 0 1% 1% 0;
+            &__header {
+                width: 90%;
+
+                h3 {
+                    font-size: 95%;
+                }
+            }
+
+            &__card {
+                height: 10rem;
+                margin: 0;
+            }
+
         }
     }
 
@@ -1538,117 +1630,63 @@ body {
     }
 
     .CEO-card {
-        &__picture {
-            height: 28rem;
+        padding: 0 1.5rem 0 0;
+        position: relative;
+        width: auto;
 
-            img {
-                margin-top: -4rem;
-                right: 4%;
-                height: 35rem;
-            }
-
-            .button-positioning {
-                position: absolute;
-                top: 5rem;
-                right: 8rem;
-            }
-
-            .CEO-video-button {
-                @include c.video-button;
-                $button-size: 8rem;
-                border: 6px solid $white;
-                border-radius: $button-size ;
-                width: $button-size;
-
-                svg {
-                    width: $button-size;
-                }
-
-                .play::before {
-                    font-size: 2rem;
-                }
-
-                .words {
-                    font-size: 1.3rem;
-                }
+        &__picture{
+            // background-size: 150%;
+            height: 24rem;
+            img{
+                object-fit: cover;
+                height: 25rem;
+                // width: 100rem;
             }
         }
 
         &__content {
-            margin-top: -4rem;
-
-            &--title {
-                @include non-card-text-xl;
-                padding: 1rem 0 1rem 0;
-                border-radius: 2rem;
-                filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.2));
-            }
-
+            padding: 4rem;
             &--description {
-                padding: 3rem 3rem 6rem 3rem;
-
-                h2 {
-                    font-weight: 300;
-                }
+                border-radius: 0 0 $border-radius $border-radius;
+                height: fit-content;
+                position: relative;
             }
         }
     }
 
-    .CEO-data {
-        @include card-text-xl;
-        padding: 0;
-        background-color: transparent;
-        position: relative;
+    .CEO-large-flex {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
 
-        :nth-child(1) {
-
-            h1,
-            h2,
-            h3,
-            h4 {
-                width: 100%;
-            }
-
+        .CEO-data {
             width: 48%;
-        }
+            height: auto;
+            padding: 0;
 
-        :nth-child(2) {
-            width: 48%;
-
-            h1,
-            h2,
-            h3,
-            h4 {
-                width: 100%;
+            &__header {
+                @include card-text-lg;
+                width: 70%;
+                padding: 0.8rem;
             }
-        }
 
-        :nth-child(3) {
-            width: 98%;
-
-            h1,
-            h2,
-            h3,
-            h4 {
-                width: 100%;
+            &__icons {
+                width: auto;
+        
+                img {
+                    width: 8rem;
+                }
             }
-        }
-
-        &__card {
-            margin: 0 2% 2% 0;
-            padding: 5rem;
-            border: 2px solid $grey-text;
-
-            &::before {
-                transition: transform 0.6s ease-in-out;
+            &__info {
+                width: 80%;
             }
-        }
 
-        &__card:hover {
-            filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.2));
-
-            &::before {
-                transform: scale(100);
+            &__card {
+                @include card-text-xl;
+                height: 18rem;
+                padding: 2rem;
+                margin: 0;
+                gap: 2rem;
             }
 
         }
