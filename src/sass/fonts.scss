@@ -126,22 +126,48 @@
 //download-global: e91c
 //donate global: e91f
 
+@mixin sustainable-header {
+  $title-text: 25px;
+  $line-multiplier: 1.2;
+
+  // title-text for normal headers, sustainable cards
+  h1 {
+    font-weight: normal;
+    font-size: $title-text;
+    line-height: calc($title-text * $line-multiplier);
+  }
+}
+
+@mixin sustainable-header-lg {
+  $title-text: 30px;
+  $line-multiplier: 1.2;
+
+  // title-text for normal headers, sustainable cards
+  h1 {
+    font-weight: normal;
+    font-size: $title-text;
+    line-height: calc($title-text * $line-multiplier);
+  }
+}
+
 //   Any text without running numbers
 @mixin non-card-text {
   $title-text: 18px;
   $paragraph-text: 14px;
   $link-text: 16px;
-  $line-multiplier: 1.5;
+  $line-multiplier: 1.2;
 
   // title-text for normal headers, sustainable cards
-  h1, .h1-span {
+  h1,
+  .h1-span {
     font-weight: bold;
     font-size: $title-text;
     line-height: calc($title-text * $line-multiplier);
   }
 
   // normal paragraph text
-  h2, .h2-span {
+  h2,
+  .h2-span {
     font-weight: normal;
     font-size: $paragraph-text;
     line-height: calc($paragraph-text * $line-multiplier);
@@ -149,7 +175,8 @@
   }
 
   // link text, i.e the text that says "more"
-  h3, .h3-span {
+  h3,
+  .h3-span {
     font-weight: bold;
     font-size: $link-text;
     line-height: calc($link-text * $line-multiplier);
@@ -158,23 +185,22 @@
 }
 
 @mixin non-card-text-lg {
-  // $title-text: 18px;
-  // $paragraph-text: 14px;
-  // $link-text: 16px;
-  $title-text: 20px;
-  $paragraph-text: 16px;
-  $link-text: 18px;
-  $line-multiplier: 1.5;
+  $title-text: 22px;
+  $paragraph-text: 18px;
+  $link-text: 16px;
+  $line-multiplier: 1.2;
 
   // title-text for normal headers, sustainable cards
-  h1, .h1-span {
+  h1,
+  .h1-span {
     font-weight: bold;
     font-size: $title-text;
     line-height: calc($title-text * $line-multiplier);
   }
 
   // normal paragraph text
-  h2, .h2-span {
+  h2,
+  .h2-span {
     font-weight: normal;
     font-size: $paragraph-text;
     line-height: calc($paragraph-text * $line-multiplier);
@@ -182,19 +208,21 @@
   }
 
   // link text, i.e the text that says "more"
-  h3, .h3-span {
+  h3,
+  .h3-span {
     font-weight: bold;
     font-size: $link-text;
     line-height: calc($link-text * $line-multiplier);
     margin: 0;
   }
+
 }
 
 // @mixin non-card-text-xl {
 //   $title-text: 30px;
 //   $paragraph-text: 20px;
 //   $link-text: 25px;
-//   $line-multiplier: 1.5;
+// $line-multiplier: 1.3;
 
 //   // title-text for normal headers, sustainable cards
 //   h1, .h1-span {
@@ -224,14 +252,15 @@
 @mixin card-text {
   $large-text: 25px;
   $medium-text: 22px;
-  $small-text: 18px;
+  $small-text: 16px;
+  $line-multiplier: 1.2;
 
   // large text
   h1,
   .h1-span {
     font-weight: bold;
     font-size: $large-text;
-    line-height: $large-text;
+    line-height: calc($large-text * $line-multiplier);
   }
 
   // medium text
@@ -239,7 +268,7 @@
   .h2-span {
     font-weight: 500;
     font-size: $medium-text;
-    line-height: $medium-text;
+    line-height: calc($medium-text * $line-multiplier);
   }
 
   // bold smaller text
@@ -247,15 +276,15 @@
   .h3-span {
     font-weight: 500;
     font-size: $small-text;
-    line-height: $small-text;
+    line-height: calc($small-text * $line-multiplier);
   }
 
   // thin text
   h4,
   .h4-span {
-    font-weight: 300;
+    font-weight: normal;
     font-size: $small-text;
-    line-height: $small-text;
+    line-height: calc($small-text * $line-multiplier);
   }
 }
 
@@ -263,13 +292,14 @@
   $large-text: 35px;
   $medium-text: 27px;
   $small-text: 22px;
+  $line-multiplier: 1.2;
 
   // large text
   h1,
   .h1-span {
     font-weight: bold;
     font-size: $large-text;
-    line-height: $large-text;
+    line-height: calc($large-text * $line-multiplier);
   }
 
   // medium text
@@ -277,7 +307,7 @@
   .h2-span {
     font-weight: 500;
     font-size: $medium-text;
-    line-height: $medium-text;
+    line-height: calc($medium-text * $line-multiplier);
   }
 
   // bold smaller text
@@ -285,7 +315,7 @@
   .h3-span {
     font-weight: 500;
     font-size: $small-text;
-    line-height: $small-text;
+    line-height: calc($small-text * $line-multiplier);
   }
 
   // thin text
@@ -293,7 +323,7 @@
   .h4-span {
     font-weight: 300;
     font-size: $small-text;
-    line-height: $small-text;
+    line-height: calc($small-text * $line-multiplier);
   }
 }
 
@@ -301,13 +331,14 @@
   $large-text: 45px;
   $medium-text: 37px;
   $small-text: 32px;
+  $line-multiplier: 1.2;
 
   // large text
   h1,
   .h1-span {
     font-weight: bold;
     font-size: $large-text;
-    line-height: $large-text;
+    line-height: calc($large-text * $line-multiplier);
   }
 
   // medium text
@@ -315,7 +346,7 @@
   .h2-span {
     font-weight: 500;
     font-size: $medium-text;
-    line-height: $medium-text;
+    line-height: calc($medium-text * $line-multiplier);
   }
 
   // bold smaller text
@@ -323,7 +354,7 @@
   .h3-span {
     font-weight: 500;
     font-size: $small-text;
-    line-height: $small-text;
+    line-height: calc($small-text * $line-multiplier);
   }
 
   // thin text
@@ -331,6 +362,6 @@
   .h4-span {
     font-weight: 300;
     font-size: $small-text;
-    line-height: $small-text;
+    line-height: calc($small-text * $line-multiplier);
   }
 }

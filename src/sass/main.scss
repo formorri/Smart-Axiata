@@ -350,26 +350,16 @@ body {
     background-color: rgba(255, 255, 255, .15);
     backdrop-filter: blur(10px);
 
-
-
     // section header and card title text
     h1 {
         color: $white;
-    }
-
-    // "more" text
-    h3 {
-        color: $yellow-primary;
-
-        &:hover {
-            color: $green-primary;
-        }
     }
 
     &__card {
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
+        height: 11rem;
         @include c.clip-path;
 
         a {
@@ -379,30 +369,84 @@ body {
 
     .darken {
         @include c.clip-path;
-        background: rgba(0, 0, 0, .6);
         padding: 2rem 0.8rem 2rem 0.8rem;
-        min-height: 10rem;
+        min-height: 11rem;
 
         &:hover {
-            background: rgba(0, 0, 0, .4);
             transition: .7s;
         }
     }
 
+    .card-1,
+    .card-2,
+    .card-3,
+    .card-4 {
+        background-repeat: no-repeat;
+        background-size: 75%;
+        background-position: 100% 60%;
+        .darken{
+            background: rgba(0, 0, 0, 0.2);
+        }
+        h1{
+            padding: 0.4rem;
+            width: fit-content;
+        }
+        h3 {
+            color: $white;
+        }
+        &:hover {
+            .darken{
+                background: rgba(0, 0, 0, 0);
+                h3{
+                    color: $green-primary;
+                }
+            }
+        }
+    }
+
     .card-1 {
-        background-image: url(../assets/images/beyond-header.jpg);
+        background-image: url(../assets/images/beyond-header.png);
+        background-color: $yellow-secondary;
+
+        .darken {
+            h1{
+                color: $dark-text;
+                background-color: $yellow-primary;
+            }
+        }
     }
 
     .card-2 {
-        background-image: url(../assets/images/nurturing-header.jpg);
+        background-image: url(../assets/images/nurturing-header.png);
+        background-color: $pink-secondary;
+        .darken {
+            h1{
+                color: $white;
+                background-color: $pink-primary;
+            }
+        }
     }
 
     .card-3 {
-        background-image: url(../assets/images/process-header.jpg);
+        background-image: url(../assets/images/process-header.png);
+        background-color: $purple-secondary;
+        .darken {
+            h1{
+                color: $white;
+                background-color: $purple-primary;
+            }
+        }
     }
 
     .card-4 {
-        background-image: url(../assets/images/planet-header.jpg);
+        background-image: url(../assets/images/planet-header.png);
+        background-color: $mint-secondary;
+        .darken {
+            h1{
+                color: $dark-text;
+                background-color: $mint-primary;
+            }
+        }
     }
 }
 
@@ -692,11 +736,11 @@ body {
     background-color: $mint-secondary;
     margin-bottom: 0rem;
     padding: $s-top-padding $s-padding $s-top-padding $s-padding;
-    height: 100vh;
+    height: 110vh;
 }
 
 .about-shadow {
-    @include c.shadow;
+    @include c.hover;
 }
 
 .about-title {
@@ -745,7 +789,11 @@ body {
     @include c.clip-path-cards;
     background-color: $yellow-secondary;
 
-    &__0, &__1, &__2, &__3, &__4{
+    &__0,
+    &__1,
+    &__2,
+    &__3,
+    &__4 {
         @include c.hover;
     }
 
@@ -802,7 +850,6 @@ body {
     display: flex;
     vertical-align: middle;
     align-items: center;
-    text-align: center;
 
     gap: 1.2rem;
 
@@ -821,13 +868,13 @@ body {
 
 
 @include gt-sm {
-    $petal-size: 18rem;
+    $petal-size: 16rem;
     $petal-radius: calc($petal-size / 2);
 
     .about-container {
         padding: calc($l-top-padding + 2rem) $l-padding 4rem $l-padding;
-        height: 100vh;
-        display: flex;
+        height: 110vh;
+        // display: flex;
 
         .about-title {
             margin: 0;
@@ -843,6 +890,7 @@ body {
 
             .vision-color {
                 @include c.hover;
+
                 &__title {
                     background-color: $green-primary;
                 }
@@ -858,6 +906,7 @@ body {
 
             .mission-color {
                 @include c.hover;
+
                 &__title {
                     background-color: $purple-primary;
                 }
@@ -872,6 +921,7 @@ body {
 
             .value-color {
                 @include c.hover;
+
                 &__title {
                     background-color: $pink-primary;
                 }
@@ -1002,10 +1052,11 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding: 5rem 3rem;
+        padding: 5rem 4rem;
+        text-align: center;
 
         &__content {
-            padding: 1rem 0;
+            // padding: 0.5rem 0;
 
             :nth-child(1),
             :nth-child(2) {
@@ -1022,25 +1073,31 @@ body {
     }
 }
 
-@include md{
+@include md {
     $petal-size: 18rem;
     $petal-radius: calc($petal-size / 2);
 
-    .about-title{
+    .about-container {
+        padding: 10rem 4rem 8rem 4rem;
+        height: 100%;
+    }
+
+    .about-title {
         margin-bottom: 2rem !important;
     }
+
     .petal-container {
         height: fit-content;
         width: 100%;
         margin: 1rem 0;
-        padding: 1.5rem 10rem;
+        padding: 1.5rem 12rem;
 
     }
 }
 
 
 @include gt-lg {
-    $petal-size: 25rem;
+    $petal-size: 22rem;
     $petal-radius: calc($petal-size / 2);
 
     .about-container {
@@ -1159,11 +1216,12 @@ body {
 }
 
 @include gt-xl {
-    $petal-size: 30rem;
+    $petal-size: 26.5rem;
     $petal-radius: calc($petal-size / 2);
 
     .about-container {
-        padding: $xl-top-padding $xl-padding 4rem $xl-padding;
+        padding: $xl-top-padding $xl-padding 10rem $xl-padding;
+        height: 100%;
         @include non-card-text-lg;
 
         .vision-mission {
@@ -1200,15 +1258,15 @@ body {
             z-index: 10;
             height: 5rem;
             width: 5rem;
-            width: calc($petal-size * 0.6);
-            height: calc($petal-size * 0.6);
+            width: calc($petal-size * 0.55);
+            height: calc($petal-size * 0.55);
             margin: 0;
 
             .about-header-content {
                 border-radius: $petal-radius;
                 border: 3px solid $green-primary;
-                width: calc($petal-size * 0.55);
-                height: calc($petal-size * 0.55);
+                width: calc($petal-size * 0.5);
+                height: calc($petal-size * 0.5);
 
                 h2 {
                     font-size: 140%;
@@ -1229,7 +1287,7 @@ body {
     }
 
     .about-content {
-        @include card-text-xl;
+        @include card-text-lg;
         width: $petal-size;
         height: $petal-size;
         padding: 9rem 7rem;
@@ -1264,17 +1322,20 @@ body {
 
 }
 
+.CEO-large-flex {
+    margin-top: 1rem;
+}
+
 .CEO-card {
     position: relative;
     margin-top: 2rem;
-    @include c.shadow;
 
-    .CEO-header{
+    .CEO-header {
         @include non-card-text;
         padding-bottom: 2rem;
     }
 
-    &__card{
+    &__card {
         @include c.hover;
     }
 
@@ -1540,7 +1601,7 @@ body {
         width: 35%;
         margin: 0;
 
-        .CEO-header{
+        .CEO-header {
             padding-bottom: 2rem;
         }
 
@@ -1639,34 +1700,36 @@ body {
         position: relative;
         width: auto;
 
-        .CEO-header{
+        .CEO-header {
             @include non-card-text-lg;
         }
-        
-        &__picture{
+
+        &__picture {
             // background-size: 150%;
             margin-top: 1rem;
             height: 24rem;
-            img{
+
+            img {
                 object-fit: cover;
                 height: 25rem;
                 // width: 100rem;
             }
+
             .CEO-video-button {
                 @include c.video-button;
                 $button-size: 8rem;
                 border: 5px solid $white;
                 border-radius: $button-size ;
                 width: $button-size;
-    
+
                 svg {
                     width: $button-size;
                 }
-    
+
                 .play::before {
                     font-size: 2rem;
                 }
-    
+
                 .words {
                     font-size: 1.3rem;
                 }
@@ -1675,6 +1738,7 @@ body {
 
         &__content {
             padding: 3rem;
+
             &--description {
                 border-radius: 0 0 $border-radius $border-radius;
                 height: fit-content;
@@ -1701,11 +1765,12 @@ body {
 
             &__icons {
                 width: auto;
-        
+
                 img {
                     width: 8rem;
                 }
             }
+
             &__info {
                 width: 80%;
             }
@@ -1726,7 +1791,7 @@ body {
         $icon-size: 24px;
         $padding-top-bottom: 0.5rem;
         $border-weight: 2px;
-        $spacing-top: 6rem;
+        $spacing-top: 1rem;
         padding: $padding-top-bottom 0 $padding-top-bottom 0;
         border-radius: $icon-size;
         border: $border-weight solid black;
@@ -1766,157 +1831,239 @@ body {
 
 // ! ---------------------------------------Sustainable and Humanitarian-----------------------------------------------
 
-.dark-title {
-    color: $dark-text;
+//* Colours
+//* Background-colors
+//? Header background and title colour
+.beyond-title-color {
+    color: $yellow-primary;
 }
 
-.beyond-background {
-    background-color: $yellow-primary;
+.nurturing-title-color {
+    color: $pink-primary;
 }
 
-.nurturing-background {
+.process-title-color {
+    color: $purple-primary;
+}
+
+.planet-title-color {
+    color: $mint-primary;
+}
+
+//? Focus area title
+.beyond-focus-title {
+    color: $white;
     background-color: $pink-primary;
 }
 
-.process-background {
-    background-color: $purple-primary;
+.nurturing-focus-title {
+    color: $white;
+    background-color: $yellow-primary;
 }
 
-.planet-background {
-    background-color: $mint-primary;
+.process-focus-title {
+    color: $white;
+    background-color: $yellow-primary;
 }
 
-.sustainable-container {
-    padding: $s-top-padding 0 $s-top-padding 0;
-    @include non-card-text;
-    position: relative;
+.planet-focus-title {
+    color: $white;
+    background-color: $green-primary;
 }
 
-.sustainable-title {
-    @include non-card-text-lg;
-    padding: $s-padding;
-}
+//? Focus area cards
+.beyond-focus-1 {
+    background-color: $pink-primary;
 
-.beyond-header {
-    background-image: url(../assets/images/beyond-header.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.nurturing-header {
-    background-image: url(../assets/images/nurturing-header.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0%;
-}
-
-.process-header {
-    background-image: url(../assets/images/process-header.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0%;
-}
-
-.planet-header {
-    background-image: url(../assets/images/planet-header.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 0%;
-}
-
-.sustainable-header {
-    position: relative;
-    width: 100vw;
-    height: 20vh;
-
-    &__icon {
-        position: absolute;
-        width: 10rem;
-        bottom: 0;
-        right: 1rem;
-    }
-}
-
-.sustainable-content {
-    $border-weight: 1px;
-    background-color: white;
-    z-index: 2;
-    margin-left: -15px;
-    padding: $s-padding;
-
-    &__card {
-        @include c.cards;
-        @include card-text;
-        border: $border-weight solid $dark-text;
-
-        h1,
-        h2,
-        .h1-span,
-        .h2-span {
-            margin: 0 0 0.5rem 0;
-        }
-    }
-}
-
-.pink-black-text {
-    // animation begin
-    @include c.card-animation-before;
-
-    h2 {
-        color: $dark-text;
-    }
-
-    h1 {
-        color: $pink-text;
-    }
-}
-
-.yellow-white-text {
-
-    h2,
-    h3 {
+    h4 {
         color: $white;
     }
+}
 
-    h1,
-    .h1-span,
-    .h2-span {
+.beyond-focus-2 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.beyond-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.nurturing-focus-1 {
+    background-color: $yellow-primary;
+
+    h4 {
+        color: $dark-text;
+    }
+}
+
+.nurturing-focus-2 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.nurturing-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.process-focus-1 {
+    background-color: $yellow-primary;
+
+    h4 {
+        color: $dark-text;
+    }
+}
+
+.process-focus-2 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.process-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.process-focus-4 {
+    background-color: $pink-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.planet-focus-1 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.planet-focus-2 {
+    background-color: $pink-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.planet-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+
+//? Section Background
+.beyond-background-primary {
+    background-color: $yellow-secondary;
+}
+
+.beyond-background-secondary {
+    background-color: $yellow-tertiary;
+}
+
+.nurturing-background-primary {
+    background-color: $pink-secondary;
+}
+
+.nurturing-background-secondary {
+    background-color: $pink-tertiary;
+}
+
+.process-background-primary {
+    background-color: $purple-tertiary;
+}
+
+.process-background-secondary {
+    background-color: $purple-secondary;
+}
+
+.planet-background-primary {
+    background-color: $mint-tertiary;
+}
+
+.planet-background-secondary {
+    background-color: $mint-secondary;
+}
+
+//* Secondary section item colors
+//? Item header colors
+.beyond-item-header-color {
+    background: $yellow-primary;
+
+    h1 {
+        color: $green-primary;
+    }
+}
+
+.nurturing-item-header-color {
+    background: $pink-primary;
+
+    h1 {
         color: $yellow-primary;
     }
 }
 
-.sustainable-items {
-    $border-weight: 1px;
-    padding: $s-padding;
+.process-item-header-color {
+    background: $purple-primary;
 
-    &__cards {
-        @include c.cards;
-        @include card-text;
-        position: relative;
-        margin-bottom: 2rem;
-        border: $border-weight solid $dark-text;
-
-        h1 {
-            margin: 0;
-        }
-
-        &--number {
-            background-color: $pink-text;
-            position: absolute;
-            top: -1rem;
-            padding: 0.5rem;
-            display: inline-block;
-
-            h4 {
-                margin: 0;
-                color: white;
-            }
-        }
+    h1 {
+        color: $mint-primary;
     }
 }
 
+.planet-item-header-color {
+    background: $mint-primary;
+
+    h1 {
+        color: $purple-primary;
+    }
+}
+
+//? Item number colors 
+.beyond-item-number {
+    background-color: $purple-primary;
+}
+
+.nurturing-item-number {
+    background-color: $green-primary;
+}
+
+.process-item-number {
+    background-color: $pink-primary;
+}
+
+.planet-item-number {
+    background-color: $pink-primary;
+}
+
+//? Item card colours
 .beyond-item-theme {
-    background-color: $yellow-secondary;
+    background-color: $white;
 
     h1,
     .h1-span {
@@ -1929,11 +2076,11 @@ body {
 }
 
 .nurturing-item-theme {
-    background-color: $pink-purple-secondary;
+    background-color: $pink-secondary;
 
     h1,
     .h1-span {
-        color: $pink-text;
+        color: $pink-primary;
     }
 
     h2 {
@@ -1942,7 +2089,7 @@ body {
 }
 
 .process-item-theme {
-    background-color: $pink-purple-secondary;
+    background-color: $white;
 
     h1,
     .h1-span {
@@ -1955,11 +2102,11 @@ body {
 }
 
 .planet-item-theme {
-    background-color: $mint-secondary;
+    background-color: $white;
 
     h1,
     .h1-span {
-        color: $pink-text;
+        color: $mint-primary;
     }
 
     h2 {
@@ -1967,107 +2114,234 @@ body {
     }
 }
 
+$title-padding: 1rem 4rem 1rem 1rem;
+$number-padding: 0.5rem 1rem;
+
+
+.sustainable-container {
+    padding: $s-top-padding 0 $s-top-padding 0;
+    @include non-card-text;
+    position: relative;
+}
+
+.sustainable-title {
+    @include sustainable-header;
+    padding: $s-padding;
+    z-index: 5;
+
+    // margin-bottom: 2rem;
+    h1 {
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+        background-color: $white;
+        width: fit-content;
+        margin: 0;
+        padding: 0.3rem 0.8rem;
+    }
+}
+
+.sustainable-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    padding: 0 1rem;
+
+
+    &__image {
+        margin-top: -4.5rem;
+        margin-bottom: -3.5rem;
+        max-height: 40rem;
+        width: auto;
+    }
+}
+
+.responsive-grid-padding {
+    padding-bottom: 15px;
+}
+
+.sustainable-content {
+    z-index: 2;
+    padding: $s-padding;
+
+    &__title {
+        h1 {
+            @include non-card-text;
+            @include c.clip-path;
+            padding: $title-padding;
+            width: fit-content;
+            text-transform: uppercase;
+        }
+    }
+
+    .sustainable-animate {
+        @include c.hover;
+    }
+
+    &__card {
+        @include c.clip-path-cards;
+        @include card-text;
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+        gap: 1.5rem;
+
+        img {
+            height: 4rem;
+        }
+
+        h1,
+        h2,
+        .h1-span,
+        .h2-span,
+        h4 {
+            margin: 0;
+        }
+    }
+}
+
+
+.sustainable-items {
+    padding: $s-padding;
+
+    &__header {
+        @include non-card-text;
+        @include c.clip-path;
+        padding: $title-padding;
+        width: fit-content;
+
+        h1 {
+            margin: 0;
+            text-transform: uppercase;
+        }
+    }
+
+    &__number {
+        @include c.clip-path;
+        @include non-card-text;
+        position: relative;
+        padding: $number-padding;
+
+        h4 {
+            margin: 0;
+            color: white;
+        }
+    }
+
+    &__cards {
+        @include c.cards-no-shadow;
+        @include card-text;
+        @include c.hover;
+        border-radius: 0 0 $border-radius $border-radius;
+        position: relative;
+        margin-bottom: 2rem;
+
+        h1 {
+            margin: 0;
+        }
+    }
+}
+
+
 
 @include gt-sm {
+    $title-padding: 1rem 4rem 1rem 1rem;
+    $number-padding: 0.5rem 1rem;
+
     .sustainable-container {
         padding: $l-top-padding 0 $l-top-padding 0;
     }
 
     .sustainable-title {
-        @include non-card-text-lg;
+        @include sustainable-header-lg;
         padding: 4rem $l-padding 2rem $l-padding;
     }
 
     .sustainable-header {
-        width: 100vw;
-        height: 30vh;
-
-        &__icon {
-            width: 18rem;
-            right: 5rem;
+        &__image {
+            margin-top: -9rem;
+            margin-bottom: -6rem;
         }
     }
 
     .sustainable-content {
         padding: calc($l-padding - 1rem);
 
+        &__title {
+            @include non-card-text-lg;
+
+            h1 {
+                padding: $title-padding;
+            }
+        }
+
         &__card {
             padding: calc($l-padding - 1rem);
             @include card-text-lg;
+            gap: 3rem;
 
-            h1,
-            h2,
-            .h1-span,
-            .h2-span {
-                margin: 0 0 0.5rem 0;
+            img {
+                height: 5rem;
             }
         }
     }
 
     .sustainable-items {
         @include non-card-text-lg;
-        padding: $l-padding;
+        padding: calc($l-padding - 1rem);
+
+        &__header {
+            @include non-card-text-lg;
+            padding: $title-padding;
+        }
+
+        &__number {
+            @include non-card-text-lg;
+            padding: $number-padding;
+            height: auto;
+        }
 
         &__cards {
             @include card-text-lg;
             padding: calc($l-padding - 1rem);
-
-            &--number {
-                top: -1rem;
-                padding: 0.5rem;
-            }
         }
     }
 
 }
 
 @include gt-xl {
+    $title-padding: 1rem 4rem 1rem 1rem;
+    $number-padding: 0.5rem 1rem;
+
     .sustainable-container {
         padding: $xl-top-padding 0 10rem 0;
-        @include non-card-text-lg;
     }
 
     .sustainable-title {
-        @include non-card-text-lg;
         padding: 2rem $xl-padding 2rem $xl-padding;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+        position: relative;
     }
 
     .sustainable-header {
-        width: 100vw;
-        height: 50vh;
-
-        &__icon {
-            width: 25rem;
-            right: 10rem;
+        &__image {
+            margin-top: -12rem;
+            margin-bottom: -8rem;
+            max-height: 50rem;
         }
     }
 
     .sustainable-content {
         padding: 4rem calc($xl-padding - 1rem) 4rem calc($xl-padding - 1rem);
-        $border-weight: 2px;
-
-        &__card {
-            border: $border-weight solid $dark-text;
-            @include card-text-lg;
-
-        }
     }
 
 
     .sustainable-items {
-        $border-weight: 2px;
         padding: 4rem $xl-padding 4rem $xl-padding;
-
-        &__cards {
-            @include card-text-lg;
-            padding: 4rem 3rem 4rem 3rem;
-            border: $border-weight solid $dark-text;
-
-            &--number {
-                top: -1rem;
-                padding: 0.5rem;
-            }
-        }
     }
 
 }
@@ -2084,6 +2358,15 @@ body {
     position: relative;
 }
 
+.humanitarian-title {
+    @include non-card-text;
+    padding: $s-padding;
+
+    h1 {
+        margin: 0;
+    }
+}
+
 .humanitarian-header {
     @include c.cards;
     background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/humanitarian-thumbnail.jpg);
@@ -2091,7 +2374,7 @@ body {
     background-size: cover;
     background-position: 0%;
     position: relative;
-    width: 100vw;
+    // width: 100vw;
     height: 20rem;
     z-index: 0;
     margin: 0;
@@ -2207,11 +2490,11 @@ body {
     }
 
     .humanitarian-header {
-
         height: 30rem;
+        margin: 0 $l-padding;
 
         .humanitarian-video {
-            margin: 10rem 0 10rem 0;
+            margin: 10rem 0;
             $button-size: 8rem;
             border: 5px solid $white;
             border-radius: $button-size ;
@@ -2229,6 +2512,11 @@ body {
                 font-size: 1.3rem;
             }
         }
+    }
+
+    .humanitarian-title {
+        @include non-card-text-lg;
+        padding: 4rem $l-padding 2rem $l-padding;
     }
 
     .humanitarian-content {
@@ -2285,6 +2573,7 @@ body {
 
     .humanitarian-header {
         height: 50vh;
+        margin: 0 $xl-padding;
 
         .humanitarian-video {
             margin: 15rem 0 15rem 0;
@@ -2309,6 +2598,10 @@ body {
 
     .humanitarian-content {
         padding: $xl-padding;
+    }
+
+    .humanitarian-title {
+        padding: 2rem $xl-padding 2rem $xl-padding;
     }
 
     .humanitarian-text {
