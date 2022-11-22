@@ -4,7 +4,7 @@
 @use 'components' as c;
 @use 'media-query' as *;
 
-$s-padding: 2rem;
+$s-padding: 1rem;
 $s-top-padding: 10rem;
 $l-padding: 4rem;
 $l-top-padding: 8rem;
@@ -26,6 +26,12 @@ body {
     @include c.navbar-top;
 }
 
+.scrolled {
+    opacity: 0;
+    top: -100%;
+    transition: 0.5s ease-in-out;
+}
+
 .navbar-bottom {
     @include c.navbar-bottom;
     // controls size of button
@@ -33,7 +39,7 @@ body {
     // controls bottom padding
     $bottom-padding: 1rem;
     // controls spacing between buttons
-    $space-between: 1rem;
+    $space-between: 2.5rem;
     // controls size of icons
     $icon-size: 1.8rem;
     // controls width of shiny
@@ -41,9 +47,12 @@ body {
 
     &__container {
         padding: 0 0 $bottom-padding 0;
+        column-gap: $space-between;
+        -webkit-column-gap: $space-between;
+        -moz-column-gap: $space-between;
+        gap: $space-between;
 
         &--icons {
-            margin: 0 $space-between 0 $space-between;
             width: $btn-size;
             height: $btn-size;
 
@@ -111,25 +120,26 @@ body {
             }
         }
 
-        @include lt-sm {
+        @include lt-md {
 
             // vertical share
             .share-button {
                 .share-socmed {
-                    top: -7rem;
-                    width: 50%;
-                    transform: translateX(150%);
+                    top: -11rem;
+                    transform: translateX(10%);
+                    width: 80%;
                     flex-direction: column;
                     padding: 0.8rem 0;
 
                     a {
-                        padding: 0.3rem;
+                        padding: 0.4rem;
                     }
                 }
 
                 &:hover {
                     .share-socmed {
-                        transform: translateX(200%);
+                        // transform: translateX(200%);
+                        top: -14rem;
                     }
                 }
             }
@@ -141,9 +151,9 @@ body {
             // horizontal share
             .share-button {
                 .share-socmed {
-                    top: -1rem;
                     width: max-content;
-                    transform: translateX(-15%);
+                    top: -1rem;
+                    transform: translateX(-30%);
                     padding: 0.8rem;
 
                     a {
@@ -167,7 +177,7 @@ body {
                     opacity: 0;
                     top: -3rem;
                     width: max-content;
-                    transform: translateX(-26%);
+                    transform: translateX(-35%);
                     padding: 1rem;
                     border-radius: 3rem;
 
@@ -306,7 +316,6 @@ body {
     z-index: 5;
     width: 100vw;
     position: relative;
-    // @include c.clip-path;
     border-radius: $border-radius $border-radius 0 0;
 }
 
@@ -384,20 +393,25 @@ body {
         background-repeat: no-repeat;
         background-size: 75%;
         background-position: 100% 60%;
-        .darken{
+
+        .darken {
             background: rgba(0, 0, 0, 0.2);
         }
-        h1{
+
+        h1 {
             padding: 0.4rem;
             width: fit-content;
         }
+
         h3 {
             color: $white;
         }
+
         &:hover {
-            .darken{
+            .darken {
                 background: rgba(0, 0, 0, 0);
-                h3{
+
+                h3 {
                     color: $green-primary;
                 }
             }
@@ -409,7 +423,7 @@ body {
         background-color: $yellow-secondary;
 
         .darken {
-            h1{
+            h1 {
                 color: $dark-text;
                 background-color: $yellow-primary;
             }
@@ -419,8 +433,9 @@ body {
     .card-2 {
         background-image: url(../assets/images/nurturing-header.png);
         background-color: $pink-secondary;
+
         .darken {
-            h1{
+            h1 {
                 color: $white;
                 background-color: $pink-primary;
             }
@@ -430,8 +445,9 @@ body {
     .card-3 {
         background-image: url(../assets/images/process-header.png);
         background-color: $purple-secondary;
+
         .darken {
-            h1{
+            h1 {
                 color: $white;
                 background-color: $purple-primary;
             }
@@ -441,8 +457,9 @@ body {
     .card-4 {
         background-image: url(../assets/images/planet-header.png);
         background-color: $mint-secondary;
+
         .darken {
-            h1{
+            h1 {
                 color: $dark-text;
                 background-color: $mint-primary;
             }
@@ -484,7 +501,7 @@ body {
         // container left right padding
         $left-right-padding: 3.5rem;
         // controls spacing between buttons
-        $space-between: 1.5rem;
+        $space-between: 3rem;
         // controls size of icons
         $icon-size: 1.8rem;
         // controls width of shiny
@@ -492,9 +509,12 @@ body {
 
         &__container {
             padding: 0 $left-right-padding $bottom-padding $left-right-padding;
+            column-gap: $space-between;
+            -webkit-column-gap: $space-between;
+            -moz-column-gap: $space-between;
+            gap: $space-between;
 
             &--icons {
-                margin: 0 $space-between 0 $space-between;
                 width: $btn-size;
                 height: $btn-size;
 
@@ -659,7 +679,7 @@ body {
         // controls bottom padding
         $bottom-padding: 1.5rem;
         // controls spacing between buttons
-        $space-between: 2rem;
+        $space-between: 3rem;
         // controls size of icons
         $icon-size: 2rem;
         // controls width of shiny
@@ -667,9 +687,12 @@ body {
 
         &__container {
             padding: 0 0 $bottom-padding 0;
+            column-gap: $space-between;
+            -webkit-column-gap: $space-between;
+            -moz-column-gap: $space-between;
+            gap: $space-between;
 
             &--icons {
-                margin: 0 $space-between 0 $space-between;
                 width: $btn-size;
                 height: $btn-size;
 
@@ -736,7 +759,7 @@ body {
     background-color: $mint-secondary;
     margin-bottom: 0rem;
     padding: $s-top-padding $s-padding $s-top-padding $s-padding;
-    height: 110vh;
+    height: auto;
 }
 
 .about-shadow {
@@ -851,9 +874,9 @@ body {
     vertical-align: middle;
     align-items: center;
 
-    gap: 1.2rem;
-
     &__title {
+        margin-right: 1.2rem;
+
         img {
             width: 4rem;
         }
@@ -873,7 +896,7 @@ body {
 
     .about-container {
         padding: calc($l-top-padding + 2rem) $l-padding 4rem $l-padding;
-        height: 110vh;
+        height: 120vh;
         // display: flex;
 
         .about-title {
@@ -943,10 +966,10 @@ body {
                 display: flex;
                 vertical-align: middle;
                 align-items: center;
-                gap: 1.5rem;
 
                 &--title {
                     @include c.shadow;
+                    margin-right: 1.5rem;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -1113,9 +1136,9 @@ body {
             &__content {
                 margin: 0.5rem 0;
                 padding: 1rem;
-                gap: 1.5rem;
 
                 &--title {
+                    margin-right: 1.5rem;
                     border-radius: 10rem;
                     width: 10rem;
                     height: 10rem;
@@ -1232,9 +1255,9 @@ body {
             &__content {
                 margin: 1rem 0;
                 padding: 1rem;
-                gap: 2rem;
 
                 &--title {
+                    margin-right: 2rem;
                     border-radius: 10rem;
                     width: 10rem;
                     height: 10rem;
@@ -1347,6 +1370,8 @@ body {
         position: relative;
         border-radius: $border-radius $border-radius 0 0;
 
+        width: auto;
+
         img {
             position: relative;
             margin-top: -10%;
@@ -1434,39 +1459,40 @@ body {
     }
 
     .header-1 {
-        background-color: $green-primary;
+        background-color: darken($yellow-primary, 10%);
 
         h3 {
-            color: $yellow-primary;
+            color: $dark-text;
         }
     }
 
     .header-2 {
-        background-color: $yellow-primary;
+        background-color: darken($pink-primary, 10%);
 
         h3 {
-            color: $pink-primary;
+            color: $white;
         }
     }
 
     .header-3 {
-        background-color: $mint-primary;
+        background-color: darken($purple-primary, 10%);
 
         h3 {
-            color: $purple-primary;
+            color: $white;
         }
     }
 
     .header-4 {
-        background-color: $purple-primary;
+        background-color: darken($green-primary, 10%);
 
         h3 {
-            color: $green-primary;
+            color: $white;
         }
     }
 
     &__icons {
         width: auto;
+        margin-right: 1rem;
 
         img {
             width: 5rem;
@@ -1485,7 +1511,6 @@ body {
         display: flex;
         vertical-align: middle;
         align-items: center;
-        gap: 1rem;
 
         h1 {
             :nth-child(1) {
@@ -1617,17 +1642,15 @@ body {
 
     .CEO-large-flex {
         display: flex;
-        gap: 1rem;
         flex-wrap: wrap;
 
         .CEO-data {
+            margin-bottom: 1rem;
             width: 100%;
             height: auto;
             padding: 0;
 
             &__header {
-                width: 90%;
-
                 h3 {
                     font-size: 95%;
                 }
@@ -1749,8 +1772,10 @@ body {
 
     .CEO-large-flex {
         display: flex;
-        gap: 2rem;
         flex-wrap: wrap;
+        column-gap: 2rem;
+        -webkit-column-gap: 2rem;
+        -moz-column-gap: 2rem;
 
         .CEO-data {
             width: 48%;
@@ -1765,6 +1790,7 @@ body {
 
             &__icons {
                 width: auto;
+                margin-right: 2rem;
 
                 img {
                     width: 8rem;
@@ -1780,7 +1806,6 @@ body {
                 height: 18rem;
                 padding: 2rem;
                 margin: 0;
-                gap: 2rem;
             }
 
         }
@@ -2114,7 +2139,7 @@ body {
     }
 }
 
-$title-padding: 1rem 4rem 1rem 1rem;
+$title-padding: 1rem;
 $number-padding: 0.5rem 1rem;
 
 
@@ -2126,6 +2151,7 @@ $number-padding: 0.5rem 1rem;
 
 .sustainable-title {
     @include sustainable-header;
+    position: relative;
     padding: $s-padding;
     z-index: 5;
 
@@ -2168,7 +2194,6 @@ $number-padding: 0.5rem 1rem;
     &__title {
         h1 {
             @include non-card-text;
-            @include c.clip-path;
             padding: $title-padding;
             width: fit-content;
             text-transform: uppercase;
@@ -2185,10 +2210,10 @@ $number-padding: 0.5rem 1rem;
         display: flex;
         vertical-align: middle;
         align-items: center;
-        gap: 1.5rem;
 
         img {
             height: 4rem;
+            margin-right: 1.5rem;
         }
 
         h1,
@@ -2201,13 +2226,36 @@ $number-padding: 0.5rem 1rem;
     }
 }
 
+.sustainable-arrows {
+    color: $dark-text;
+    &:hover {
+        color: $dark-text;
+    }
+}
+
+.sustainable-dotnav {
+    margin: 0;
+    li {
+        a{
+            border: 1px solid $dark-text;
+        }
+    }
+    .uk-active{
+        *{
+            background-color: $green-primary;
+        }
+    }
+}
 
 .sustainable-items {
     padding: $s-padding;
 
+    &__carousel-correction{
+        margin-left: -14px;
+    }
+
     &__header {
         @include non-card-text;
-        @include c.clip-path;
         padding: $title-padding;
         width: fit-content;
 
@@ -2232,7 +2280,7 @@ $number-padding: 0.5rem 1rem;
     &__cards {
         @include c.cards-no-shadow;
         @include card-text;
-        @include c.hover;
+        // @include c.hover;
         border-radius: 0 0 $border-radius $border-radius;
         position: relative;
         margin-bottom: 2rem;
@@ -2246,7 +2294,7 @@ $number-padding: 0.5rem 1rem;
 
 
 @include gt-sm {
-    $title-padding: 1rem 4rem 1rem 1rem;
+    $title-padding: 1rem;
     $number-padding: 0.5rem 1rem;
 
     .sustainable-container {
@@ -2279,7 +2327,6 @@ $number-padding: 0.5rem 1rem;
         &__card {
             padding: calc($l-padding - 1rem);
             @include card-text-lg;
-            gap: 3rem;
 
             img {
                 height: 5rem;
@@ -2311,7 +2358,7 @@ $number-padding: 0.5rem 1rem;
 }
 
 @include gt-xl {
-    $title-padding: 1rem 4rem 1rem 1rem;
+    $title-padding: 1rem;
     $number-padding: 0.5rem 1rem;
 
     .sustainable-container {

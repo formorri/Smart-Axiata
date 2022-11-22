@@ -10,9 +10,11 @@ $edge-cut: 30px;
 @mixin navbar-top {
     width: 100vw;
     position: fixed;
-    top: 0px;
+    top: 0%;
+    opacity: 1;
     z-index: 10;
     overflow-x: hidden;
+    transition: 0.5s ease-in-out;
     filter: drop-shadow(0 40px 40px rgba(0, 0, 0, 0.15));
 
     &__container {
@@ -140,23 +142,53 @@ $edge-cut: 30px;
     }
 
     .words {
-        //
         animation: words 5s linear infinite;
-        font-weight: bold;
+
+        -webkit-animation: words 5s linear infinite;
+        animation-name: words;
+        -webkit-animation-name: words;
+        animation-duration: 5s;
+        -webkit-animation-duration: 5s;
+        animation-timing-function: linear;
+        -webkit-animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        -webkit-animation-iteration-count: infinite;
+
+        -moz-animation: words 5s linear infinite;
+        
         transform-origin: center;
+        -webkit-transform-origin: center;
+        -moz-transform-origin: center;
+        
+        font-weight: bold;
         fill: #fdd300;
         transition: .6s;
     }
 
     @keyframes words {
-
-        //
-        from {
-            transform: rotateZ(0deg);
+        0% {
+            transform: rotate(0deg);
         }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 
-        to {
-            transform: rotateZ(360deg);
+    @-webkit-keyframes words {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @-moz-keyframes words {
+        0% {
+            -moz-transform: rotate(0deg);
+        }
+        100% {
+            -moz-transform: rotate(360deg);
         }
     }
 
@@ -244,6 +276,7 @@ $edge-cut: 30px;
 // subtle hover effect{
 @mixin hover {
     transition: 0.6s;
+
     &:hover {
         filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.2));
     }
