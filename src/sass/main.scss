@@ -351,6 +351,7 @@ body {
 }
 
 .sustainable-pillars-container {
+    $pillar-height: 12rem;
     z-index: 5;
     @include non-card-text;
     @include c.cards;
@@ -368,7 +369,8 @@ body {
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
-        height: 11rem;
+        height: $pillar-height;
+        ;
         @include c.clip-path;
 
         a {
@@ -379,7 +381,7 @@ body {
     .darken {
         @include c.clip-path;
         padding: 2rem 0.8rem 2rem 0.8rem;
-        min-height: 11rem;
+        min-height: $pillar-height;
 
         &:hover {
             transition: .7s;
@@ -392,7 +394,7 @@ body {
     .card-4 {
         background-repeat: no-repeat;
         background-size: 75%;
-        background-position: 100% 60%;
+        background-position: 100% 30%;
 
         .darken {
             background: rgba(0, 0, 0, 0.2);
