@@ -8,7 +8,7 @@ $s-padding: 1rem;
 $s-top-padding: 10rem;
 $l-padding: 4rem;
 $l-top-padding: 8rem;
-$xl-padding: 18rem;
+$xl-padding: 10rem;
 $xl-top-padding: 12rem;
 $border-radius: 10px;
 
@@ -351,10 +351,10 @@ body {
 }
 
 .sustainable-pillars-container {
-    $pillar-height: 12rem;
-    z-index: 5;
     @include non-card-text;
     @include c.cards;
+    $pillar-height: 10rem;
+    z-index: 5;
     padding: 25px;
     position: relative;
     background-color: rgba(255, 255, 255, .15);
@@ -366,133 +366,126 @@ body {
     }
 
     &__card {
-        background-size: cover;
-        background-repeat: no-repeat;
-        position: relative;
-        height: $pillar-height;
-        ;
-        @include c.clip-path;
-
-        a {
-            text-decoration: none;
-        }
-    }
-
-    .darken {
-        @include c.clip-path;
-        padding: 2rem 0.8rem 2rem 0.8rem;
-        min-height: $pillar-height;
-
-        &:hover {
-            transition: .7s;
-        }
-    }
-
-    .card-1,
-    .card-2,
-    .card-3,
-    .card-4 {
-        background-repeat: no-repeat;
-        background-size: 75%;
-        background-position: 100% 30%;
-
-        .darken {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
         h1 {
-            padding: 0.4rem;
+            padding: 0.5rem;
             width: fit-content;
+            margin: 0;
         }
 
-        h3 {
-            color: $white;
-        }
+        &--inner {
+            @include c.clip-path;
+            background-repeat: no-repeat;
+            background-size: 85%;
+            background-position: 100% 50%;
+            position: relative;
 
-        &:hover {
             .darken {
-                background: rgba(0, 0, 0, 0);
+                background-repeat: no-repeat;
+                background: rgba(0, 0, 0, 0.2);
+                padding: 1.5rem;
 
-                h3 {
-                    color: $green-primary;
+                &__flex {
+                    height: $pillar-height;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+
+                    a {
+                        text-decoration: none;
+
+                        h3 {
+                            padding: 0;
+                            color: $white;
+                        }
+                    }
+                }
+
+                &:hover {
+                    transition: .7s;
+                    background: rgba(0, 0, 0, 0);
+
+                    h3 {
+                        color: $green-primary;
+                    }
                 }
             }
         }
     }
 
-    .card-1 {
-        background-image: url(../assets/images/beyond-header.png);
-        background-color: $yellow-secondary;
 
-        .darken {
-            h1 {
-                color: $dark-text;
-                background-color: $yellow-primary;
-            }
+    .card-1 {
+        h1 {
+            color: $dark-text;
+            background-color: $yellow-primary;
+        }
+
+        &__inner {
+            background-image: url(../assets/images/beyond-header.png);
+            background-color: $yellow-secondary;
         }
     }
 
     .card-2 {
-        background-image: url(../assets/images/nurturing-header.png);
-        background-color: $pink-secondary;
+        h1 {
+            color: $white;
+            background-color: $pink-primary;
+        }
 
-        .darken {
-            h1 {
-                color: $white;
-                background-color: $pink-primary;
-            }
+        &__inner {
+            background-image: url(../assets/images/nurturing-header.png);
+            background-color: $pink-secondary;
         }
     }
 
     .card-3 {
-        background-image: url(../assets/images/process-header.png);
-        background-color: $purple-secondary;
+        h1 {
+            color: $white;
+            background-color: $purple-primary;
+        }
 
-        .darken {
-            h1 {
-                color: $white;
-                background-color: $purple-primary;
-            }
+        &__inner {
+            background-image: url(../assets/images/process-header.png);
+            background-color: $purple-secondary;
         }
     }
 
     .card-4 {
-        background-image: url(../assets/images/planet-header.png);
-        background-color: $mint-secondary;
+        h1 {
+            color: $dark-text;
+            background-color: $mint-primary;
+        }
 
-        .darken {
-            h1 {
-                color: $dark-text;
-                background-color: $mint-primary;
-            }
+        &__inner {
+            background-image: url(../assets/images/planet-header.png);
+            background-color: $mint-secondary;
         }
     }
+
 }
 
 
 // phone sizes
-@include lt-md {
-    .navbar-bottom-spacing {
-        margin-bottom: 1rem !important;
-    }
+// @include lt-md {
+//     .navbar-bottom-spacing {
+//         margin-bottom: 1rem !important;
+//     }
 
-    .sustainable-pillars-container {
-        h3 {
-            padding-top: 2.5rem;
-        }
+//     .sustainable-pillars-container {
+//         h3 {
+//             padding-top: 2.5rem;
+//         }
 
-        .darken {
-            padding: 1.5rem;
-        }
-    }
-}
+//         .darken {
+//             padding: 1.5rem;
+//         }
+//     }
+// }
 
 // larger than phone sizes, i.e. ipads onward
 @include gt-sm {
     .global-container {
         padding: 0 $l-padding 0 $l-padding;
     }
-
 
     .navbar-bottom {
         @include c.navbar-bottom;
@@ -608,7 +601,27 @@ body {
         }
     }
 
+    .sustainable-pillars-container {
+        $pillar-height: 10rem;
+        padding: 25px;
 
+        &__card {
+            h1 {
+                padding: 0.5rem;
+            }
+
+            &--inner {
+                background-size: 85%;
+                background-position: 50% 50%;
+
+                .darken {
+                    &__flex {
+                        height: $pillar-height;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // super large sizes. To make all fonts bigger and increase padding to fill space
@@ -739,13 +752,26 @@ body {
         }
     }
 
-    .sustainable-pillars-container {
-        h3 {
-            padding-top: 1.2rem;
-        }
 
-        .darken {
-            padding: 2rem;
+    .sustainable-pillars-container {
+        $pillar-height: 12rem;
+        padding: 5rem 1rem;
+
+        &__card {
+            h1 {
+                padding: 0.5rem 1rem;
+            }
+
+            &--inner {
+                background-size: 100%;
+                background-position: 50% 50%;
+
+                .darken {
+                    &__flex {
+                        height: $pillar-height;
+                    }
+                }
+            }
         }
     }
 
@@ -2230,6 +2256,7 @@ $number-padding: 0.5rem 1rem;
 
 .sustainable-arrows {
     color: $dark-text;
+
     &:hover {
         color: $dark-text;
     }
@@ -2237,13 +2264,15 @@ $number-padding: 0.5rem 1rem;
 
 .sustainable-dotnav {
     margin: 0;
+
     li {
-        a{
+        a {
             border: 1px solid $dark-text;
         }
     }
-    .uk-active{
-        *{
+
+    .uk-active {
+        * {
             background-color: $green-primary;
         }
     }
@@ -2252,7 +2281,7 @@ $number-padding: 0.5rem 1rem;
 .sustainable-items {
     padding: $s-padding;
 
-    &__carousel-correction{
+    &__carousel-correction {
         margin-left: -14px;
     }
 
