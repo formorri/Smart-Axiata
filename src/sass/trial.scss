@@ -1,0 +1,2820 @@
+@use 'config';
+@use 'colors' as *;
+@use 'fonts' as *;
+@use 'components' as c;
+@use 'media-query' as *;
+
+$s-padding: 1rem;
+$s-top-padding: 10rem;
+$l-padding: 4rem;
+$l-top-padding: 8rem;
+$xl-padding: 10rem;
+$xl-top-padding: 12rem;
+$border-radius: 10px;
+
+html,
+body {
+    overflow-x: hidden;
+    height: auto;
+}
+
+.green-background {
+    background-color: $green-primary;
+}
+
+.navbar-top {
+    @include c.navbar-top;
+}
+
+.scrolled {
+    opacity: 0;
+    top: -100%;
+    transition: 0.5s ease-in-out;
+}
+
+.navbar-bottom {
+    @include c.navbar-bottom;
+    // controls size of button
+    $btn-size: 5rem;
+    // controls bottom padding
+    $bottom-padding: 1rem;
+    // controls spacing between buttons
+    $space-between: 2.5rem;
+    // controls size of icons
+    $icon-size: 1.8rem;
+    // controls width of shiny
+    $shiny-width: 30px;
+
+    &__container {
+        padding: 0 0 $bottom-padding 0;
+        column-gap: $space-between;
+        -webkit-column-gap: $space-between;
+        -moz-column-gap: $space-between;
+        gap: $space-between;
+
+        &--icons {
+            width: $btn-size;
+            height: $btn-size;
+
+            .icon-container {
+                height: $btn-size - 0.5rem;
+
+                img {
+                    height: $icon-size;
+                }
+            }
+
+            .shiny {
+                width: $shiny-width;
+                height: 2 * $btn-size;
+                // controls where shiny is before hover
+                transform: skew(-20deg) translate(-$btn-size, -$btn-size);
+            }
+
+            &:hover {
+                .shiny {
+                    // controls where shiny is after hover
+                    transform: skew(-20deg) translate($btn-size, -$btn-size);
+                }
+            }
+        }
+
+        .share-button {
+            position: relative;
+
+            .share-socmed {
+                opacity: 0;
+                position: absolute;
+                background-color: $white;
+                display: flex;
+                vertical-align: middle;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+                border-radius: 2rem;
+                transition: 0.4s ease-in-out;
+
+                a {
+                    transition: 0.2s;
+
+                    svg {
+                        fill: $green-primary;
+                    }
+
+                    &:hover {
+                        transform: scale(1.15);
+
+                        svg {
+                            fill: $yellow-primary;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                position: relative;
+
+                .share-socmed {
+                    opacity: 1;
+                }
+            }
+        }
+
+        @include lt-md {
+
+            // vertical share
+            .share-button {
+                .share-socmed {
+                    top: -11rem;
+                    transform: translateX(10%);
+                    width: 80%;
+                    flex-direction: column;
+                    padding: 0.8rem 0;
+
+                    a {
+                        padding: 0.4rem;
+                    }
+                }
+
+                &:hover {
+                    .share-socmed {
+                        // transform: translateX(200%);
+                        top: -14rem;
+                    }
+                }
+            }
+
+        }
+
+        @include gt-sm {
+
+            // horizontal share
+            .share-button {
+                .share-socmed {
+                    width: max-content;
+                    top: -1rem;
+                    transform: translateX(-30%);
+                    padding: 0.8rem;
+
+                    a {
+                        padding: 0 0.5rem;
+                    }
+                }
+
+                &:hover {
+                    .share-socmed {
+                        top: -4rem;
+                    }
+                }
+            }
+        }
+
+        @include gt-lg {
+
+            // horizontal share
+            .share-button {
+                .share-socmed {
+                    opacity: 0;
+                    top: -3rem;
+                    width: max-content;
+                    transform: translateX(-35%);
+                    padding: 1rem;
+                    border-radius: 3rem;
+
+                    a {
+                        padding: 0 0.8rem;
+
+                        svg {
+                            width: 2rem;
+                            height: 2rem;
+                        }
+                    }
+                }
+
+                &:hover {
+                    .share-socmed {
+                        top: -5rem;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+
+.absolute-elements {
+    position: relative;
+    padding: 5rem 0 6rem 0;
+
+    &__gold-ribbon {
+        svg {
+            position: absolute;
+            z-index: 2;
+            width: 100vw;
+        }
+    }
+
+    &__waves {
+        background-color: $green-primary;
+        position: absolute;
+        z-index: 1;
+        width: 100vw;
+        top: 23vh;
+
+        img {
+            width: 100vw;
+        }
+    }
+
+}
+
+.relative-elements {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+
+    &__artwork {
+        position: relative;
+        z-index: 2;
+        width: 100vw;
+        margin: 0;
+        right: 1.5rem;
+        top: 2rem;
+    }
+
+    .button-positioning {
+        position: absolute;
+        top: 0rem;
+        right: 2rem;
+        z-index: 5;
+        margin-bottom: -2rem;
+    }
+
+    .video-button {
+        @include c.video-button;
+        $button-size: 6rem;
+        border: 5px solid $white;
+        border-radius: $button-size ;
+        width: $button-size;
+
+        svg {
+            width: $button-size;
+        }
+
+        .play::before {
+            font-size: 1.5rem;
+        }
+
+        .words {
+            font-size: 1.3rem;
+        }
+    }
+
+}
+
+// to overcome uk-grid's margin spillover
+.navigation-container {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 2rem 0 0;
+    margin: 0;
+}
+
+.navigation-card {
+    @include c.cards;
+    @include non-card-text;
+    position: relative;
+    z-index: 5;
+    background-color: $yellow-primary;
+
+    // title-text for normal headers, sustainable cards
+    h1 {
+        color: $dark-text;
+    }
+
+    // normal paragraph text
+    h2 {
+        color: $dark-text;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    // link text, i.e the text that says "more"
+    h3 {
+        color: $pink-text;
+
+        &:hover {
+            color: $green-primary;
+        }
+    }
+}
+
+.CEO-image {
+    z-index: 5;
+    width: 100vw;
+    position: relative;
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.navigation-card-CEO {
+    z-index: 5;
+    @include c.cards-with-picture;
+    @include non-card-text;
+    position: relative;
+    background-color: $yellow-primary;
+
+    a {
+        text-decoration: none;
+    }
+
+    // title-text for normal headers, sustainable cards
+    h1 {
+        color: $dark-text;
+    }
+
+    // normal paragraph text
+    h2 {
+        color: $dark-text;
+    }
+
+    // link text, i.e the text that says "more"
+    h3 {
+        color: $pink-text;
+
+        &:hover {
+            color: $green-primary;
+        }
+    }
+}
+
+.sustainable-pillars-container {
+    @include non-card-text;
+    @include c.cards;
+    $pillar-height: 10rem;
+    z-index: 5;
+    padding: 25px;
+    position: relative;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px);
+
+    // section header and card title text
+    h1 {
+        color: $white;
+    }
+
+    &__card {
+        h1 {
+            padding: 0.5rem;
+            width: fit-content;
+            margin: 0;
+        }
+
+        &--inner {
+            @include c.clip-path;
+            background-repeat: no-repeat;
+            background-size: 85%;
+            background-position: 100% 50%;
+            position: relative;
+
+            .darken {
+                background-repeat: no-repeat;
+                background: rgba(0, 0, 0, 0.2);
+                padding: 1.5rem;
+
+                &__flex {
+                    height: $pillar-height;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+
+                    a {
+                        text-decoration: none;
+
+                        h3 {
+                            padding: 0;
+                            color: $white;
+                        }
+                    }
+                }
+
+                &:hover {
+                    transition: .7s;
+                    background: rgba(0, 0, 0, 0);
+
+                    h3 {
+                        color: $green-primary;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .card-1 {
+        h1 {
+            color: $dark-text;
+            background-color: $yellow-primary;
+        }
+
+        &__inner {
+            background-image: url(../assets/images/beyond-header.png);
+            background-color: $yellow-secondary;
+        }
+    }
+
+    .card-2 {
+        h1 {
+            color: $white;
+            background-color: $pink-primary;
+        }
+
+        &__inner {
+            background-image: url(../assets/images/nurturing-header.png);
+            background-color: $pink-secondary;
+        }
+    }
+
+    .card-3 {
+        h1 {
+            color: $white;
+            background-color: $purple-primary;
+        }
+
+        &__inner {
+            background-image: url(../assets/images/process-header.png);
+            background-color: $purple-secondary;
+        }
+    }
+
+    .card-4 {
+        h1 {
+            color: $dark-text;
+            background-color: $mint-primary;
+        }
+
+        &__inner {
+            background-image: url(../assets/images/planet-header.png);
+            background-color: $mint-secondary;
+        }
+    }
+
+}
+
+
+// phone sizes
+@include gt-xs {
+    .relative-elements {
+        &__artwork {
+            width: 100vw;
+            margin: 0;
+            right: 1.5rem;
+            top: 0rem;
+            margin-bottom: -3rem;
+        }
+
+        .button-positioning {
+            top: 2rem;
+            right: 3rem;
+            z-index: 5;
+        }
+
+        .video-button {
+            $button-size: 7rem;
+            border: 5px solid $white;
+            border-radius: $button-size ;
+            width: $button-size;
+
+            svg {
+                width: $button-size;
+            }
+
+            .play::before {
+                font-size: 1.5rem;
+            }
+
+            .words {
+                font-size: 1.3rem;
+            }
+        }
+
+    }
+}
+
+// larger than phone sizes, i.e. ipads onward
+@include gt-sm {
+    .global-container {
+        padding: 0 $l-padding 0 $l-padding;
+    }
+
+    .navbar-bottom {
+        @include c.navbar-bottom;
+        // controls size of button
+        $btn-size: 5rem;
+        // controls bottom padding
+        $bottom-padding: 1rem;
+        // container left right padding
+        $left-right-padding: 3.5rem;
+        // controls spacing between buttons
+        $space-between: 3rem;
+        // controls size of icons
+        $icon-size: 1.8rem;
+        // controls width of shiny
+        $shiny-width: 30px;
+
+        &__container {
+            padding: 0 $left-right-padding $bottom-padding $left-right-padding;
+            column-gap: $space-between;
+            -webkit-column-gap: $space-between;
+            -moz-column-gap: $space-between;
+            gap: $space-between;
+
+            &--icons {
+                width: $btn-size;
+                height: $btn-size;
+
+                .icon-container {
+                    height: $btn-size - 0.5rem;
+
+                    img {
+                        height: $icon-size;
+                    }
+                }
+
+                .shiny {
+                    width: $shiny-width;
+                    height: 2 * $btn-size;
+                    // controls where shiny is before hover
+                    transform: skew(-20deg) translate(-$btn-size, -$btn-size);
+                }
+
+                &:hover {
+                    .shiny {
+                        // controls where shiny is before hover
+                        transform: skew(-20deg) translate($btn-size, -$btn-size);
+                    }
+                }
+            }
+        }
+    }
+
+    .absolute-elements {
+        &__gold-ribbon {
+            position: fixed;
+            width: 100%;
+            top: -2rem;
+
+            svg {
+                top: -2rem;
+                height: 50rem;
+                width: 60vw;
+            }
+        }
+    }
+
+    .sticky-large {
+        position: fixed;
+        top: 5rem;
+        z-index: 5;
+    }
+
+    .relative-elements {
+        position: relative;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        // right: -2rem;
+
+        &__artwork {
+            width: 42vw;
+            max-height: 80vh;
+            object-fit: contain;
+            left: 0rem;
+            top: 0rem;
+        }
+
+        a {
+            position: relative;
+            width: inherit;
+
+            .button-positioning {
+                top: -1rem;
+                right: 0rem;
+            }
+        }
+
+        .video-button {
+            @include c.video-button;
+            $button-size: 7rem;
+            border: 5px solid $white;
+            border-radius: $button-size ;
+            width: $button-size;
+
+            svg {
+                width: $button-size;
+            }
+
+            .play::before {
+                font-size: 1.5rem;
+            }
+
+            .words {
+                font-size: 1.3rem;
+            }
+
+            @keyframes words {
+
+                //
+                from {
+                    transform: rotateZ(0deg);
+                }
+
+                to {
+                    transform: rotateZ(360deg);
+                }
+            }
+        }
+    }
+
+    .sustainable-pillars-container {
+        $pillar-height: 10rem;
+        padding: 25px;
+
+        &__card {
+            h1 {
+                padding: 0.5rem;
+            }
+
+            &--inner {
+                background-size: 85%;
+                background-position: 50% 50%;
+
+                .darken {
+                    &__flex {
+                        height: $pillar-height;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// super large sizes. To make all fonts bigger and increase padding to fill space
+
+@include gt-lg {
+    body {
+        overflow-y: scroll;
+    }
+
+    .global-container {
+        padding: 0 $xl-padding 0 $xl-padding;
+    }
+
+    .absolute-elements {
+        padding: $s-top-padding 0 5rem 0;
+
+        &__gold-ribbon {
+            svg {
+                top: -3rem;
+                height: 65rem;
+                width: 50vw;
+            }
+        }
+
+        &__waves {
+            max-height: 61rem;
+            overflow-y: hidden;
+        }
+    }
+
+    .relative-elements {
+        height: 80vh;
+        right: 5rem;
+
+        a {
+            .button-positioning {
+                top: -1rem;
+                right: 0rem;
+            }
+        }
+
+        .video-button {
+            @include c.video-button;
+            $button-size: 8rem;
+            border: 5px solid $white;
+            border-radius: $button-size ;
+            width: $button-size;
+
+            svg {
+                width: $button-size;
+            }
+
+            .play::before {
+                font-size: 1.5rem;
+            }
+
+            .words {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .sticky-large {
+        position: relative;
+        top: 2rem;
+        z-index: 5;
+    }
+
+    .relative-elements {
+        height: 100%;
+
+        &__artwork {
+            width: 100vw;
+        }
+
+        .video-button {
+            right: 1.5rem;
+            width: 8rem;
+        }
+
+    }
+
+    .navbar-top {
+        .container {
+            &__logos {
+                :nth-child(1) {
+                    padding: 0 4rem;
+                    margin-bottom: -15px;
+                    height: 3rem;
+                }
+
+                :nth-child(2) {
+                    height: 8rem;
+                }
+            }
+        }
+    }
+
+    .navbar-bottom {
+        // controls size of button
+        $btn-size: 6rem;
+        // controls bottom padding
+        $bottom-padding: 1.5rem;
+        // controls spacing between buttons
+        $space-between: 3rem;
+        // controls size of icons
+        $icon-size: 2rem;
+        // controls width of shiny
+        $shiny-width: 40px;
+
+        &__container {
+            padding: 0 0 $bottom-padding 0;
+            column-gap: $space-between;
+            -webkit-column-gap: $space-between;
+            -moz-column-gap: $space-between;
+            gap: $space-between;
+
+            &--icons {
+                width: $btn-size;
+                height: $btn-size;
+
+                .icon-container {
+                    height: $btn-size - 0.5rem;
+
+                    img {
+                        height: $icon-size;
+                    }
+                }
+
+                .shiny {
+                    width: $shiny-width;
+                    height: 2 * $btn-size;
+                    // controls where shiny is before hover
+                    transform: skew(-20deg) translate(-$btn-size, -$btn-size);
+                }
+
+                &:hover {
+                    .shiny {
+                        // controls where shiny is before hover
+                        transform: skew(-20deg) translate($btn-size, -$btn-size);
+                    }
+                }
+            }
+        }
+    }
+
+    .navigation-card,
+    .navigation-card-CEO,
+    .sustainable-pillars-container {
+        @include non-card-text-lg;
+    }
+
+    .navigation-card,
+    .navigation-card-CEO {
+        padding: 2rem;
+
+        h1,
+        h2 {
+            padding-bottom: 0.1rem;
+        }
+    }
+
+
+    .sustainable-pillars-container {
+        $pillar-height: 12rem;
+        padding: 5rem 1rem;
+
+        &__card {
+            h1 {
+                padding: 0.5rem 1rem;
+            }
+
+            &--inner {
+                background-size: 100%;
+                background-position: 50% 50%;
+
+                .darken {
+                    &__flex {
+                        height: $pillar-height;
+                    }
+                }
+            }
+        }
+    }
+
+    // to overcome the margin important gap override for smaller sizes
+    .column-gap {
+        padding: 0.5rem;
+    }
+}
+
+
+// ! -------------------------------------SASS FOR ABOUT PAGE-----------------------------------------------
+.about-container {
+    background-color: $mint-secondary;
+    margin-bottom: 0rem;
+    padding: $s-top-padding $s-padding $s-top-padding $s-padding;
+    height: auto;
+}
+
+.about-shadow {
+    @include c.hover;
+}
+
+.about-title {
+    @include non-card-text;
+    @include c.clip-path-cards;
+    margin: 1rem 0 1rem 0;
+    background-color: $green-primary;
+    position: relative;
+    padding: 2rem;
+
+    h1 {
+        color: $dark-text;
+        padding: 0.4rem 0 0.4rem 0;
+        margin: 0;
+    }
+
+    &__container {
+        @include c.shadow;
+        position: relative;
+        border-radius: $border-radius;
+        background-color: $white;
+        text-align: left;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+
+        .icon-about-search:before {
+            font-family: "icomoon";
+            content: "\e900";
+            color: #0fae4d;
+            padding-right: 1rem;
+        }
+    }
+
+    &__subtitle {
+        h2 {
+            color: $white;
+        }
+    }
+}
+
+.small-container {
+    width: 100%;
+}
+
+.petal-container {
+    @include c.clip-path-cards;
+    background-color: $yellow-secondary;
+
+    &__0,
+    &__1,
+    &__2,
+    &__3,
+    &__4 {
+        @include c.hover;
+    }
+
+    &__0 {
+        @include card-text;
+        background-color: $green-primary;
+        border-radius: $border-radius $border-radius 0 0;
+
+        h2 {
+            color: $white;
+            padding: 0.6rem;
+        }
+
+    }
+
+    &__1 {
+        background-color: $yellow-primary;
+
+        h2 {
+            color: $green-primary;
+        }
+    }
+
+    &__2 {
+        background-color: $pink-primary;
+
+        h2 {
+            color: $yellow-primary;
+        }
+    }
+
+    &__3 {
+        background-color: $purple-primary;
+
+        h2 {
+            color: $mint-primary;
+        }
+    }
+
+    &__4 {
+        background-color: $mint-primary;
+
+        h2 {
+            color: $purple-primary;
+        }
+    }
+}
+
+.about-content {
+    @include c.cards-no-shadow;
+    @include card-text;
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+
+    &__title {
+        margin-right: 1.2rem;
+
+        img {
+            width: 4rem;
+        }
+    }
+
+    &__content {
+        h2 {
+            margin: 0;
+        }
+    }
+}
+
+
+@include gt-sm {
+    $petal-size: 16rem;
+    $petal-radius: calc($petal-size / 2);
+
+    .about-container {
+        padding: calc($l-top-padding + 2rem) $l-padding 8rem $l-padding;
+        min-height: 100vh;
+        height: auto;
+        // display: flex;
+
+        .about-title {
+            margin: 0;
+            width: 100%;
+            height: fit-content;
+        }
+
+        .vision-mission {
+            @include non-card-text;
+            @include c.shadow;
+            margin: 0.5rem 0 0.5rem 0;
+            position: relative;
+
+            .vision-color {
+                @include c.hover;
+
+                &__title {
+                    background-color: $green-primary;
+                }
+
+                &__desc {
+
+                    h3,
+                    .h1-span {
+                        color: $green-primary;
+                    }
+                }
+            }
+
+            .mission-color {
+                @include c.hover;
+
+                &__title {
+                    background-color: $purple-primary;
+                }
+
+                &__desc {
+                    h1 {
+                        color: $purple-primary;
+                        text-transform: uppercase;
+                    }
+                }
+            }
+
+            .value-color {
+                @include c.hover;
+
+                &__title {
+                    background-color: $pink-primary;
+                }
+
+                &__desc {
+
+                    h2,
+                    .h1-span {
+                        color: $pink-primary;
+                    }
+                }
+            }
+
+            &__content {
+                margin: 0.5rem 0 0.5rem 0;
+                border-radius: $border-radius;
+                padding: 1rem;
+                background-color: $white;
+                display: flex;
+                vertical-align: middle;
+                align-items: center;
+
+                &--title {
+                    @include c.shadow;
+                    margin-right: 1.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 10rem;
+                    width: 5rem;
+                    height: 5rem;
+
+                    h1 {
+                        color: $white;
+                    }
+                }
+
+                &--desc {
+                    width: 70%;
+                }
+            }
+        }
+    }
+
+
+    .petal-container {
+        height: fit-content;
+        display: grid;
+        place-items: center;
+        margin: 0 0 0 1rem;
+        padding: 1.5rem;
+        width: fit-content;
+        grid-template-columns: repeat(11, 1fr);
+        grid-template-rows: repeat(10, 1fr);
+
+        &__0 {
+            @include card-text;
+            grid-column: 4/9;
+            grid-row: 4/8;
+            z-index: 10;
+            height: 5rem;
+            width: 5rem;
+            background-color: $white;
+            width: calc($petal-size * 0.65);
+            height: calc($petal-size * 0.65);
+            display: grid;
+            grid-template-columns: 1fr;
+            place-items: center;
+            margin: 0;
+
+            .about-header-content {
+                border-radius: $petal-radius;
+                border: 2px solid $green-primary;
+                width: calc($petal-size * 0.6);
+                height: calc($petal-size * 0.6);
+                position: relative;
+                text-align: center;
+                display: flex;
+                vertical-align: middle;
+                align-items: center;
+
+                h2 {
+                    font-size: 110%;
+                    color: $green-primary;
+                    line-height: 110%;
+                    margin: 0;
+                }
+            }
+
+        }
+
+        &__1,
+        &__3 {
+            grid-column: 1/7;
+        }
+
+        &__2,
+        &__4 {
+            grid-column: 6/-1;
+        }
+
+        &__1,
+        &__2 {
+            grid-row: 1/7;
+        }
+
+        &__3,
+        &__4 {
+            grid-row: 6/-1;
+        }
+
+
+        &__0,
+        &__1,
+        &__2,
+        &__3,
+        &__4 {
+            border-radius: $petal-radius
+        }
+
+    }
+
+    .about-content {
+        @include card-text;
+        width: $petal-size;
+        height: $petal-size;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 5rem 4rem;
+        text-align: center;
+
+        &__content {
+            // padding: 0.5rem 0;
+
+            :nth-child(1),
+            :nth-child(2) {
+                margin-bottom: 1rem;
+            }
+
+            :nth-child(3),
+            :nth-child(4) {
+                margin-top: 1rem;
+            }
+        }
+
+
+    }
+}
+
+@include md {
+    $petal-size: 18rem;
+    $petal-radius: calc($petal-size / 2);
+
+    .about-container {
+        padding: 10rem 4rem 8rem 4rem;
+        height: 100%;
+    }
+
+    .about-title {
+        margin-bottom: 2rem !important;
+    }
+
+    .petal-container {
+        height: fit-content;
+        width: 100%;
+        margin: 1rem 0;
+        padding: 1.5rem 12rem;
+
+    }
+}
+
+
+@include gt-lg {
+    $petal-size: 22rem;
+    $petal-radius: calc($petal-size / 2);
+
+    .about-container {
+        padding: calc($l-top-padding + 2rem) $l-padding 4rem $l-padding;
+        height: 100vh;
+        @include non-card-text-lg;
+
+        .vision-mission {
+            @include non-card-text-lg;
+            margin: 1rem 0 1rem 0;
+
+
+            &__content {
+                margin: 0.5rem 0;
+                padding: 1rem;
+
+                &--title {
+                    margin-right: 1.5rem;
+                    border-radius: 10rem;
+                    width: 10rem;
+                    height: 10rem;
+                }
+
+                &--desc {
+                    width: 70%;
+                }
+            }
+        }
+    }
+
+
+    .petal-container {
+        margin: 0 0 0 2rem;
+        padding: 5rem 1.5rem;
+        grid-template-columns: repeat(11, 1fr);
+        grid-template-rows: repeat(11, 1fr);
+
+        &__0 {
+            grid-column: 4/9;
+            grid-row: 4/8;
+            z-index: 10;
+            height: 5rem;
+            width: 5rem;
+            width: calc($petal-size * 0.55);
+            height: calc($petal-size * 0.55);
+            margin: 0;
+
+            .about-header-content {
+                border-radius: $petal-radius;
+                border: 3px solid $green-primary;
+                width: calc($petal-size * 0.5);
+                height: calc($petal-size * 0.5);
+
+                h2 {
+                    font-size: 130%;
+                    line-height: 130%;
+                    margin: 0;
+                }
+            }
+
+        }
+
+        &__1,
+        &__3 {
+            grid-column: 1/7;
+        }
+
+        &__2,
+        &__4 {
+            grid-column: 6/-1;
+        }
+
+        &__1,
+        &__2 {
+            grid-row: 1/7;
+        }
+
+        &__3,
+        &__4 {
+            grid-row: 5/-1;
+        }
+
+
+        &__0,
+        &__1,
+        &__2,
+        &__3,
+        &__4 {
+            border-radius: $petal-radius
+        }
+
+    }
+
+    .about-content {
+        @include card-text-lg;
+        width: $petal-size;
+        height: $petal-size;
+        padding: 5rem 5rem;
+
+        &__content {
+            padding: 1rem 0;
+
+            :nth-child(1),
+            :nth-child(2) {
+                margin-bottom: 1rem;
+            }
+
+            :nth-child(3),
+            :nth-child(4) {
+                margin-top: 1rem;
+            }
+        }
+
+
+    }
+}
+
+@include gt-xl {
+    $petal-size: 26.5rem;
+    $petal-radius: calc($petal-size / 2);
+
+    .about-container {
+        padding: $xl-top-padding $xl-padding 10rem $xl-padding;
+        height: 100%;
+        @include non-card-text-lg;
+
+        .vision-mission {
+            @include non-card-text-lg;
+            margin: 1rem 0;
+
+
+            &__content {
+                margin: 1rem 0;
+                padding: 1rem;
+
+                &--title {
+                    margin-right: 2rem;
+                    border-radius: 10rem;
+                    width: 10rem;
+                    height: 10rem;
+                }
+
+                &--desc {
+                    width: 70%;
+                }
+            }
+        }
+    }
+
+
+    .petal-container {
+        margin: 0 0 0 3rem;
+        padding: 2rem 5rem;
+        grid-template-columns: repeat(11, 1fr);
+        grid-template-rows: repeat(11, 1fr);
+
+        &__0 {
+            z-index: 10;
+            height: 5rem;
+            width: 5rem;
+            width: calc($petal-size * 0.55);
+            height: calc($petal-size * 0.55);
+            margin: 0;
+
+            .about-header-content {
+                border-radius: $petal-radius;
+                border: 3px solid $green-primary;
+                width: calc($petal-size * 0.5);
+                height: calc($petal-size * 0.5);
+
+                h2 {
+                    font-size: 140%;
+                    line-height: 140%;
+                    margin: 0;
+                }
+            }
+        }
+
+        &__0,
+        &__1,
+        &__2,
+        &__3,
+        &__4 {
+            border-radius: $petal-radius
+        }
+
+    }
+
+    .about-content {
+        @include card-text-lg;
+        width: $petal-size;
+        height: $petal-size;
+        padding: 9rem 7rem;
+
+        &__content {
+            padding: 1rem 0;
+
+            :nth-child(1),
+            :nth-child(2) {
+                margin-bottom: 2rem;
+            }
+
+            :nth-child(3),
+            :nth-child(4) {
+                margin-top: 2rem;
+            }
+        }
+
+    }
+}
+
+
+// ! ---------------------------------------SASS FOR CEO---------------------------------------------------
+.mint-background {
+    background-color: $mint-secondary;
+}
+
+.CEO-container {
+    padding: $s-top-padding $s-padding $s-top-padding $s-padding;
+    @include non-card-text;
+    position: relative;
+
+}
+
+.CEO-large-flex {
+    margin-top: 1rem;
+}
+
+.CEO-card {
+    position: relative;
+    margin-top: 2rem;
+
+    .CEO-header {
+        @include non-card-text;
+        padding-bottom: 2rem;
+    }
+
+    &__card {
+        @include c.hover;
+    }
+
+    &__picture {
+        background-image: url(../assets/images/about-CEO-background.png);
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        border-radius: $border-radius $border-radius 0 0;
+
+        width: auto;
+
+        img {
+            position: relative;
+            margin-top: -10%;
+        }
+
+        .button-positioning {
+            position: absolute;
+            top: 2rem;
+            right: 1rem;
+            z-index: 5;
+        }
+
+        .CEO-video-button {
+            @include c.video-button;
+            $button-size: 6.5rem;
+            border: 5px solid $white;
+            border-radius: $button-size ;
+            width: $button-size;
+
+            svg {
+                width: $button-size;
+            }
+
+            .play::before {
+                font-size: 1.3rem;
+            }
+
+            .words {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    &__content {
+        @include c.hover;
+        margin-top: -8%;
+        @include c.clip-path;
+        padding: 2rem;
+        z-index: 2;
+        width: 100%;
+        height: auto;
+        position: relative;
+        background-color: $green-primary;
+
+        &--description {
+            h1 {
+                margin: 1rem 0;
+            }
+
+            h1,
+            h2 {
+                @include non-card-text;
+                color: $white;
+            }
+        }
+
+        .CEO-title {
+            padding-top: 1rem;
+
+            h2 {
+                color: $white;
+            }
+
+            .name-CEO {
+                font-weight: bold;
+            }
+
+            .title-CEO {
+                font-style: italic;
+            }
+        }
+
+    }
+}
+
+.CEO-data {
+    padding: 0.8rem 0;
+    width: 100%;
+    @include c.hover;
+
+    &__header {
+        @include card-text;
+        padding: 0.4rem 0.8rem;
+        width: fit-content;
+    }
+
+    .header-1 {
+        background-color: darken($yellow-primary, 10%);
+
+        h3 {
+            color: $dark-text;
+        }
+    }
+
+    .header-2 {
+        background-color: darken($pink-primary, 10%);
+
+        h3 {
+            color: $white;
+        }
+    }
+
+    .header-3 {
+        background-color: darken($purple-primary, 10%);
+
+        h3 {
+            color: $white;
+        }
+    }
+
+    .header-4 {
+        background-color: darken($green-primary, 10%);
+
+        h3 {
+            color: $white;
+        }
+    }
+
+    &__icons {
+        width: auto;
+        margin-right: 1rem;
+
+        img {
+            width: 5rem;
+        }
+    }
+
+    &__info {
+        width: 60%;
+    }
+
+    &__card {
+        @include card-text;
+        @include c.clip-path;
+        padding: 1.5rem;
+        width: 100%;
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+
+        h1 {
+            :nth-child(1) {
+                padding: 0.5rem 0;
+                border: $border-radius $border-radius 0 0;
+            }
+        }
+
+        h1,
+        h2,
+        h4 {
+            margin: 0;
+        }
+    }
+
+    &__color-1 {
+        background-color: $yellow-primary;
+
+        h1,
+        h2,
+        h4 {
+            color: $green-primary;
+        }
+
+    }
+
+    &__color-2 {
+        background-color: $pink-primary;
+
+        h1,
+        h2,
+        h4 {
+            color: $yellow-primary;
+        }
+    }
+
+    &__color-3 {
+        background-color: $purple-primary;
+
+        h1,
+        h2,
+        h4 {
+            color: $mint-primary;
+        }
+    }
+
+    &__color-4 {
+        background-color: $green-primary;
+
+        h1,
+        h2,
+        h4 {
+            color: $purple-primary;
+        }
+    }
+}
+
+.download {
+    @include c.download;
+    $icon-size: 20px;
+    $padding-top-bottom: 0.5rem;
+    $border-weight: 1px;
+    $spacing-top: 1rem;
+    padding: $padding-top-bottom 0 $padding-top-bottom 0;
+    border-radius: $icon-size;
+    border: $border-weight solid black;
+    margin-top: $spacing-top;
+
+    h2 {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        font-size: calc($icon-size * 0.7);
+    }
+
+    h2::before {
+        font-size: $icon-size;
+        height: calc($icon-size + 5px);
+        width: calc($icon-size + 5px);
+        border: $border-weight solid black;
+        border-radius: 100%;
+        margin-right: 1rem;
+        padding: 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    &:hover {
+        h2::before {
+            border: $border-weight solid black;
+        }
+    }
+}
+
+@include gt-sm {
+    .CEO-container {
+        padding: calc($l-top-padding + 2rem) $l-padding 8rem $l-padding;
+        min-height: 100vh;
+    }
+
+    .CEO-title {
+        @include non-card-text;
+    }
+
+
+    .CEO-card {
+        padding: 0 1.5rem 0 0;
+        position: fixed;
+        width: 35%;
+        margin: 0;
+
+        .CEO-header {
+            padding-bottom: 2rem;
+        }
+
+        &__content {
+            &--description {
+                border-radius: 0 0 $border-radius $border-radius;
+                height: fit-content;
+                position: relative;
+            }
+        }
+    }
+
+
+    .CEO-large-flex {
+        display: flex;
+        flex-wrap: wrap;
+
+        .CEO-data {
+            margin-bottom: 1rem;
+            width: 100%;
+            height: auto;
+            padding: 0;
+
+            &__header {
+                h3 {
+                    font-size: 95%;
+                }
+            }
+
+            &__card {
+                height: 10rem;
+                margin: 0;
+            }
+
+        }
+    }
+
+    .download {
+        @include c.download;
+        $icon-size: 20px;
+        $padding-top-bottom: 0.5rem;
+        $border-weight: 1px;
+        $spacing-top: 1rem;
+        padding: $padding-top-bottom 0 $padding-top-bottom 0;
+        border-radius: $icon-size;
+        border: $border-weight solid black;
+        margin-top: $spacing-top;
+
+        h2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+            font-size: calc($icon-size * 0.7);
+        }
+
+        h2::before {
+            font-size: $icon-size;
+            height: calc($icon-size + 5px);
+            width: calc($icon-size + 5px);
+            border: $border-weight solid black;
+            border-radius: 100%;
+            margin-right: 1rem;
+            padding: 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        &:hover {
+            h2::before {
+                border: $border-weight solid black;
+            }
+        }
+    }
+}
+
+@include gt-xl {
+    .CEO-container {
+        padding: $xl-top-padding $xl-padding 15rem $xl-padding;
+        @include non-card-text-lg;
+
+    }
+
+    .CEO-title {
+        @include non-card-text-lg;
+        padding-bottom: 2rem;
+    }
+
+    .CEO-card {
+        padding: 0 1.5rem 0 0;
+        position: relative;
+        width: auto;
+
+        .CEO-header {
+            @include non-card-text-lg;
+        }
+
+        &__picture {
+            // background-size: 150%;
+            margin-top: 1rem;
+            height: 24rem;
+
+            img {
+                object-fit: cover;
+                height: 25rem;
+                // width: 100rem;
+            }
+
+            .CEO-video-button {
+                @include c.video-button;
+                $button-size: 8rem;
+                border: 5px solid $white;
+                border-radius: $button-size ;
+                width: $button-size;
+
+                svg {
+                    width: $button-size;
+                }
+
+                .play::before {
+                    font-size: 2rem;
+                }
+
+                .words {
+                    font-size: 1.3rem;
+                }
+            }
+        }
+
+        &__content {
+            padding: 3rem;
+
+            &--description {
+                border-radius: 0 0 $border-radius $border-radius;
+                height: fit-content;
+                position: relative;
+            }
+        }
+    }
+
+    .CEO-large-flex {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 2rem;
+        -webkit-column-gap: 2rem;
+        -moz-column-gap: 2rem;
+
+        .CEO-data {
+            width: 48%;
+            height: auto;
+            padding: 0;
+
+            &__header {
+                @include card-text-lg;
+                width: 70%;
+                padding: 0.8rem;
+            }
+
+            &__icons {
+                width: auto;
+                margin-right: 2rem;
+
+                img {
+                    width: 8rem;
+                }
+            }
+
+            &__info {
+                width: 80%;
+            }
+
+            &__card {
+                @include card-text-xl;
+                height: 18rem;
+                padding: 2rem;
+                margin: 0;
+            }
+
+        }
+    }
+
+    .download {
+        @include c.download;
+        $icon-size: 24px;
+        $padding-top-bottom: 0.5rem;
+        $border-weight: 2px;
+        $spacing-top: 1rem;
+        padding: $padding-top-bottom 0 $padding-top-bottom 0;
+        border-radius: $icon-size;
+        border: $border-weight solid black;
+        margin-top: $spacing-top;
+
+        h2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: center;
+            font-size: calc($icon-size * 0.7);
+        }
+
+        h2::before {
+            font-size: $icon-size;
+            height: calc($icon-size + 5px);
+            width: calc($icon-size + 5px);
+            border: $border-weight solid black;
+            border-radius: 100%;
+            margin-right: 1rem;
+            padding: 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        &:hover {
+            h2::before {
+                border: $border-weight solid black;
+            }
+        }
+    }
+}
+
+
+// ! ---------------------------------------Sustainable and Humanitarian-----------------------------------------------
+
+//* Colours
+//* Background-colors
+//? Header background and title colour
+.beyond-title-color {
+    color: $yellow-primary;
+}
+
+.nurturing-title-color {
+    color: $pink-primary;
+}
+
+.process-title-color {
+    color: $purple-primary;
+}
+
+.planet-title-color {
+    color: $mint-primary;
+}
+
+//? Focus area title
+.beyond-focus-title {
+    color: $white;
+    background-color: $pink-primary;
+}
+
+.nurturing-focus-title {
+    color: $white;
+    background-color: $yellow-primary;
+}
+
+.process-focus-title {
+    color: $white;
+    background-color: $yellow-primary;
+}
+
+.planet-focus-title {
+    color: $white;
+    background-color: $green-primary;
+}
+
+//? Focus area cards
+.beyond-focus-1 {
+    background-color: $pink-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.beyond-focus-2 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.beyond-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.nurturing-focus-1 {
+    background-color: $yellow-primary;
+
+    h4 {
+        color: $dark-text;
+    }
+}
+
+.nurturing-focus-2 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.nurturing-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.process-focus-1 {
+    background-color: $yellow-primary;
+
+    h4 {
+        color: $dark-text;
+    }
+}
+
+.process-focus-2 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.process-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.process-focus-4 {
+    background-color: $pink-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.planet-focus-1 {
+    background-color: $green-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.planet-focus-2 {
+    background-color: $pink-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+.planet-focus-3 {
+    background-color: $purple-primary;
+
+    h4 {
+        color: $white;
+    }
+}
+
+
+//? Section Background
+.beyond-background-primary {
+    background-color: $yellow-secondary;
+}
+
+.beyond-background-secondary {
+    background-color: $yellow-tertiary;
+}
+
+.nurturing-background-primary {
+    background-color: $pink-secondary;
+}
+
+.nurturing-background-secondary {
+    background-color: $pink-tertiary;
+}
+
+.process-background-primary {
+    background-color: $purple-tertiary;
+}
+
+.process-background-secondary {
+    background-color: $purple-secondary;
+}
+
+.planet-background-primary {
+    background-color: $mint-tertiary;
+}
+
+.planet-background-secondary {
+    background-color: $mint-secondary;
+}
+
+//* Secondary section item colors
+//? Item header colors
+.beyond-item-header-color {
+    background: $yellow-primary;
+
+    h1 {
+        color: $green-primary;
+    }
+}
+
+.nurturing-item-header-color {
+    background: $pink-primary;
+
+    h1 {
+        color: $yellow-primary;
+    }
+}
+
+.process-item-header-color {
+    background: $purple-primary;
+
+    h1 {
+        color: $mint-primary;
+    }
+}
+
+.planet-item-header-color {
+    background: $mint-primary;
+
+    h1 {
+        color: $purple-primary;
+    }
+}
+
+//? Item number colors 
+.beyond-item-number {
+    background-color: $purple-primary;
+}
+
+.nurturing-item-number {
+    background-color: $green-primary;
+}
+
+.process-item-number {
+    background-color: $pink-primary;
+}
+
+.planet-item-number {
+    background-color: $pink-primary;
+}
+
+//? Item card colours
+.beyond-item-theme {
+    background-color: $white;
+
+    h1,
+    .h1-span {
+        color: $yellow-primary;
+    }
+
+    h2 {
+        color: $dark-text;
+    }
+}
+
+.nurturing-item-theme {
+    background-color: $pink-secondary;
+
+    h1,
+    .h1-span {
+        color: $pink-primary;
+    }
+
+    h2 {
+        color: $dark-text;
+    }
+}
+
+.process-item-theme {
+    background-color: $white;
+
+    h1,
+    .h1-span {
+        color: $purple-primary;
+    }
+
+    h2 {
+        color: $dark-text;
+    }
+}
+
+.planet-item-theme {
+    background-color: $white;
+
+    h1,
+    .h1-span {
+        color: $mint-primary;
+    }
+
+    h2 {
+        color: $dark-text;
+    }
+}
+
+$title-padding: 1rem;
+$number-padding: 0.5rem 1rem;
+
+
+.sustainable-container {
+    @include non-card-text;
+    position: relative;
+    margin: 0;
+    padding: $s-top-padding 0 $s-top-padding 0;
+}
+
+.sustainable-title {
+    @include sustainable-header;
+    position: relative;
+    margin-top: -10rem;
+    padding-top: 10rem;
+
+    h1 {
+        position: relative;
+        z-index: 5;
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
+        background-color: $white;
+        width: fit-content;
+        margin: 0;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .sustainable-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+        width: auto;
+        padding: 0 1rem;
+
+
+        &__image {
+            margin-top: -3rem;
+            margin-bottom: -3.5rem;
+            max-height: 40rem;
+            width: auto;
+        }
+    }
+}
+
+
+.sustainable-content {
+    z-index: 2;
+    padding: $s-padding;
+
+    &__title {
+        h1 {
+            @include non-card-text;
+            padding: $title-padding;
+            width: fit-content;
+            text-transform: uppercase;
+        }
+    }
+
+    .sustainable-animate {
+        @include c.hover;
+    }
+
+    &__card {
+        @include c.clip-path-cards;
+        @include card-text;
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+
+        img {
+            height: 4rem;
+            margin-right: 1.5rem;
+        }
+
+        h1,
+        h2,
+        .h1-span,
+        .h2-span,
+        h4 {
+            margin: 0;
+        }
+    }
+}
+
+.sustainable-arrows {
+    color: $dark-text;
+
+    &:hover {
+        color: $dark-text;
+    }
+}
+
+.sustainable-dotnav {
+    $dotnav-size: 14px;
+    margin: 0 !important;
+    li {
+        a {
+            border: 1px solid $dark-text;
+            width: $dotnav-size;
+            height: $dotnav-size;
+        }
+    }
+
+    .uk-active {
+        * {
+            background-color: $green-primary;
+        }
+    }
+}
+
+.sustainable-items {
+    @include c.cards-no-shadow;
+    background-color: $yellow-tertiary;
+    margin-top: 3rem;
+
+    &__carousel-correction {
+        margin-left: -14px;
+    }
+
+    &__header {
+        @include non-card-text;
+        padding: $title-padding;
+        width: fit-content;
+
+        h1 {
+            margin: 0;
+            text-transform: uppercase;
+        }
+    }
+
+    &__number {
+        @include c.clip-path;
+        @include non-card-text;
+        position: relative;
+        padding: $number-padding;
+
+        h4 {
+            margin: 0;
+            color: white;
+        }
+    }
+
+    &__cards {
+        @include c.cards-no-shadow;
+        @include card-text;
+        // @include c.hover;
+        border-radius: 0 0 $border-radius $border-radius;
+        position: relative;
+        margin-bottom: 2rem;
+
+        h1 {
+            margin: 0;
+        }
+    }
+}
+
+
+
+@include gt-sm {
+    $title-padding: 1rem;
+    $number-padding: 0.5rem 1rem;
+
+    .sustainable-container {
+        padding: $l-top-padding 0 $l-top-padding 0;
+        padding: 0;
+
+    }
+
+    .sustainable-title {
+        @include sustainable-header-lg;
+        position: relative;
+        z-index: 5;
+        display: flex;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .sustainable-header {
+            position: fixed;
+            display: block;
+            top: 20%;
+            left: 2rem;
+            width: 54vw;
+            &__title{
+                position: relative;
+                width: inherit;
+                h1{
+                    width: fit-content;
+                    right: 0rem;
+                }
+            }
+            &__image{
+                position: relative;
+                top: -2rem;
+            }
+        }
+    }
+
+
+    .sustainable-content {
+        padding: 10rem 3rem 3rem 3rem;
+
+        &__title {
+            h1 {
+                padding: $title-padding;
+            }
+        }
+    }
+
+    .sustainable-items {
+        // @include non-card-text-lg;
+        padding: calc($l-padding - 1rem);
+
+        &__header {
+            // @include non-card-text-lg;
+            padding: $title-padding;
+        }
+
+        &__number {
+            // @include non-card-text-lg;
+            padding: $number-padding;
+            height: auto;
+        }
+
+        &__cards {
+            // @include card-text-lg;
+            padding: calc($l-padding - 1rem);
+        }
+    }
+
+}
+
+@include gt-xl {
+    $title-padding: 1rem;
+    $number-padding: 0.5rem 1rem;
+
+    .sustainable-container {
+        padding: $xl-top-padding 0 10rem 0;
+    }
+
+    .sustainable-title {
+        // padding: 2rem $xl-padding 2rem $xl-padding;
+        .sustainable-header {
+            top: 15%;
+            left: 2rem;
+            width: 54vw;
+            &__title{
+                position: relative;
+                width: inherit;
+                h1{
+                    width: fit-content;
+                    right: 0rem;
+                }
+            }
+            &__image{
+                position: relative;
+                top: -2rem;
+            }
+        }
+
+    }
+
+    .sustainable-content {
+        padding: 4rem calc($xl-padding - 1rem) 4rem calc($xl-padding - 1rem);
+    }
+
+
+    .sustainable-items {
+        padding: 4rem $xl-padding 4rem $xl-padding;
+    }
+
+}
+
+
+// !------------------------------Humanitarian---------------------------------------------
+.white-title {
+    color: $white;
+}
+
+.humanitarian-container {
+    padding: $s-top-padding 0 0 0;
+    @include non-card-text;
+    position: relative;
+}
+
+.humanitarian-title {
+    @include non-card-text;
+    padding: $s-padding;
+
+    h1 {
+        margin: 0;
+    }
+}
+
+.humanitarian-header {
+    @include c.cards;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../assets/images/humanitarian-thumbnail.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0%;
+    position: relative;
+    // width: 100vw;
+    height: 20rem;
+    z-index: 0;
+    margin: 0;
+
+    .humanitarian-video {
+        @include c.video-button;
+        margin: 4rem 0 4rem 0;
+        $button-size: 6.5rem;
+        border: 5px solid $white;
+        border-radius: $button-size ;
+        width: $button-size;
+
+        svg {
+            width: $button-size;
+        }
+
+        .play::before {
+            font-size: 1.5rem;
+        }
+
+        .words {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+.humanitarian-text {
+    @include non-card-text;
+    padding: $s-padding;
+
+    h2 {
+        color: $white;
+    }
+}
+
+.humanitarian-content {
+    background-color: $white;
+    padding: 2rem $s-padding 12rem $s-padding;
+
+    .donate {
+        $shiny-width: 4rem;
+        $btn-size: 5rem;
+        height: auto;
+        background-color: $yellow-donate;
+        border-radius: 2rem;
+        text-align: center;
+        padding: 0.6rem;
+        transition: .6s;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+
+        .shiny {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 1);
+            width: $shiny-width;
+            height: $btn-size;
+            // controls where shiny is before hover
+            transform: skew(-30deg) translate(-$btn-size, 0);
+        }
+
+        &:hover {
+            transform: scale(1.05);
+
+            .shiny {
+                background-color: rgba(255, 255, 255, 0.3);
+                transform: skew(-30deg) translate(80rem, 0);
+                transition: ease-in-out 1.8s;
+            }
+        }
+
+        &__icon {
+            display: flex;
+            flex-direction: row;
+            vertical-align: middle;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &__icon::before {
+            font-family: 'icomoon';
+            font-size: 2rem;
+            content: "\e91f";
+            color: $dark-text;
+            margin-right: 0.5rem;
+        }
+
+        h1 {
+            margin: 0;
+            color: $dark-text;
+        }
+    }
+
+    &__title {
+        @include non-card-text;
+        color: $green-primary;
+        margin: 1rem 0 1rem 0;
+    }
+
+    &__sponsor {
+        img {
+            object-fit: contain;
+        }
+    }
+}
+
+@include gt-sm {
+    .humanitarian-container {
+        @include non-card-text-lg;
+        padding: $l-top-padding 0 0 0;
+    }
+
+    .humanitarian-header {
+        height: 30rem;
+        margin: 0 $l-padding;
+
+        .humanitarian-video {
+            margin: 10rem 0;
+            $button-size: 8rem;
+            border: 5px solid $white;
+            border-radius: $button-size ;
+            width: $button-size;
+
+            svg {
+                width: $button-size;
+            }
+
+            .play::before {
+                font-size: 2rem;
+            }
+
+            .words {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    .humanitarian-title {
+        @include non-card-text-lg;
+        padding: 4rem $l-padding 2rem $l-padding;
+    }
+
+    .humanitarian-content {
+        padding: $l-padding;
+    }
+
+    .humanitarian-text {
+        @include non-card-text-lg;
+        padding: $l-padding;
+    }
+
+    .humanitarian-content {
+        @include non-card-text-lg;
+        padding: 4rem $l-padding 10rem $l-padding;
+
+        .donate {
+            $shiny-width: 4rem;
+            $btn-size: 5rem;
+            padding: 0.6rem;
+
+            .shiny {
+                width: $shiny-width;
+                height: $btn-size;
+                // controls where shiny is before hover
+                transform: skew(-30deg) translate(-$btn-size, 0);
+            }
+
+            &:hover {
+                transform: scale(1.05);
+
+                .shiny {
+                    transform: skew(-30deg) translate(100rem, 0);
+                    transition: ease-in-out 1.5s;
+                }
+            }
+
+            &__icon::before {
+                margin-right: 1rem;
+            }
+        }
+
+        &__title {
+            margin: 2rem 0 3rem 0;
+        }
+
+    }
+}
+
+@include gt-xl {
+    .humanitarian-container {
+        @include non-card-text-lg;
+        padding: $xl-top-padding 0 0 0;
+    }
+
+    .humanitarian-header {
+        height: 50vh;
+        margin: 0 $xl-padding;
+
+        .humanitarian-video {
+            margin: 15rem 0 15rem 0;
+            $button-size: 12rem;
+            border: 8px solid $white;
+            border-radius: $button-size ;
+            width: $button-size;
+
+            svg {
+                width: $button-size;
+            }
+
+            .play::before {
+                font-size: 3rem;
+            }
+
+            .words {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .humanitarian-content {
+        padding: $xl-padding;
+    }
+
+    .humanitarian-title {
+        padding: 2rem $xl-padding 2rem $xl-padding;
+    }
+
+    .humanitarian-text {
+        @include non-card-text-lg;
+        padding: 5rem $xl-padding;
+    }
+
+    .humanitarian-content {
+        @include non-card-text-lg;
+        padding: 4rem $xl-padding 10rem $xl-padding;
+
+        .donate {
+            $shiny-width: 4rem;
+            $btn-size: 6rem;
+            padding: 1.2rem;
+            border-radius: $btn-size;
+
+            .shiny {
+                width: $shiny-width;
+                height: $btn-size;
+                // controls where shiny is before hover
+                transform: skew(-30deg) translate(-$btn-size, 0);
+            }
+
+            &:hover {
+                transform: scale(1.05);
+
+                .shiny {
+                    transform: skew(-30deg) translate(150rem, 0);
+                    transition: ease-in-out 1.5s;
+                }
+            }
+
+            &__icon::before {
+                margin-right: 1rem;
+            }
+        }
+
+        &__title {
+            margin: 2rem 0 3rem 0;
+        }
+
+    }
+
+}
