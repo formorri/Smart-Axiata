@@ -2252,48 +2252,47 @@ $number-padding: 0.5rem 1rem;
 
 
 .sustainable-container {
-    padding: $s-top-padding 0 $s-top-padding 0;
     @include non-card-text;
     position: relative;
+    margin: 0;
+    padding: $s-top-padding 0 $s-top-padding 0;
 }
 
 .sustainable-title {
     @include sustainable-header;
     position: relative;
-    padding: $s-padding;
-    z-index: 5;
+    margin-top: -10rem;
+    padding-top: 10rem;
 
-    // margin-bottom: 2rem;
     h1 {
+        position: relative;
+        z-index: 5;
         box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
         background-color: $white;
         width: fit-content;
         margin: 0;
         padding: 0.3rem 0.8rem;
     }
-}
 
-.sustainable-header {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    width: auto;
-    padding: 0 1rem;
-
-
-    &__image {
-        margin-top: -4.5rem;
-        margin-bottom: -3.5rem;
-        max-height: 40rem;
+    .sustainable-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
         width: auto;
+        padding: 0 1rem;
+
+
+        &__image {
+            margin-top: -3rem;
+            margin-bottom: -3.5rem;
+            max-height: 40rem;
+            width: auto;
+        }
     }
 }
 
-.responsive-grid-padding {
-    padding-bottom: 15px;
-}
 
 .sustainable-content {
     z-index: 2;
@@ -2306,10 +2305,6 @@ $number-padding: 0.5rem 1rem;
             width: fit-content;
             text-transform: uppercase;
         }
-    }
-
-    .sustainable-animate {
-        @include c.hover;
     }
 
     &__card {
@@ -2343,11 +2338,13 @@ $number-padding: 0.5rem 1rem;
 }
 
 .sustainable-dotnav {
-    margin: 0;
-
+    $dotnav-size: 14px;
+    margin: 0 !important;
     li {
         a {
             border: 1px solid $dark-text;
+            width: $dotnav-size;
+            height: $dotnav-size;
         }
     }
 
@@ -2359,7 +2356,8 @@ $number-padding: 0.5rem 1rem;
 }
 
 .sustainable-items {
-    padding: $s-padding;
+    @include c.cards-no-shadow;
+    margin-top: 3rem;
 
     &__carousel-correction {
         margin-left: -14px;
@@ -2410,96 +2408,151 @@ $number-padding: 0.5rem 1rem;
 
     .sustainable-container {
         padding: $l-top-padding 0 $l-top-padding 0;
+        padding: 0;
+
     }
 
     .sustainable-title {
         @include sustainable-header-lg;
-        padding: 4rem $l-padding 2rem $l-padding;
-    }
+        position: relative;
+        z-index: 0;
+        display: flex;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
 
-    .sustainable-header {
-        &__image {
-            margin-top: -9rem;
-            margin-bottom: -6rem;
-        }
-    }
-
-    .sustainable-content {
-        padding: calc($l-padding - 1rem);
-
-        &__title {
-            @include non-card-text-lg;
-
-            h1 {
-                padding: $title-padding;
+        .sustainable-header {
+            position: fixed;
+            display: block;
+            top: 20%;
+            left: 1rem;
+            width: 70vw;
+            &__title{
+                position: relative;
+                width: inherit;
+                h1{
+                    width: fit-content;
+                    right: 0rem;
+                }
+            }
+            &__image{
+                position: relative;
+                top: -5.5rem;
             }
         }
+    }
 
-        &__card {
-            padding: calc($l-padding - 1rem);
-            @include card-text-lg;
 
-            img {
-                height: 5rem;
+    .sustainable-content {
+        padding: 10rem 3rem 3rem 3rem;
+
+        &__title {
+            h1 {
+                padding: $title-padding;
             }
         }
     }
 
     .sustainable-items {
-        @include non-card-text-lg;
+        // @include non-card-text-lg;
         padding: calc($l-padding - 1rem);
 
         &__header {
-            @include non-card-text-lg;
+            // @include non-card-text-lg;
             padding: $title-padding;
         }
 
         &__number {
-            @include non-card-text-lg;
+            // @include non-card-text-lg;
             padding: $number-padding;
             height: auto;
         }
 
         &__cards {
-            @include card-text-lg;
+            // @include card-text-lg;
             padding: calc($l-padding - 1rem);
         }
     }
 
 }
 
-@include gt-xl {
-    $title-padding: 1rem;
-    $number-padding: 0.5rem 1rem;
-
-    .sustainable-container {
-        padding: $xl-top-padding 0 10rem 0;
-    }
-
+@include gt-lg {
     .sustainable-title {
-        padding: 2rem $xl-padding 2rem $xl-padding;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 3;
-        position: relative;
-    }
-
-    .sustainable-header {
-        &__image {
-            margin-top: -12rem;
-            margin-bottom: -8rem;
-            max-height: 50rem;
+        .sustainable-header {
+            top: 25%;
+            left: 3rem;
+            width: 45vw;
+            &__title{
+                h1{
+                    right: 0rem;
+                }
+            }
+            &__image{
+                position: relative;
+            }
         }
+
     }
 
     .sustainable-content {
-        padding: 4rem calc($xl-padding - 1rem) 4rem calc($xl-padding - 1rem);
+        padding: 10rem 3rem;
+        &__card{
+            padding: 2.5rem;
+            img{
+                height: 5rem;
+                padding-right: 1rem;
+            }
+        }
     }
 
 
     .sustainable-items {
-        padding: 4rem $xl-padding 4rem $xl-padding;
+        &__cards{
+            padding: 2rem;
+        }
+    }
+
+}
+
+@include gt-xl {
+
+    .sustainable-title {
+        .sustainable-header {
+            top: 25%;
+            left: 8%;
+            width: 45vw;
+        }
+
+    }
+
+    .sustainable-content {
+        padding: 8.5rem 10rem 5rem 5rem;
+        @include non-card-text-lg;
+        &__flex{
+            display: flex;
+            column-gap: 1rem;
+            -webkit-column-gap: 1rem;
+        }
+        
+        &__card{
+            @include card-text-lg;
+            padding: 2rem;
+            img{
+                height: 4rem;
+                padding-right: 1rem;
+            }
+        }
+    }
+
+
+    .sustainable-items {
+        @include card-text-lg;
+        margin-top: 0rem;
+        padding: 2rem;
+        &__carousel-correction{
+            margin-bottom: -1rem;
+        }
     }
 
 }
