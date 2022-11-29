@@ -990,6 +990,7 @@ body {
 }
 
 
+
 @include gt-sm {
     $petal-size: 16rem;
     $petal-radius: calc($petal-size / 2);
@@ -1096,7 +1097,7 @@ body {
         display: grid;
         place-items: center;
         margin: 0 0 0 1rem;
-        padding: 1.5rem;
+        padding: 3rem 3rem;
         width: fit-content;
         grid-template-columns: repeat(11, 1fr);
         grid-template-rows: repeat(10, 1fr);
@@ -1214,7 +1215,7 @@ body {
         height: fit-content;
         width: 100%;
         margin: 1rem 0;
-        padding: 1.5rem 12rem;
+        padding: 1.5rem 14rem;
 
     }
 }
@@ -1241,8 +1242,8 @@ body {
                 &--title {
                     margin-right: 1.5rem;
                     border-radius: 10rem;
-                    width: 10rem;
-                    height: 10rem;
+                    width: 8rem;
+                    height: 8rem;
                 }
 
                 &--desc {
@@ -1360,8 +1361,8 @@ body {
                 &--title {
                     margin-right: 2rem;
                     border-radius: 10rem;
-                    width: 10rem;
-                    height: 10rem;
+                    width: 8rem;
+                    height: 8rem;
                 }
 
                 &--desc {
@@ -2511,7 +2512,7 @@ $number-padding: 0.5rem 1rem;
 
 .humanitarian-title {
     @include non-card-text;
-    padding: $s-padding;
+    padding: 1rem calc($s-padding + 1rem);
 
     h1 {
         margin: 0;
@@ -2554,7 +2555,7 @@ $number-padding: 0.5rem 1rem;
 
 .humanitarian-text {
     @include non-card-text;
-    padding: $s-padding;
+    padding: 2rem;
 
     h2 {
         color: $white;
@@ -2565,61 +2566,68 @@ $number-padding: 0.5rem 1rem;
     background-color: $white;
     padding: 2rem $s-padding 12rem $s-padding;
 
-    .donate {
-        $shiny-width: 4rem;
-        $btn-size: 5rem;
-        height: auto;
-        background-color: $yellow-donate;
-        border-radius: 2rem;
-        text-align: center;
-        padding: 0.6rem;
-        transition: .6s;
-        overflow: hidden;
-        position: relative;
-        cursor: pointer;
-
-        .shiny {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(255, 255, 255, 1);
-            width: $shiny-width;
-            height: $btn-size;
-            // controls where shiny is before hover
-            transform: skew(-30deg) translate(-$btn-size, 0);
-        }
-
-        &:hover {
-            transform: scale(1.05);
-
+    &__donate{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .donate {
+            $shiny-width: 4rem;
+            $btn-size: 5rem;
+            width: min(100%, 40rem);
+            height: auto;
+            background-color: $yellow-donate;
+            border-radius: 2rem;
+            text-align: center;
+            padding: 0.6rem;
+            transition: .6s;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+    
             .shiny {
-                background-color: rgba(255, 255, 255, 0.3);
-                transform: skew(-30deg) translate(80rem, 0);
-                transition: ease-in-out 1.8s;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background-color: rgba(255, 255, 255, 1);
+                width: $shiny-width;
+                height: $btn-size;
+                // controls where shiny is before hover
+                transform: skew(-30deg) translate(-$btn-size, 0);
+            }
+    
+            &:hover {
+                transform: scale(1.05);
+    
+                .shiny {
+                    background-color: rgba(255, 255, 255, 0.3);
+                    transform: skew(-30deg) translate(80rem, 0);
+                    transition: ease-in-out 1.8s;
+                }
+            }
+    
+            &__icon {
+                display: flex;
+                flex-direction: row;
+                vertical-align: middle;
+                justify-content: center;
+                align-items: center;
+            }
+    
+            &__icon::before {
+                font-family: 'icomoon';
+                font-size: 2rem;
+                content: "\e91f";
+                color: $dark-text;
+                margin-right: 0.5rem;
+            }
+    
+            h1 {
+                margin: 0;
+                color: $dark-text;
             }
         }
-
-        &__icon {
-            display: flex;
-            flex-direction: row;
-            vertical-align: middle;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &__icon::before {
-            font-family: 'icomoon';
-            font-size: 2rem;
-            content: "\e91f";
-            color: $dark-text;
-            margin-right: 0.5rem;
-        }
-
-        h1 {
-            margin: 0;
-            color: $dark-text;
-        }
     }
+
 
     &__title {
         @include non-card-text;
@@ -2628,6 +2636,7 @@ $number-padding: 0.5rem 1rem;
     }
 
     &__sponsor {
+        padding: $s-padding;
         img {
             object-fit: contain;
         }
