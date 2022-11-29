@@ -2425,8 +2425,8 @@ $number-padding: 0.5rem 1rem;
             position: fixed;
             display: block;
             top: 20%;
-            left: 3rem;
-            width: 54vw;
+            left: 1rem;
+            width: 70vw;
             &__title{
                 position: relative;
                 width: inherit;
@@ -2437,7 +2437,7 @@ $number-padding: 0.5rem 1rem;
             }
             &__image{
                 position: relative;
-                top: -2rem;
+                top: -5.5rem;
             }
         }
     }
