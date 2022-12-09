@@ -239,8 +239,8 @@ body {
         position: relative;
         z-index: 2;
         width: 100vw;
-        margin: 0;
-        right: 1.5rem;
+        margin-bottom: 1rem;
+        // right: 0rem;
         top: 2rem;
     }
 
@@ -355,7 +355,7 @@ body {
 .sustainable-pillars-container {
     @include non-card-text;
     @include c.cards;
-    $pillar-height: 10rem;
+    $pillar-height: 11rem;
     z-index: 5;
     padding: 25px;
     position: relative;
@@ -471,10 +471,10 @@ body {
     .relative-elements {
         &__artwork {
             width: 100vw;
-            margin: 0;
-            right: 1.5rem;
+            // margin: 0;
+            // right: 1.5rem;
             top: 0rem;
-            margin-bottom: -3rem;
+            margin-bottom: -1rem;
         }
 
         .button-positioning {
@@ -643,7 +643,7 @@ body {
     }
 
     .sustainable-pillars-container {
-        $pillar-height: 10rem;
+        $pillar-height: 12rem;
         padding: 25px;
 
         &__card {
@@ -901,6 +901,83 @@ body {
     }
 }
 
+.vision-mission {
+    @include non-card-text;
+    margin: 0.5rem 0 0.5rem 0;
+    position: relative;
+
+    .vision-color {
+        &__title {
+            background-color: $green-primary;
+        }
+
+        &__desc {
+
+            h3,
+            .h1-span {
+                color: $green-primary;
+            }
+        }
+    }
+
+    .mission-color {
+        &__title {
+            background-color: $purple-primary;
+        }
+
+        &__desc {
+            h1 {
+                color: $purple-primary;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    .value-color {
+
+        &__title {
+            background-color: $pink-primary;
+        }
+
+        &__desc {
+
+            h2,
+            .h1-span {
+                color: $pink-primary;
+            }
+        }
+    }
+
+    &__content {
+        margin: 0.5rem 0 0.5rem 0;
+        border-radius: $border-radius;
+        padding: 1rem;
+        background-color: $white;
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+
+        &--title {
+            @include c.shadow;
+            margin-right: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10rem;
+            width: 5rem;
+            height: 5rem;
+
+            h1 {
+                color: $white;
+            }
+        }
+
+        &--desc {
+            width: 70%;
+        }
+    }
+}
+
 .small-container {
     width: 100%;
 }
@@ -1006,83 +1083,6 @@ body {
             margin: 0;
             width: 100%;
             height: $grid-height;
-        }
-
-        .vision-mission {
-            @include non-card-text;
-            margin: 0.5rem 0 0.5rem 0;
-            position: relative;
-
-            .vision-color {
-                &__title {
-                    background-color: $green-primary;
-                }
-
-                &__desc {
-
-                    h3,
-                    .h1-span {
-                        color: $green-primary;
-                    }
-                }
-            }
-
-            .mission-color {
-                &__title {
-                    background-color: $purple-primary;
-                }
-
-                &__desc {
-                    h1 {
-                        color: $purple-primary;
-                        text-transform: uppercase;
-                    }
-                }
-            }
-
-            .value-color {
-
-                &__title {
-                    background-color: $pink-primary;
-                }
-
-                &__desc {
-
-                    h2,
-                    .h1-span {
-                        color: $pink-primary;
-                    }
-                }
-            }
-
-            &__content {
-                margin: 0.5rem 0 0.5rem 0;
-                border-radius: $border-radius;
-                padding: 1rem;
-                background-color: $white;
-                display: flex;
-                vertical-align: middle;
-                align-items: center;
-
-                &--title {
-                    @include c.shadow;
-                    margin-right: 1.5rem;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 10rem;
-                    width: 5rem;
-                    height: 5rem;
-
-                    h1 {
-                        color: $white;
-                    }
-                }
-
-                &--desc {
-                    width: 70%;
-                }
-            }
         }
     }
 
@@ -2340,6 +2340,7 @@ $number-padding: 0.5rem 1rem;
 .sustainable-dotnav {
     $dotnav-size: 14px;
     margin: 0 !important;
+
     li {
         a {
             border: 1px solid $dark-text;
@@ -2425,20 +2426,21 @@ $number-padding: 0.5rem 1rem;
         .sustainable-header {
             position: fixed;
             display: block;
-            top: 20%;
-            left: 1rem;
-            width: 70vw;
-            &__title{
+            top: 22%;
+
+            &__title {
                 position: relative;
                 width: inherit;
-                h1{
+
+                h1 {
                     width: fit-content;
                     right: 0rem;
                 }
             }
-            &__image{
+
+            &__image {
                 position: relative;
-                top: -5.5rem;
+                top: -4rem;
             }
         }
     }
@@ -2481,14 +2483,16 @@ $number-padding: 0.5rem 1rem;
     .sustainable-title {
         .sustainable-header {
             top: 25%;
-            left: 3rem;
+            left: 1rem;
             width: 45vw;
-            &__title{
-                h1{
+
+            &__title {
+                h1 {
                     right: 0rem;
                 }
             }
-            &__image{
+
+            &__image {
                 position: relative;
             }
         }
@@ -2497,9 +2501,11 @@ $number-padding: 0.5rem 1rem;
 
     .sustainable-content {
         padding: 10rem 3rem;
-        &__card{
+
+        &__card {
             padding: 2.5rem;
-            img{
+
+            img {
                 height: 5rem;
                 padding-right: 1rem;
             }
@@ -2508,7 +2514,7 @@ $number-padding: 0.5rem 1rem;
 
 
     .sustainable-items {
-        &__cards{
+        &__cards {
             padding: 2rem;
         }
     }
@@ -2517,40 +2523,60 @@ $number-padding: 0.5rem 1rem;
 
 @include gt-xl {
 
+    .sustainable-container {
+        position: relative;
+        margin: 0;
+        height: 100vh;
+    }
+
     .sustainable-title {
         .sustainable-header {
             top: 25%;
-            left: 8%;
-            width: 45vw;
+            left: 5%;
+            // width: 45vw;
         }
 
     }
 
     .sustainable-content {
-        padding: 8.5rem 10rem 5rem 5rem;
-        @include non-card-text-lg;
-        &__flex{
+        padding: 0 6rem;
+        display: flex;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        :nth-child(1) {
+            div {
+                margin-bottom: 1rem;
+            }
+        }
+
+        // @include non-card-text-lg;
+        &__flex {
             display: flex;
             column-gap: 1rem;
             -webkit-column-gap: 1rem;
         }
-        
-        &__card{
-            @include card-text-lg;
+
+        &__card {
+            // @include card-text-lg;
             padding: 2rem;
-            img{
+
+            img {
                 height: 4rem;
-                padding-right: 1rem;
+                padding-right: 0.5rem;
             }
         }
     }
 
 
     .sustainable-items {
-        @include card-text-lg;
+        // @include card-text-lg;
         margin-top: 0rem;
         padding: 2rem;
-        &__carousel-correction{
+
+        &__carousel-correction {
             margin-bottom: -1rem;
         }
     }
