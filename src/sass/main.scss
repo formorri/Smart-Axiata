@@ -986,12 +986,14 @@ body {
     @include c.clip-path-cards;
     background-color: $yellow-secondary;
 
-    &__0,
     &__1,
     &__2,
     &__3,
     &__4 {
         @include c.hover;
+        h2 {
+            color: $white;
+        }
     }
 
     &__0 {
@@ -1000,42 +1002,26 @@ body {
         border-radius: $border-radius $border-radius 0 0;
 
         h2 {
-            color: $white;
             padding: 0.6rem;
+            color: $white;
         }
 
     }
 
     &__1 {
         background-color: $yellow-primary;
-
-        h2 {
-            color: $green-primary;
-        }
     }
 
     &__2 {
         background-color: $pink-primary;
-
-        h2 {
-            color: $yellow-primary;
-        }
     }
 
     &__3 {
         background-color: $purple-primary;
-
-        h2 {
-            color: $mint-primary;
-        }
     }
 
     &__4 {
         background-color: $mint-primary;
-
-        h2 {
-            color: $purple-primary;
-        }
     }
 }
 
@@ -1097,8 +1083,13 @@ body {
         grid-template-columns: repeat(11, 1fr);
         grid-template-rows: repeat(10, 1fr);
 
+        &__1, &__2{
+            z-index: 1;
+        }
+
         &__0 {
             @include card-text;
+            @include c.shadow;
             grid-column: 4/9;
             grid-row: 4/9;
             z-index: 10;
@@ -1113,8 +1104,8 @@ body {
             margin: 0;
 
             .about-header-content {
+                // border: 2px solid $green-primary;
                 border-radius: $petal-radius;
-                border: 2px solid $green-primary;
                 width: calc($petal-size * 0.55);
                 height: calc($petal-size * 0.55);
                 position: relative;
@@ -1209,10 +1200,6 @@ body {
         &__3,
         &__4 {
             border-radius: $petal-radius;
-        }
-
-        &__1, &__2{
-            z-index: 1;
         }
 
         .about-content {
