@@ -125,7 +125,7 @@ body {
             // vertical share
             .share-button {
                 .share-socmed {
-                    top: -11rem;
+                    top: -8rem;
                     transform: translateX(10%);
                     width: 80%;
                     flex-direction: column;
@@ -139,7 +139,7 @@ body {
                 &:hover {
                     .share-socmed {
                         // transform: translateX(200%);
-                        top: -14rem;
+                        top: -11.5rem;
                     }
                 }
             }
@@ -1072,7 +1072,7 @@ body {
 @include gt-sm {
     $petal-size: 18rem;
     $petal-radius: calc($petal-size / 2);
-    $grid-height: 40rem;
+    $grid-height: 42rem;
 
     .about-container {
         padding: calc($l-top-padding + 2rem) $l-padding 8rem $l-padding;
@@ -1208,7 +1208,11 @@ body {
         &__2,
         &__3,
         &__4 {
-            border-radius: $petal-radius
+            border-radius: $petal-radius;
+        }
+
+        &__1, &__2{
+            z-index: 1;
         }
 
         .about-content {
@@ -1723,6 +1727,10 @@ body {
         min-height: 100vh;
     }
 
+    .CEO-header{
+        padding-bottom: 1rem;
+    }
+
     .CEO-title {
         @include non-card-text;
     }
@@ -1733,12 +1741,13 @@ body {
         position: fixed;
         width: 35%;
         margin: 0;
-
+        
         .CEO-header {
-            padding-bottom: 2rem;
+            padding-bottom: 1rem;
         }
-
+        
         &__content {
+            padding: 1.5rem;
             &--description {
                 border-radius: 0 0 $border-radius $border-radius;
                 height: fit-content;
@@ -1833,6 +1842,7 @@ body {
 
         .CEO-header {
             @include non-card-text-lg;
+                padding-bottom: 2rem;
         }
 
         &__picture {
@@ -2546,11 +2556,11 @@ $number-padding: 0.5rem 1rem;
         align-items: center;
         justify-content: center;
 
-        :nth-child(1) {
-            div {
-                margin-bottom: 1rem;
-            }
-        }
+        // :nth-child(1) {
+        //     div {
+        //         margin-bottom: 1rem;
+        //     }
+        // }
 
         // @include non-card-text-lg;
         &__flex {
