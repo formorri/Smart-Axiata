@@ -991,6 +991,7 @@ body {
     &__3,
     &__4 {
         @include c.hover;
+
         h2 {
             color: $white;
         }
@@ -1083,7 +1084,8 @@ body {
         grid-template-columns: repeat(11, 1fr);
         grid-template-rows: repeat(10, 1fr);
 
-        &__1, &__2{
+        &__1,
+        &__2 {
             z-index: 1;
         }
 
@@ -1714,7 +1716,7 @@ body {
         min-height: 100vh;
     }
 
-    .CEO-header{
+    .CEO-header {
         padding-bottom: 1rem;
     }
 
@@ -1728,13 +1730,14 @@ body {
         position: fixed;
         width: 35%;
         margin: 0;
-        
+
         .CEO-header {
             padding-bottom: 1rem;
         }
-        
+
         &__content {
             padding: 1.5rem;
+
             &--description {
                 border-radius: 0 0 $border-radius $border-radius;
                 height: fit-content;
@@ -1829,7 +1832,7 @@ body {
 
         .CEO-header {
             @include non-card-text-lg;
-                padding-bottom: 2rem;
+            padding-bottom: 2rem;
         }
 
         &__picture {
@@ -2005,6 +2008,9 @@ body {
 .beyond-focus-1 {
     background-color: $pink-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2013,6 +2019,9 @@ body {
 .beyond-focus-2 {
     background-color: $green-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2021,6 +2030,9 @@ body {
 .beyond-focus-3 {
     background-color: $purple-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2029,6 +2041,9 @@ body {
 .nurturing-focus-1 {
     background-color: $yellow-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $dark-text;
     }
@@ -2037,6 +2052,9 @@ body {
 .nurturing-focus-2 {
     background-color: $green-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2045,6 +2063,9 @@ body {
 .nurturing-focus-3 {
     background-color: $purple-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2053,6 +2074,9 @@ body {
 .process-focus-1 {
     background-color: $yellow-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $dark-text;
     }
@@ -2061,6 +2085,9 @@ body {
 .process-focus-2 {
     background-color: $green-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2069,6 +2096,9 @@ body {
 .process-focus-3 {
     background-color: $purple-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2077,6 +2107,9 @@ body {
 .process-focus-4 {
     background-color: $pink-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2085,6 +2118,9 @@ body {
 .planet-focus-1 {
     background-color: $green-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2093,6 +2129,9 @@ body {
 .planet-focus-2 {
     background-color: $pink-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2101,6 +2140,9 @@ body {
 .planet-focus-3 {
     background-color: $purple-primary;
 
+    h1,
+    h2,
+    h3,
     h4 {
         color: $white;
     }
@@ -2114,6 +2156,10 @@ body {
 
 .beyond-background-secondary {
     background-color: $yellow-tertiary;
+}
+
+.beyond-background-tertiary {
+    background-color: $purple-secondary;
 }
 
 .nurturing-background-primary {
@@ -2326,43 +2372,12 @@ $number-padding: 0.5rem 1rem;
     }
 }
 
-.sustainable-arrows {
-    color: $dark-text;
-
-    &:hover {
-        color: $dark-text;
-    }
-}
-
-.sustainable-dotnav {
-    $dotnav-size: 14px;
-    margin: 0 !important;
-
-    li {
-        a {
-            border: 1px solid $dark-text;
-            width: $dotnav-size;
-            height: $dotnav-size;
-        }
-    }
-
-    .uk-active {
-        * {
-            background-color: $green-primary;
-        }
-    }
-}
-
 .sustainable-items {
-    @include c.cards-no-shadow;
     margin-top: 3rem;
-
-    &__carousel-correction {
-        margin-left: -14px;
-    }
 
     &__header {
         @include non-card-text;
+        margin: 1rem;
         padding: $title-padding;
         width: fit-content;
 
@@ -2372,32 +2387,21 @@ $number-padding: 0.5rem 1rem;
         }
     }
 
-    &__number {
-        @include c.clip-path;
-        @include non-card-text;
-        position: relative;
-        padding: $number-padding;
-
-        h4 {
-            margin: 0;
-            color: white;
-        }
-    }
-
-    &__cards {
-        @include c.cards-no-shadow;
-        @include card-text;
-        // @include c.hover;
-        border-radius: 0 0 $border-radius $border-radius;
-        position: relative;
-        margin-bottom: 2rem;
-
-        h1 {
-            margin: 0;
-        }
+    .download {
+        margin: 1rem;
     }
 }
 
+@include md {
+    .sustainable-title {
+        .sustainable-header {
+            &__image {
+                margin-top: 0;
+            }
+        }
+    }
+
+}
 
 
 @include gt-sm {
@@ -2454,23 +2458,10 @@ $number-padding: 0.5rem 1rem;
     }
 
     .sustainable-items {
-        // @include non-card-text-lg;
-        padding: calc($l-padding - 1rem);
+        // padding: calc($l-padding - 1rem);
 
         &__header {
-            // @include non-card-text-lg;
-            padding: $title-padding;
-        }
-
-        &__number {
-            // @include non-card-text-lg;
-            padding: $number-padding;
-            height: auto;
-        }
-
-        &__cards {
-            // @include card-text-lg;
-            padding: calc($l-padding - 1rem);
+            // padding: $title-padding;
         }
     }
 
@@ -2509,10 +2500,85 @@ $number-padding: 0.5rem 1rem;
         }
     }
 
+    .sustainable-arrows {
+        color: $dark-text;
+
+        &:hover {
+            color: $dark-text;
+        }
+    }
+
+    .sustainable-dotnav {
+        $dotnav-size: 14px;
+        margin: 0 !important;
+
+        li {
+            a {
+                border: 1px solid $dark-text;
+                width: $dotnav-size;
+                height: $dotnav-size;
+            }
+        }
+
+        .uk-active {
+            * {
+                background-color: $green-primary;
+            }
+        }
+    }
+
+
 
     .sustainable-items {
+        @include c.cards-no-shadow;
+        margin-top: 0rem;
+        padding: 2rem;
+        width: 100%;
+
+        &__carousel-correction {
+            margin-left: -14px;
+            margin-bottom: -1rem;
+        }
+
+        &__header {
+            @include non-card-text;
+            padding: $title-padding;
+            width: fit-content;
+
+            h1 {
+                margin: 0;
+                text-transform: uppercase;
+            }
+        }
+
+        &__number {
+            @include c.clip-path;
+            @include non-card-text;
+            position: relative;
+            padding: $number-padding;
+
+            h4 {
+                margin: 0;
+                color: white;
+            }
+        }
+
         &__cards {
+            @include c.cards-no-shadow;
+            @include card-text;
+            // @include c.hover;
+            border-radius: 0 0 $border-radius $border-radius;
+            position: relative;
+            margin-bottom: 2rem;
             padding: 2rem;
+
+            h1 {
+                margin: 0;
+            }
+        }
+
+        .download{
+            margin-top: 3rem;
         }
     }
 
@@ -2579,6 +2645,149 @@ $number-padding: 0.5rem 1rem;
     }
 
 }
+
+
+// @include gt-lg {
+//     .sustainable-title {
+//         .sustainable-header {
+//             top: 25%;
+//             left: 1rem;
+//             width: 45vw;
+
+//             &__title {
+//                 h1 {
+//                     right: 0rem;
+//                 }
+//             }
+
+//             &__image {
+//                 position: relative;
+//             }
+//         }
+
+//     }
+
+//     .sustainable-content {
+//         padding: 0 6rem;
+//         display: flex;
+//         height: auto;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: center;
+
+//         &__flex {
+//             display: flex;
+//             column-gap: 1rem;
+//             -webkit-column-gap: 1rem;
+//         }
+
+//         &__card {
+//             padding: 2.5rem;
+
+//             img {
+//                 height: 4rem;
+//                 padding-right: 0.5rem;
+//             }
+//         }
+//     }
+
+
+//     /////
+//     .sustainable-arrows {
+//         color: $dark-text;
+
+//         &:hover {
+//             color: $dark-text;
+//         }
+//     }
+
+//     .sustainable-dotnav {
+//         $dotnav-size: 14px;
+//         margin: 0 !important;
+
+//         li {
+//             a {
+//                 border: 1px solid $dark-text;
+//                 width: $dotnav-size;
+//                 height: $dotnav-size;
+//             }
+//         }
+
+//         .uk-active {
+//             * {
+//                 background-color: $green-primary;
+//             }
+//         }
+//     }
+
+//     .sustainable-items {
+//         @include c.cards-no-shadow;
+//         margin-top: 0rem;
+//         padding: 2rem;
+
+//         &__carousel-correction {
+//             margin-left: -14px;
+//             margin-bottom: -1rem;
+//         }
+
+//         &__header {
+//             @include non-card-text;
+//             padding: $title-padding;
+//             width: fit-content;
+
+//             h1 {
+//                 margin: 0;
+//                 text-transform: uppercase;
+//             }
+//         }
+
+//         &__number {
+//             @include c.clip-path;
+//             @include non-card-text;
+//             position: relative;
+//             padding: $number-padding;
+
+//             h4 {
+//                 margin: 0;
+//                 color: white;
+//             }
+//         }
+
+//         &__cards {
+//             @include c.cards-no-shadow;
+//             @include card-text;
+//             // @include c.hover;
+//             border-radius: 0 0 $border-radius $border-radius;
+//             position: relative;
+//             margin-bottom: 2rem;
+
+//             h1 {
+//                 margin: 0;
+//             }
+//         }
+//     }
+
+// }
+
+// @include gt-xl {
+
+//     .sustainable-container {
+//         position: relative;
+//         margin: 0;
+//         height: 100vh;
+//     }
+
+//     .sustainable-title {
+//         .sustainable-header {
+//             top: 25%;
+//             left: 5%;
+//             // width: 45vw;
+//         }
+
+//     }
+
+
+// }
 
 
 // !------------------------------Humanitarian---------------------------------------------

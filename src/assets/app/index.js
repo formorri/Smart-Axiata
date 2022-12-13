@@ -1,5 +1,5 @@
 // disappearing navbar when viewport < 960px
-$(window).on('resize',() => {
+$(window).on('resize', () => {
     var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     var header = $(".navbar-top");
     var lastScroll = 0;
@@ -12,9 +12,22 @@ $(window).on('resize',() => {
                 header.removeClass("scrolled");
             }
             lastScroll = currentScroll;
-        } 
+        }
     });
 }).resize();
+
+// animate gif on scroll
+$(window).scroll(function () {
+    var current = $(this).scrollTop(),
+        path = 'assets/video/beyond-short-term-chart.gif',
+        visible = $('.scroll-gif').css('opacity') != 0;
+
+    if (current > 0) {
+        if (!visible) $('.scroll-gif').attr('src', path).fadeTo(400, 1);
+    }
+    else if (visible) $('.scroll-gif').fadeTo(0, 0);
+});
+
 
 let tl1 = gsap.timeline()
 tl1.from("#reveal", { delay: .5, duration: 2, width: 0, ease: "easeInOut" })
