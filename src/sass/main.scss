@@ -45,13 +45,16 @@ body {
     // controls width of shiny
     $shiny-width: 30px;
 
+    // Safari workaround using lobotomized owl selector
+    &__container > * + * { margin-left: $space-between}
     &__container {
         padding: 0 0 $bottom-padding 0;
-        column-gap: $space-between;
-        -webkit-column-gap: $space-between;
-        -moz-column-gap: $space-between;
-        gap: $space-between;
-
+        // column-gap: $space-between;
+        // -webkit-column-gap: $space-between;
+        // -moz-column-gap: $space-between;
+        // column-gap: $space-between;
+        // gap: $space-between;
+        
         &--icons {
             width: $btn-size;
             height: $btn-size;
@@ -2045,7 +2048,7 @@ body {
     h2,
     h3,
     h4 {
-        color: $dark-text;
+        color: $white;
     }
 }
 
@@ -2078,7 +2081,7 @@ body {
     h2,
     h3,
     h4 {
-        color: $dark-text;
+        color: $white;
     }
 }
 
@@ -2374,6 +2377,7 @@ $number-padding: 0.5rem 1rem;
 
 .sustainable-items {
     margin-top: 3rem;
+    border-radius: $border-radius;
 
     &__header {
         @include non-card-text;
@@ -2486,102 +2490,6 @@ $number-padding: 0.5rem 1rem;
         }
 
     }
-
-    .sustainable-content {
-        padding: 10rem 3rem;
-
-        &__card {
-            padding: 2.5rem;
-
-            img {
-                height: 5rem;
-                padding-right: 1rem;
-            }
-        }
-    }
-
-    .sustainable-arrows {
-        color: $dark-text;
-
-        &:hover {
-            color: $dark-text;
-        }
-    }
-
-    .sustainable-dotnav {
-        $dotnav-size: 14px;
-        margin: 0 !important;
-
-        li {
-            a {
-                border: 1px solid $dark-text;
-                width: $dotnav-size;
-                height: $dotnav-size;
-            }
-        }
-
-        .uk-active {
-            * {
-                background-color: $green-primary;
-            }
-        }
-    }
-
-
-
-    .sustainable-items {
-        @include c.cards-no-shadow;
-        margin-top: 0rem;
-        padding: 2rem;
-        width: 100%;
-
-        &__carousel-correction {
-            margin-left: -14px;
-            margin-bottom: -1rem;
-        }
-
-        &__header {
-            @include non-card-text;
-            padding: $title-padding;
-            width: fit-content;
-
-            h1 {
-                margin: 0;
-                text-transform: uppercase;
-            }
-        }
-
-        &__number {
-            @include c.clip-path;
-            @include non-card-text;
-            position: relative;
-            padding: $number-padding;
-
-            h4 {
-                margin: 0;
-                color: white;
-            }
-        }
-
-        &__cards {
-            @include c.cards-no-shadow;
-            @include card-text;
-            // @include c.hover;
-            border-radius: 0 0 $border-radius $border-radius;
-            position: relative;
-            margin-bottom: 2rem;
-            padding: 2rem;
-
-            h1 {
-                margin: 0;
-            }
-        }
-
-        .download{
-            margin-top: 3rem;
-        }
-    }
-
 }
 
 @include gt-xl {
@@ -2598,196 +2506,19 @@ $number-padding: 0.5rem 1rem;
             left: 5%;
             // width: 45vw;
         }
-
     }
 
-    .sustainable-content {
-        padding: 0 6rem;
-        display: flex;
-        height: auto;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        // :nth-child(1) {
-        //     div {
-        //         margin-bottom: 1rem;
-        //     }
-        // }
-
-        // @include non-card-text-lg;
-        &__flex {
+    .sustainable-items{
+        &__chart{
             display: flex;
-            column-gap: 1rem;
-            -webkit-column-gap: 1rem;
-        }
+            align-items: flex-end;
+            justify-content: flex-end;
+            flex-wrap: wrap;
 
-        &__card {
-            // @include card-text-lg;
-            padding: 2rem;
-
-            img {
-                height: 4rem;
-                padding-right: 0.5rem;
-            }
         }
     }
-
-
-    .sustainable-items {
-        // @include card-text-lg;
-        margin-top: 0rem;
-        padding: 2rem;
-
-        &__carousel-correction {
-            margin-bottom: -1rem;
-        }
-    }
-
 }
 
-
-// @include gt-lg {
-//     .sustainable-title {
-//         .sustainable-header {
-//             top: 25%;
-//             left: 1rem;
-//             width: 45vw;
-
-//             &__title {
-//                 h1 {
-//                     right: 0rem;
-//                 }
-//             }
-
-//             &__image {
-//                 position: relative;
-//             }
-//         }
-
-//     }
-
-//     .sustainable-content {
-//         padding: 0 6rem;
-//         display: flex;
-//         height: auto;
-//         flex-direction: column;
-//         align-items: center;
-//         justify-content: center;
-
-//         &__flex {
-//             display: flex;
-//             column-gap: 1rem;
-//             -webkit-column-gap: 1rem;
-//         }
-
-//         &__card {
-//             padding: 2.5rem;
-
-//             img {
-//                 height: 4rem;
-//                 padding-right: 0.5rem;
-//             }
-//         }
-//     }
-
-
-//     /////
-//     .sustainable-arrows {
-//         color: $dark-text;
-
-//         &:hover {
-//             color: $dark-text;
-//         }
-//     }
-
-//     .sustainable-dotnav {
-//         $dotnav-size: 14px;
-//         margin: 0 !important;
-
-//         li {
-//             a {
-//                 border: 1px solid $dark-text;
-//                 width: $dotnav-size;
-//                 height: $dotnav-size;
-//             }
-//         }
-
-//         .uk-active {
-//             * {
-//                 background-color: $green-primary;
-//             }
-//         }
-//     }
-
-//     .sustainable-items {
-//         @include c.cards-no-shadow;
-//         margin-top: 0rem;
-//         padding: 2rem;
-
-//         &__carousel-correction {
-//             margin-left: -14px;
-//             margin-bottom: -1rem;
-//         }
-
-//         &__header {
-//             @include non-card-text;
-//             padding: $title-padding;
-//             width: fit-content;
-
-//             h1 {
-//                 margin: 0;
-//                 text-transform: uppercase;
-//             }
-//         }
-
-//         &__number {
-//             @include c.clip-path;
-//             @include non-card-text;
-//             position: relative;
-//             padding: $number-padding;
-
-//             h4 {
-//                 margin: 0;
-//                 color: white;
-//             }
-//         }
-
-//         &__cards {
-//             @include c.cards-no-shadow;
-//             @include card-text;
-//             // @include c.hover;
-//             border-radius: 0 0 $border-radius $border-radius;
-//             position: relative;
-//             margin-bottom: 2rem;
-
-//             h1 {
-//                 margin: 0;
-//             }
-//         }
-//     }
-
-// }
-
-// @include gt-xl {
-
-//     .sustainable-container {
-//         position: relative;
-//         margin: 0;
-//         height: 100vh;
-//     }
-
-//     .sustainable-title {
-//         .sustainable-header {
-//             top: 25%;
-//             left: 5%;
-//             // width: 45vw;
-//         }
-
-//     }
-
-
-// }
 
 
 // !------------------------------Humanitarian---------------------------------------------
