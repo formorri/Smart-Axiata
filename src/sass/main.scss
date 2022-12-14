@@ -12,12 +12,6 @@ $xl-padding: 10rem;
 $xl-top-padding: 12rem;
 $border-radius: 10px;
 
-html,
-body {
-    overflow-x: hidden;
-    height: auto;
-}
-
 .green-background {
     background-color: $green-primary;
 }
@@ -46,7 +40,10 @@ body {
     $shiny-width: 30px;
 
     // Safari workaround using lobotomized owl selector
-    &__container > * + * { margin-left: $space-between}
+    &__container>*+* {
+        margin-left: $space-between
+    }
+
     &__container {
         padding: 0 0 $bottom-padding 0;
         // column-gap: $space-between;
@@ -54,7 +51,7 @@ body {
         // -moz-column-gap: $space-between;
         // column-gap: $space-between;
         // gap: $space-between;
-        
+
         &--icons {
             width: $btn-size;
             height: $btn-size;
@@ -232,6 +229,12 @@ body {
 
 }
 
+.video-sizing {
+    max-height: 90vh;
+    width: auto;
+}
+
+
 .relative-elements {
     position: relative;
     height: 100%;
@@ -372,13 +375,13 @@ body {
 
     &__card {
         h1 {
+            @include c.clip-path;
             padding: 0.5rem;
-            width: fit-content;
+            // width: fit-content;
             margin: 0;
         }
 
         &--inner {
-            @include c.clip-path;
             background-repeat: no-repeat;
             background-size: 85%;
             background-position: 100% 50%;
@@ -394,6 +397,7 @@ body {
                     display: flex;
                     flex-direction: column;
                     justify-content: end;
+                    -webkit-justify-content: flex-end;
 
                     a {
                         text-decoration: none;
@@ -1005,7 +1009,7 @@ body {
         background-color: $green-primary;
         border-radius: $border-radius $border-radius 0 0;
 
-        h2 {
+        h1 {
             padding: 0.6rem;
             color: $white;
         }
@@ -1109,7 +1113,6 @@ body {
             margin: 0;
 
             .about-header-content {
-                // border: 2px solid $green-primary;
                 border-radius: $petal-radius;
                 width: calc($petal-size * 0.55);
                 height: calc($petal-size * 0.55);
@@ -1119,10 +1122,10 @@ body {
                 vertical-align: middle;
                 align-items: center;
 
-                h2 {
+                h1 {
                     font-size: 110%;
-                    color: $green-primary;
                     line-height: 110%;
+                    color: $green-primary;
                     margin: 0;
                 }
             }
@@ -1175,6 +1178,10 @@ body {
             justify-content: center;
             padding: 0 4rem;
 
+        }
+
+        &__title{
+            margin: 0;
         }
 
     }
@@ -1234,7 +1241,7 @@ body {
 
     .about-container {
         padding: calc($l-top-padding + 2rem) $l-padding 4rem $l-padding;
-        height: 100vh;
+        height: auto;
         @include non-card-text-lg;
 
         .about-title {
@@ -1284,16 +1291,10 @@ body {
 
             .about-header-content {
                 border-radius: $petal-radius;
-                border: 3px solid $green-primary;
                 width: calc($petal-size * 0.5);
                 height: calc($petal-size * 0.5);
-
-                h2 {
-                    font-size: 130%;
-                    line-height: 130%;
-                    margin: 0;
-                }
             }
+
 
         }
 
@@ -1315,6 +1316,12 @@ body {
         &__3,
         &__4 {
             grid-row: 5/-1;
+        }
+
+        &__2{
+            :nth-child(2){
+                width: 80%;
+            }
         }
 
 
@@ -1394,11 +1401,10 @@ body {
 
             .about-header-content {
                 border-radius: $petal-radius;
-                border: 3px solid $green-primary;
                 width: calc($petal-size * 0.5);
                 height: calc($petal-size * 0.5);
 
-                h2 {
+                h1 {
                     font-size: 140%;
                     line-height: 140%;
                     margin: 0;
@@ -2497,7 +2503,8 @@ $number-padding: 0.5rem 1rem;
     .sustainable-container {
         position: relative;
         margin: 0;
-        height: 100vh;
+        height: auto;
+        min-height: 100vh;
     }
 
     .sustainable-title {
@@ -2508,8 +2515,8 @@ $number-padding: 0.5rem 1rem;
         }
     }
 
-    .sustainable-items{
-        &__chart{
+    .sustainable-items {
+        &__chart {
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
