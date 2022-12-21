@@ -56,14 +56,17 @@ $edge-cut: 30px;
     bottom: 0;
     z-index: 10;
     width: 100vw;
+    pointer-events: none;
 
     &__container {
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-
+        pointer-events: none;
+        
         &--icons {
+            pointer-events: auto;
             overflow: hidden;
             align-items: center;
             cursor: pointer;

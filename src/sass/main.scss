@@ -369,10 +369,25 @@ $border-radius: 10px;
     border-radius: $border-radius $border-radius 0 0;
 }
 
+.frontpage-slider-height {
+    display: flex;
+    flex-direction: column;
+
+    .navigation-card-CEO {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        img {
+            width: fit-content;
+        }
+    }
+}
+
 .navigation-card-CEO {
     z-index: 5;
     @include c.cards-with-picture;
     @include non-card-text;
+    filter: none;
     position: relative;
     background-color: $yellow-primary;
 
@@ -383,6 +398,7 @@ $border-radius: 10px;
     // title-text for normal headers, sustainable cards
     h1 {
         color: $dark-text;
+        margin-top: 0;
     }
 
     // normal paragraph text
@@ -726,11 +742,11 @@ $border-radius: 10px;
     }
 
     .global-container {
-        padding: 0 $xl-padding 0 $xl-padding;
+        padding: 0 1rem 4rem;
     }
 
     .absolute-elements {
-        padding: $s-top-padding 0 5rem 0;
+        padding: 8rem 0 5rem 0;
 
         &__gold-ribbon {
             svg {
@@ -748,6 +764,7 @@ $border-radius: 10px;
 
     .sticky-large {
         width: 37vw;
+        top: 1.5rem;
     }
 
     .relative-elements {
@@ -782,14 +799,9 @@ $border-radius: 10px;
         }
     }
 
-    // .sticky-large {
-    //     position: relative;
-    //     top: 2rem;
-    //     z-index: 5;
-    // }
-
     .relative-elements {
-        // height: 100%;
+        left: 2rem;
+        height: 100vh;
 
         &__artwork {
             // width: 35vw;
@@ -893,7 +905,7 @@ $border-radius: 10px;
             }
 
             &--inner {
-                background-size: 75%;
+                background-size: 85%;
                 background-position: 50% 50%;
 
                 .darken {
@@ -903,6 +915,26 @@ $border-radius: 10px;
                 }
             }
         }
+    }
+
+    .download-large{
+        @include c.shadow;
+        display: flex;
+        margin-top: 3rem;
+        .card-image{
+            border-radius: 10px 0 0 10px;
+            display: flex;
+            align-items: center;
+            img{
+                height: min-content;
+                width: auto;
+            }
+        }
+        .navigation-card-CEO{
+            margin: 0;
+            border-radius: 0 10px 10px 0;
+        }
+
     }
 
     // to overcome the margin important gap override for smaller sizes
