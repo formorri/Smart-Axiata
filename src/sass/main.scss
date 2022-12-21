@@ -207,14 +207,6 @@ $border-radius: 10px;
     position: relative;
     padding: 5rem 0 6rem 0;
 
-    &__gold-ribbon {
-        svg {
-            position: absolute;
-            z-index: 2;
-            width: 100vw;
-        }
-    }
-
     &__waves {
         background-color: $green-primary;
         position: absolute;
@@ -242,12 +234,14 @@ $border-radius: 10px;
     align-items: center;
 
     &__artwork {
+        @include c.shadow;
         position: relative;
         z-index: 2;
         // width: 100vw;
         margin-bottom: 1rem;
         // right: 0rem;
         top: 2rem;
+        border-radius: $border-radius;
     }
 
     .button-positioning {
@@ -409,12 +403,12 @@ $border-radius: 10px;
 .sustainable-pillars-container {
     @include non-card-text;
     @include c.cards;
+    @include c.glassmorphism;
     $pillar-height: 11rem;
     z-index: 5;
     padding: 25px;
     position: relative;
-    background-color: rgba(255, 255, 255, .15);
-    backdrop-filter: blur(10px);
+
 
     // section header and card title text
     h1 {
@@ -633,11 +627,15 @@ $border-radius: 10px;
 
     .sticky-large {
         position: fixed;
+        width: 50vw;
         top: 5rem;
         z-index: 5;
     }
 
+
+
     .relative-elements {
+        // width: inherit;
         position: relative;
         height: 80vh;
         display: flex;
@@ -647,7 +645,7 @@ $border-radius: 10px;
         // right: -2rem;
 
         &__artwork {
-            width: 42vw;
+            // width: 80%;
             max-height: 80vh;
             object-fit: contain;
             left: 0rem;
@@ -748,6 +746,10 @@ $border-radius: 10px;
         }
     }
 
+    .sticky-large {
+        width: 37vw;
+    }
+
     .relative-elements {
         height: 80vh;
         right: 5rem;
@@ -790,7 +792,7 @@ $border-radius: 10px;
         // height: 100%;
 
         &__artwork {
-            width: 35vw;
+            // width: 35vw;
         }
 
         .video-button {
@@ -964,7 +966,7 @@ $border-radius: 10px;
         padding: $padding-top-bottom 0 $padding-top-bottom 0;
         border-radius: $icon-size;
         border: $border-weight solid black;
-        margin:0 0 1rem;
+        margin: 0 0 1rem;
 
         h2 {
             display: flex;
@@ -1181,11 +1183,12 @@ $border-radius: 10px;
             height: $grid-height;
 
             $spacing-top: 1rem;
+
             .learn-more {
                 margin: 0;
-    
+
             }
-        
+
             .download {
                 margin: 0;
             }
@@ -2103,7 +2106,7 @@ $border-radius: 10px;
 
 .HOD-align {
     width: 100%;
-    margin-left: 0.5rem;
+    // margin-left: 0.5rem;
 }
 
 .HOD-arrows {
@@ -2155,14 +2158,16 @@ $border-radius: 10px;
         background-position: top;
         background-size: cover;
         background-repeat: no-repeat;
-        position: relative;
         border-radius: $border-radius $border-radius 0 0;
         width: auto;
         margin-top: 5%;
         min-height: 11rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        z-index: 0;
 
         img {
-            z-index: 6;
             margin-top: calc(-1 * ($card-overflow));
         }
     }
@@ -2583,7 +2588,7 @@ $number-padding: 0.5rem 1rem;
         align-items: center;
         justify-content: center;
         height: auto;
-        width: auto;
+        width: inherit;
         padding: 0 1rem;
 
 
@@ -2617,6 +2622,12 @@ $number-padding: 0.5rem 1rem;
         vertical-align: middle;
         align-items: center;
 
+        .relative-flex {
+            position: relative;
+            display: flex;
+            flex-grow: 1;
+        }
+
         img {
             height: 4rem;
             margin-right: 1.5rem;
@@ -2628,7 +2639,33 @@ $number-padding: 0.5rem 1rem;
         .h2-span,
         h4 {
             margin: 0;
+            transition: 0.6s ease-in-out;
         }
+
+        h2 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-grow: 1;
+            opacity: 1;
+        }
+
+        h4 {
+            position: relative;
+            opacity: 0;
+        }
+
+        &:hover {
+            h2 {
+                opacity: 0;
+            }
+
+            h4 {
+                opacity: 1;
+            }
+        }
+
     }
 }
 

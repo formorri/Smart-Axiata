@@ -38,7 +38,7 @@
     <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
 
     <!-- UIKIT CSS -->
-    <link rel="stylesheet" href="assets/UIKIT/uikit.min.css" />
+    <link rel="stylesheet"  href="assets/UIKIT/uikit.min.css" />
     <!-- Local CSS -->
     <link rel="stylesheet" href="css/main.css" />
     <title>Smart Axiata</title>
@@ -73,7 +73,7 @@
                     <img src="assets/images/frontpage-waves.svg" alt="wave-decoration">
                 </div>
             </div>
-            <div class="global-container uk-grid-collapse" uk-grid>
+            <div class="global-container" uk-grid>
                 <div class="uk-width-3-5@m uk-width-2-5@xl">
                     <div class="sticky-large">
                         <div class="relative-elements">
@@ -83,10 +83,11 @@
                                         <div class="uk-position-center play">
                                         </div>
                                         <svg viewBox="0 0 150 150">
-                                            <path id="curve" fill="transparent"
+                                            <path id="curve" fill="none"
                                                 d="M 75 75 m -50, 0 a 50, 50 0 1, 1 100, 0 a 50, 50 0 1, 1 -100, 0" />
                                             <text class="words">
-                                                <textPath xlink:href="#curve">
+                                                <textPath href="#curve" xlink:href="#curve">
+                                                    <!-- <tspan dy="0.3em">SUSTAINABILITY REVIEW 2021</tspan> -->
                                                     SUSTAINABILITY REVIEW 2021
                                                 </textPath>
                                             </text>
@@ -97,12 +98,12 @@
                             <!-- <img class="relative-elements__artwork" src="assets/images/frontpage-artwork.png"
                                 alt=""> -->
                             <!-- <img class="relative-elements__artwork" src="assets/images/Optimized-Smart.gif" alt=""> -->
-                            <video src="assets/video/sr2021.mp4" class="relative-elements__artwork" autoplay loop muted
+                            <video src="assets/video/sr2021.mp4" class="relative-elements__artwork" width="1024" height="576" autoplay loop muted
                                 playsinline></video>
                             <div id="year-in-review" class="uk-flex-top" uk-modal>
                                 <div class="uk-modal-dialog uk-width-auto uk-margin-auto-vertical">
                                     <button class="uk-modal-close-outside" type="button" uk-close></button>
-                                    <video src="assets/video/sr2021.mp4" class="video-sizing" controls playsinline
+                                    <video src="assets/video/sr2021.mp4" class="video-sizing" preload="none" width="1024" height="576" controls playsinline
                                         preload="none" uk-video></video>
                                 </div>
                             </div>
@@ -127,12 +128,12 @@
                                 uk-scrollspy="cls: uk-animation-scale-up uk-transform-origin-bottom;; repeat: true; delay:200">
                                 <div uk-slider>
                                     <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
-                                        <ul class="uk-slider-items uk-child-width-1-1">
+                                        <ul class="uk-slider-items uk-child-width-1-1" uk-height-match="target: li > .navigation-card-CEO">
                                             <li>
                                                 <div class="card-image card-CEO">
                                                     <img src="assets/images/about-CEO.png" alt="">
                                                 </div>
-                                                <div class="navigation-card-CEO">
+                                                <div class="navigation-card-CEO ">
                                                     <h1>Message from Our Acting CEO</h1>
                                                     <h2>Smart has redoubled our efforts to ensure Cambodians will not be
                                                         left

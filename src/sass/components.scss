@@ -216,7 +216,11 @@ $edge-cut: 30px;
     @include clip-path;
     margin: 0 0 1rem 0;
     padding: 2rem;
+}
 
+@mixin glassmorphism{
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px);
 }
 
 @mixin cards-no-shadow {
