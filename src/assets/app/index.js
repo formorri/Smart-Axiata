@@ -1,58 +1,47 @@
+gsap.registerPlugin(ScrollTrigger);
 
 // force reload when resize
 // $(window).on('resize', function () { location.reload(); });
 
 // disappearing navbar when viewport < 960px
 $(window).on('resize', () => {
-var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-var header = $(".navbar-top");
-var lastScroll = 0;
-$(window).scroll(() => {
-    var currentScroll = $(this).scrollTop()
-    if (vw < 960) {
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.addClass("scrolled");
-        } else {
-            header.removeClass("scrolled");
+    var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    var header = $(".navbar-top");
+    var lastScroll = 0;
+    $(window).scroll(() => {
+        var currentScroll = $(this).scrollTop()
+        if (vw < 960) {
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                header.addClass("scrolled");
+            } else {
+                header.removeClass("scrolled");
+            }
+            lastScroll = currentScroll;
         }
-        lastScroll = currentScroll;
-    }
-});
+    });
 }).resize();
 
-// animate gif on scroll
-function gifReload(gif, path, visible) {
-    var current = $(this).scrollTop();
-    if (current > 0) {
-        if (!visible) gif.attr('src', path).fadeTo(400, 1);
-    }
-    else if (visible) gif.fadeTo(0, 0);
-}
+// scrolltrigger to re-render gif when in viewport
+let el = $(".gif");
+gsap.set(el, {opacity: 0});
 
-$(window).on('scroll resize load', () => {
-    // Beyond chart gif
+ScrollTrigger.create(
     {
-        var gif = $('.scroll-gif1'),
-            path = 'assets/images/beyond.gif',
-            visible = gif.css('opacity') != 0;
-        gifReload(gif, path, visible);
-    };
-    // Nurturing chart gif
-    {
-        var gif = $('.scroll-gif2'),
-            path = 'assets/images/nurturing.gif',
-            visible = gif.css('opacity') != 0;
-        gifReload(gif, path, visible);
-    };
-    // Planet chart gif
-    {
-        var gif = $('.scroll-gif3'),
-            path = 'assets/images/planet.gif',
-            visible = gif.css('opacity') != 0;
-        gifReload(gif, path, visible);
+        start: "top center",
+        // markers: true,
+        trigger: el,
+        onEnter: () => {
+            $('.scroll-gif1').attr('src', 'assets/images/beyond.gif').fadeTo(400, 1);
+            $('.scroll-gif2').attr('src', 'assets/images/nurturing.gif').fadeTo(400, 1);
+            $('.scroll-gif3').attr('src', 'assets/images/planet.gif').fadeTo(400, 1);
+        },
+        onLeaveBack: () => {
+            $('.scroll-gif1').fadeTo(400, 0);
+            $('.scroll-gif2').fadeTo(400, 0);
+            $('.scroll-gif3').fadeTo(400, 0);
+        }
     }
-});
-
+)
 
 let tl1 = gsap.timeline()
 // tl1.from("#reveal", { delay: .5, duration: 2, width: 0, ease: "easeInOut" })
