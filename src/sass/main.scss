@@ -205,14 +205,15 @@ $border-radius: 10px;
 
 .absolute-elements {
     position: relative;
-    padding: 5rem 0 6rem 0;
+    padding: 7rem 0 6rem 0;
 
     &__waves {
         background-color: $green-primary;
         position: absolute;
         z-index: 1;
         width: 100vw;
-        top: 23vh;
+        height: inherit;
+        // top: 23vh;
 
         img {
             width: 100vw;
@@ -229,19 +230,16 @@ $border-radius: 10px;
 
 .relative-elements {
     position: relative;
-    height: 100%;
-    width: 100%;
-    align-items: center;
 
     &__artwork {
         @include c.shadow;
         position: relative;
         z-index: 2;
-        // width: 100vw;
         margin-bottom: 1rem;
-        // right: 0rem;
         top: 2rem;
         border-radius: $border-radius;
+        border: 10px solid $white;
+        width: 100%;
     }
 
     .button-positioning {
@@ -274,12 +272,193 @@ $border-radius: 10px;
 
 }
 
+.sustainable-pillars-container {
+    @include card-text;
+    margin: 1rem 0 2rem;
+    position: relative;
+    padding-top: 2rem;
+    z-index: 2;
+
+    a {
+        text-decoration: none;
+    }
+
+    .frontpage-arrows {
+        color: $dark-text;
+    }
+
+    .frontpage-dotnav {
+        padding: 1rem 0;
+    }
+
+    &__card {
+        position: relative;
+        padding: 2rem 0 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        border-radius: $border-radius;
+        justify-content: center;
+
+
+        .sustainable-button {
+            @include non-card-text;
+            @include c.button;
+        }
+
+        &:hover {
+            .sustainable-button {
+                @include c.hover-button;
+            }
+        }
+
+        h1 {
+            margin-bottom: -5rem;
+            @include c.shadow;
+            position: absolute;
+            background-color: $white;
+            font-weight: normal;
+            padding: 0.5rem;
+            width: max-content;
+            margin: 0;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        img {
+            margin-left: 0.5rem;
+            margin-top: -2rem;
+            max-height: 450px;
+        }
+
+        .sustainable-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        &--content {
+            @include card-text;
+            display: flex;
+            justify-content: center;
+            column-gap: 1rem;
+            width: 100%;
+            margin-top: -4rem;
+
+            .sustainable-bubbles {
+                border-radius: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                vertical-align: middle;
+                padding: 0.5rem;
+                text-align: center;
+                z-index: 3;
+
+                h1,
+                h2,
+                h3,
+                h4 {
+                    margin: 0;
+                }
+            }
+
+            .sustainable-bubbles:nth-child(2) {
+                $bubble-size: 9.5rem;
+                width: $bubble-size;
+                height: $bubble-size;
+                margin-top: 1rem;
+            }
+
+            .sustainable-bubbles:nth-child(1) {
+                $bubble-size: 12rem;
+                width: $bubble-size;
+                height: $bubble-size;
+                margin-top: -1rem;
+            }
+        }
+    }
+
+    .card-1 {
+        background-color: $yellow-secondary;
+
+        h1 {
+            color: $yellow-primary;
+        }
+
+        .sustainable-bubbles {
+            // @include c.shadow;
+            background-color: $yellow-tertiary;
+            border: 3px solid $yellow-text;
+
+            .h1-span {
+                color: $yellow-text;
+            }
+        }
+    }
+
+    .card-2 {
+        background-color: $pink-secondary;
+
+        h1 {
+            color: $pink-primary;
+        }
+
+        .sustainable-bubbles {
+            // @include c.shadow;
+            background-color: $pink-tertiary;
+            border: 3px solid $pink-primary;
+
+            .h1-span {
+                color: $pink-primary;
+            }
+        }
+    }
+
+    .card-3 {
+        background-color: $purple-secondary;
+
+        h1 {
+            color: $purple-primary;
+        }
+
+        .sustainable-bubbles {
+            background-color: $purple-tertiary;
+            border: 3px solid $purple-primary;
+
+            .h1-span,
+            .h2-span {
+                color: $purple-primary;
+            }
+        }
+    }
+
+    .card-4 {
+        background-color: $mint-tertiary;
+
+        h1 {
+            color: $mint-primary;
+        }
+
+        .sustainable-bubbles {
+            background-color: $mint-secondary;
+            border: 3px solid $mint-primary;
+
+            .h1-span,
+            .h2-span,
+            .h3-span {
+                color: $mint-primary;
+            }
+        }
+    }
+}
+
 // to overcome uk-grid's margin spillover
 .navigation-container {
-    width: 100%;
     height: auto;
     position: relative;
-    padding: 2rem 0 0;
+    padding: 0.5rem 0 0;
     margin: 0;
     z-index: 2;
 }
@@ -289,7 +468,7 @@ $border-radius: 10px;
     @include non-card-text;
     position: relative;
     z-index: 5;
-    background-color: $yellow-primary;
+    background-color: $mint-tertiary;
 
     // title-text for normal headers, sustainable cards
     h1 {
@@ -303,6 +482,14 @@ $border-radius: 10px;
 
     a {
         text-decoration: none;
+
+        h3 {
+            @include c.button;
+
+            &:hover {
+                @include c.hover-button
+            }
+        }
     }
 
     // link text, i.e the text that says "more"
@@ -323,17 +510,18 @@ $border-radius: 10px;
 }
 
 .frontpage-arrows {
-    color: $white;
+    color: $dark-text;
 
     // margin-right: 1rem;
     &:hover {
-        color: $white;
+        color: $dark-text;
     }
 }
 
 .frontpage-dotnav {
     $dotnav-size: 14px;
     margin: 0 !important;
+    padding: 0.5rem 0 2rem;
 
     li {
         a {
@@ -353,6 +541,26 @@ $border-radius: 10px;
 
 .card-download {
     background-image: url(../assets/images/download-background.png);
+    border-radius: $border-radius;
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+    @include non-card-text;
+
+    a {
+        text-decoration: none;
+
+        h3 {
+            @include c.button;
+
+            &:hover {
+                @include c.hover-button;
+            }
+        }
+
+    }
 }
 
 .card-CEO {
@@ -367,6 +575,10 @@ $border-radius: 10px;
     z-index: 5;
     position: relative;
     border-radius: $border-radius $border-radius 0 0;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .frontpage-slider-height {
@@ -377,6 +589,7 @@ $border-radius: 10px;
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+
         img {
             width: fit-content;
         }
@@ -389,7 +602,7 @@ $border-radius: 10px;
     @include non-card-text;
     filter: none;
     position: relative;
-    background-color: $yellow-primary;
+    background-color: $mint-tertiary;
 
     a {
         text-decoration: none;
@@ -407,539 +620,289 @@ $border-radius: 10px;
     }
 
     // link text, i.e the text that says "more"
-    h3 {
-        color: $pink-text;
+    a {
+        margin-top: 1.5rem;
+        width: max-content;
 
-        &:hover {
-            color: $green-primary;
-        }
-    }
-}
+        h3 {
+            @include c.button;
 
-.sustainable-pillars-container {
-    @include non-card-text;
-    @include c.cards;
-    @include c.glassmorphism;
-    $pillar-height: 11rem;
-    z-index: 5;
-    padding: 25px;
-    position: relative;
-
-
-    // section header and card title text
-    h1 {
-        color: $white;
-    }
-
-    &__card {
-        h1 {
-            @include c.clip-path;
-            padding: 0.5rem;
-            // width: fit-content;
-            margin: 0;
-        }
-
-        &--inner {
-            background-repeat: no-repeat;
-            background-size: 85%;
-            background-position: 100% 50%;
-            position: relative;
-
-            .darken {
-                background-repeat: no-repeat;
-                background: rgba(0, 0, 0, 0.2);
-                padding: 1.5rem;
-
-                &__flex {
-                    height: $pillar-height;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: end;
-                    -webkit-justify-content: flex-end;
-
-                    a {
-                        text-decoration: none;
-
-                        h3 {
-                            padding: 0;
-                            color: $white;
-                            transition: .6s ease-in-out;
-                        }
-                    }
-                }
-
-                &:hover {
-                    background: rgba(0, 0, 0, 0);
-
-                    h3 {
-                        color: $green-primary;
-                    }
-                }
-            }
-        }
-    }
-
-
-    .card-1 {
-        h1 {
-            color: $dark-text;
-            background-color: $yellow-primary;
-        }
-
-        &__inner {
-            background-image: url(../assets/images/beyond-header.png);
-            background-color: $yellow-secondary;
-        }
-    }
-
-    .card-2 {
-        h1 {
-            color: $white;
-            background-color: $pink-primary;
-        }
-
-        &__inner {
-            background-image: url(../assets/images/nurturing-header.png);
-            background-color: $pink-secondary;
-        }
-    }
-
-    .card-3 {
-        h1 {
-            color: $white;
-            background-color: $purple-primary;
-        }
-
-        &__inner {
-            background-image: url(../assets/images/process-header.png);
-            background-color: $purple-secondary;
-        }
-    }
-
-    .card-4 {
-        h1 {
-            color: $dark-text;
-            background-color: $mint-primary;
-        }
-
-        &__inner {
-            background-image: url(../assets/images/planet-header.png);
-            background-color: $mint-secondary;
-        }
-    }
-
-}
-
-
-// phone sizes
-@include gt-xs {
-    .relative-elements {
-        &__artwork {
-            width: 100vw;
-            // margin: 0;
-            // right: 1.5rem;
-            top: 0rem;
-            margin-bottom: -1rem;
-        }
-
-        .button-positioning {
-            top: 2rem;
-            right: 3rem;
-            z-index: 5;
-        }
-
-        .video-button {
-            $button-size: 7rem;
-            border: 5px solid $white;
-            border-radius: $button-size ;
-            width: $button-size;
-
-            svg {
-                width: $button-size;
-            }
-
-            .play::before {
-                font-size: 1.5rem;
-            }
-
-            .words {
-                font-size: 1.3rem;
+            &:hover {
+                @include c.hover-button;
             }
         }
 
     }
 }
 
-// larger than phone sizes, i.e. ipads onward
 @include gt-sm {
+    .green-background {
+        height: auto;
+    }
+
     .global-container {
-        padding: 0 $l-padding 0 $l-padding;
-    }
-
-    .navbar-bottom {
-        @include c.navbar-bottom;
-        // controls size of button
-        $btn-size: 5rem;
-        // controls bottom padding
-        $bottom-padding: 1rem;
-        // container left right padding
-        $left-right-padding: 3.5rem;
-        // controls spacing between buttons
-        $space-between: 3rem;
-        // controls size of icons
-        $icon-size: 1.8rem;
-        // controls width of shiny
-        $shiny-width: 30px;
-
-        &__container {
-            padding: 0 $left-right-padding $bottom-padding $left-right-padding;
-            column-gap: $space-between;
-            -webkit-column-gap: $space-between;
-            -moz-column-gap: $space-between;
-            gap: $space-between;
-
-            &--icons {
-                width: $btn-size;
-                height: $btn-size;
-
-                .icon-container {
-                    height: $btn-size - 0.5rem;
-
-                    img {
-                        height: $icon-size;
-                    }
-                }
-
-                .shiny {
-                    width: $shiny-width;
-                    height: 2 * $btn-size;
-                    // controls where shiny is before hover
-                    transform: skew(-20deg) translate(-$btn-size, -$btn-size);
-                }
-
-                &:hover {
-                    .shiny {
-                        // controls where shiny is before hover
-                        transform: skew(-20deg) translate($btn-size, -$btn-size);
-                    }
-                }
-            }
-        }
-    }
-
-    .absolute-elements {
-        &__gold-ribbon {
-            position: fixed;
-            width: 100%;
-            top: -2rem;
-
-            svg {
-                top: -2rem;
-                height: 50rem;
-                width: 60vw;
-            }
-        }
-    }
-
-    .sticky-large {
-        position: fixed;
-        width: 50vw;
-        top: 5rem;
-        z-index: 5;
-    }
-
-
-
-    .relative-elements {
-        // width: inherit;
-        position: relative;
-        height: 80vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        // right: -2rem;
-
-        &__artwork {
-            // width: 80%;
-            max-height: 80vh;
-            object-fit: contain;
-            left: 0rem;
-            top: 0rem;
-        }
-
-        a {
-            position: relative;
-            width: inherit;
-
-            .button-positioning {
-                top: -1rem;
-                right: 0rem;
-            }
-        }
-
-        .video-button {
-            @include c.video-button;
-            $button-size: 7rem;
-            border: 5px solid $white;
-            border-radius: $button-size ;
-            width: $button-size;
-
-            svg {
-                width: $button-size;
-            }
-
-            .play::before {
-                font-size: 1.5rem;
-            }
-
-            .words {
-                font-size: 1.3rem;
-            }
-
-            @keyframes words {
-
-                //
-                from {
-                    transform: rotateZ(0deg);
-                }
-
-                to {
-                    transform: rotateZ(360deg);
-                }
-            }
-        }
+        padding: 0 2rem 0 2rem;
+        height: auto;
     }
 
     .sustainable-pillars-container {
-        $pillar-height: 12rem;
-        padding: 25px;
+        @include card-text;
+        margin: 1rem 0 2rem;
+        position: relative;
+        padding-top: 2rem;
+
+        .sustainable-button {
+            height: fit-content;
+        }
+
 
         &__card {
+            position: relative;
+            padding: 2rem 0 1rem 0;
+            display: flex;
+            flex-wrap: nowrap;
+            border-radius: $border-radius;
+            justify-content: center;
+            padding: 2rem 0 0 0;
+
+
             h1 {
-                padding: 0.5rem;
+                left: 1rem;
+                font-weight: normal;
             }
 
-            &--inner {
-                background-size: 85%;
-                background-position: 50% 50%;
+            img {
+                margin-left: 0;
+                margin-top: -2rem;
+                max-height: 350px;
+            }
 
-                .darken {
-                    &__flex {
-                        height: $pillar-height;
+            .sustainable-flex {
+                display: flex;
+                flex-direction: column;
+                // justify-content: space-around;
+            }
+
+            &--content {
+                @include card-text;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                column-gap: 1rem;
+                margin-top: 0;
+                width: auto;
+                height: fit-content;
+
+
+                .sustainable-bubbles {
+                    border-radius: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                    vertical-align: middle;
+                    padding: 0.5rem;
+                    text-align: center;
+                    z-index: 3;
+
+                    h1,
+                    h2,
+                    h3,
+                    h4 {
+                        margin: 0;
                     }
                 }
+
+                .sustainable-bubbles:nth-child(1) {
+                    $bubble-size: 14rem;
+                    width: $bubble-size;
+                    height: $bubble-size;
+                    margin-top: -2rem;
+                }
+
+                .sustainable-bubbles:nth-child(2) {
+                    $bubble-size: 12rem;
+                    width: $bubble-size;
+                    height: $bubble-size;
+                    margin-top: 2rem;
+                }
+
             }
         }
+
     }
 }
 
-// super large sizes. To make all fonts bigger and increase padding to fill space
-
-@include gt-lg {
-    body {
-        overflow-y: scroll;
-    }
-
-    .global-container {
-        padding: 0 1rem 4rem;
-    }
-
-    .absolute-elements {
-        padding: 8rem 0 5rem 0;
-
-        &__gold-ribbon {
-            svg {
-                top: -3rem;
-                height: 65rem;
-                width: 50vw;
-            }
-        }
-
-        &__waves {
-            max-height: 61rem;
-            overflow-y: hidden;
-        }
-    }
-
-    .sticky-large {
-        width: 37vw;
-        top: 1.5rem;
-    }
-
-    .relative-elements {
-        height: 80vh;
-        right: 5rem;
-
-        a {
-            .button-positioning {
-                top: -1rem;
-                right: 0rem;
-            }
-        }
-
-        .video-button {
-            @include c.video-button;
-            $button-size: 8rem;
-            border: 5px solid $white;
-            border-radius: $button-size ;
-            width: $button-size;
-
-            svg {
-                width: $button-size;
-            }
-
-            .play::before {
-                font-size: 1.5rem;
-            }
-
-            .words {
-                font-size: 1.3rem;
-            }
-        }
-    }
-
-    .relative-elements {
-        left: 2rem;
+@include gt-md {
+    .green-background {
         height: 100vh;
-
-        &__artwork {
-            // width: 35vw;
-        }
-
-        .video-button {
-            right: 1.5rem;
-            width: 8rem;
-        }
-
     }
 
-    .navbar-top {
-        .container {
-            &__logos {
-                :nth-child(1) {
-                    padding: 0 4rem;
-                    margin-bottom: -15px;
-                    height: 3rem;
-                }
-
-                :nth-child(2) {
-                    height: 8rem;
-                }
-            }
-        }
+    .navigation-container {
+        padding-left: 1rem;
     }
 
-    .navbar-bottom {
-        // controls size of button
-        $btn-size: 6rem;
-        // controls bottom padding
-        $bottom-padding: 1.5rem;
-        // controls spacing between buttons
-        $space-between: 3rem;
-        // controls size of icons
-        $icon-size: 2rem;
-        // controls width of shiny
-        $shiny-width: 40px;
-
-        &__container {
-            padding: 0 0 $bottom-padding 0;
-            column-gap: $space-between;
-            -webkit-column-gap: $space-between;
-            -moz-column-gap: $space-between;
-            gap: $space-between;
-
-            &--icons {
-                width: $btn-size;
-                height: $btn-size;
-
-                .icon-container {
-                    height: $btn-size - 0.5rem;
-
-                    img {
-                        height: $icon-size;
-                    }
-                }
-
-                .shiny {
-                    width: $shiny-width;
-                    height: 2 * $btn-size;
-                    // controls where shiny is before hover
-                    transform: skew(-20deg) translate(-$btn-size, -$btn-size);
-                }
-
-                &:hover {
-                    .shiny {
-                        // controls where shiny is before hover
-                        transform: skew(-20deg) translate($btn-size, -$btn-size);
-                    }
-                }
-            }
-        }
+    .frontpage-grid-column {
+        margin-top: 0;
+        padding-top: 1.5rem;
     }
 
-    .navigation-card,
-    .navigation-card-CEO,
-    .sustainable-pillars-container {
-        @include non-card-text-lg;
+    .frontpage-dotnav {
+        padding: 1rem 0 1.8rem;
     }
-
-    .navigation-card,
-    .navigation-card-CEO {
-        padding: 2rem;
-
-        h1,
-        h2 {
-            padding-bottom: 0.1rem;
-        }
-    }
-
 
     .sustainable-pillars-container {
-        $pillar-height: 12rem;
-        padding: 1rem;
+        @include card-text;
+        margin: 1rem 0 2rem;
+        position: relative;
+        padding-top: 2rem;
+
+        .sustainable-button {
+            height: fit-content;
+        }
+
 
         &__card {
-            h1 {
-                padding: 0.5rem 1rem;
+
+            img {
+                margin-left: 0;
+                margin-top: 0rem;
+                max-height: 250px;
             }
 
-            &--inner {
-                background-size: 85%;
-                background-position: 50% 50%;
+            h1 {
+                left: 1rem;
+                top: 1rem;
+                font-weight: normal;
+                font-size: 20px;
+                padding: 0.2rem 0.5rem;
 
-                .darken {
-                    &__flex {
-                        height: $pillar-height;
-                    }
+            }
+
+            .sustainable-flex {
+                display: flex;
+                flex-direction: column;
+                // justify-content: space-around;
+            }
+
+            &--content {
+                column-gap: 0;
+
+                .sustainable-bubbles:nth-child(1) {
+                    $bubble-size: 11.5rem;
+                    width: $bubble-size;
+                    height: $bubble-size;
+                    margin-top: -2rem;
                 }
+
+                .sustainable-bubbles:nth-child(2) {
+                    $bubble-size: 9rem;
+                    width: $bubble-size;
+                    height: $bubble-size;
+                    margin-top: 2rem;
+                }
+
+            }
+        }
+
+    }
+
+    .frontpage-slider-height {
+        display: flex;
+        flex-direction: row;
+
+        .navigation-card-CEO {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            img {
+                width: fit-content;
             }
         }
     }
 
-    .download-large{
+    .card-image {
         @include c.shadow;
+        z-index: 5;
+        position: relative;
+        border-radius: $border-radius 0 0 $border-radius;
+        background-size: cover;
+        width: 50%;
+        overflow: hidden;
+        object-fit: cover;
+
+        img {
+            height: 100%;
+            max-width: inherit;
+        }
+    }
+
+    .navigation-card {
+        margin: 0;
+    }
+
+    .navigation-card-CEO {
+        z-index: 5;
+        // @include c.cards-with-picture;
+        border-radius: 0 $border-radius $border-radius 0;
+        @include non-card-text;
+        filter: none;
+        position: relative;
+        background-color: $mint-tertiary;
+        margin: 0;
+        width: 50%;
+
+        a {
+            text-decoration: none;
+        }
+
+        // title-text for normal headers, sustainable cards
+        h1 {
+            color: $dark-text;
+            margin-top: 0;
+        }
+
+        // normal paragraph text
+        h2 {
+            color: $dark-text;
+        }
+
+        // link text, i.e the text that says "more"
+        a {
+            margin-top: 1.5rem;
+            width: max-content;
+
+            h3 {
+                @include c.button;
+
+                &:hover {
+                    @include c.hover-button;
+                }
+            }
+
+        }
+    }
+
+    .download-large {
         display: flex;
-        margin-top: 3rem;
-        .card-image{
+        padding-left: 1rem;
+
+        .card-image {
             border-radius: 10px 0 0 10px;
             display: flex;
             align-items: center;
-            img{
+
+            img {
                 height: min-content;
                 width: auto;
             }
         }
-        .navigation-card-CEO{
+
+        .navigation-card-CEO {
             margin: 0;
             border-radius: 0 10px 10px 0;
         }
-
-    }
-
-    // to overcome the margin important gap override for smaller sizes
-    .column-gap {
-        padding: 0.5rem;
     }
 }
 
@@ -1070,7 +1033,7 @@ $border-radius: 10px;
         &__desc {
             h1 {
                 color: $purple-primary;
-                text-transform: uppercase;
+                text-transform: capitalize;
             }
         }
     }
@@ -2621,14 +2584,15 @@ $number-padding: 0.5rem 1rem;
         justify-content: center;
         height: auto;
         width: inherit;
-        padding: 0 1rem;
+        // padding: 0 1rem;
 
 
         &__image {
             margin-top: -3rem;
             margin-bottom: -3.5rem;
-            max-height: 40rem;
-            width: auto;
+            margin-left: -1rem;
+            max-height: 50rem;
+            width: 105vw;
         }
     }
 }
@@ -2727,6 +2691,7 @@ $number-padding: 0.5rem 1rem;
         .sustainable-header {
             &__image {
                 margin-top: 0;
+                width: auto;
             }
         }
     }

@@ -10,8 +10,8 @@ $(window).on('resize', () => {
     var lastScroll = 0;
     $(window).scroll(() => {
         var currentScroll = $(this).scrollTop()
-        if (vw < 960) {
-            if (currentScroll > lastScroll && currentScroll > 100) {
+        if (vw < 2060) {
+            if (currentScroll > lastScroll && currentScroll > 50) {
                 header.addClass("scrolled");
             } else {
                 header.removeClass("scrolled");
