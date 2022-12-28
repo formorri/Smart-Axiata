@@ -1,4 +1,5 @@
 @use 'colors' as *;
+@use 'fonts' as *;
 
 $border-radius: 10px;
 $edge-cut: 25px;
@@ -16,6 +17,8 @@ $edge-cut: 25px;
     z-index: 10;
     transition: 0.5s ease-in-out;
     background-color: $white;
+    display: flex;
+    justify-content: space-between;
 
     &__container {
         position: relative;
@@ -34,6 +37,12 @@ $edge-cut: 25px;
                 width: 5rem;
                 padding-right: 0.5rem;
             }
+        }
+
+    }
+    &__bottom{
+        @include non-card-text;
+        .navbar-button{
         }
     }
 }
