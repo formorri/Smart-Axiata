@@ -1,5 +1,6 @@
 @use 'colors' as *;
 @use 'fonts' as *;
+@use 'media-query' as *;
 
 $border-radius: 10px;
 $edge-cut: 25px;
@@ -19,13 +20,14 @@ $edge-cut: 25px;
     background-color: $white;
     display: flex;
     justify-content: space-between;
+    padding: 0 1.5rem;
 
     &__container {
         position: relative;
 
         &--logos {
             position: relative;
-            padding: 0 0 1rem 2rem;
+            padding: 0 0 1rem 0;
 
             .logo-1 {
                 padding: 0 0.5rem;
@@ -40,9 +42,189 @@ $edge-cut: 25px;
         }
 
     }
-    &__bottom{
+
+    &__bottom {
         @include non-card-text;
-        .navbar-button{
+        display: flex;
+        vertical-align: middle;
+        align-items: center;
+        column-gap: 0.5rem;
+
+        .navbar-button {
+            @include shadow;
+            transition: 0.3s ease-in-out;
+            height: min-content;
+            text-decoration: none;
+            display: flex;
+            vertical-align: middle;
+            align-items: center;
+            background-color: $green-primary;
+            border-radius: $border-radius;
+            border: 3px solid $white;
+            padding: 0.5rem 1rem;
+            column-gap: 0.5rem;
+
+            img {
+                height: 1.5rem;
+            }
+
+            h3 {
+                color: $yellow-primary;
+            }
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        .navbar-share {
+            position: relative;
+            transition: 0.3s ease-in-out;
+
+            &__default {
+                position: absolute;
+                top: 50%;
+                left: 20%;
+                width: 100%;
+                transform: translateY(-50%);
+                display: flex;
+                vertical-align: middle;
+                align-items: center;
+                column-gap: 0.5rem;
+                opacity: 1;
+                transition: 0.3s ease-in-out;
+            }
+
+            &__hover {
+                transition: 0.3s ease-in-out;
+                position: relative;
+                display: flex;
+                vertical-align: middle;
+                align-items: center;
+                column-gap: 0.5rem;
+                justify-content: center;
+                opacity: 0;
+
+                svg {
+                    fill: $mint-tertiary;
+                }
+            }
+
+            &:hover {
+                transform: scale(1.05);
+                .navbar-share {
+                    &__default {
+                        opacity: 0;
+                    }
+
+                    &__hover {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    @include gt-xs{
+        padding: 0 2rem;
+    }
+
+    @include gt-lg{
+        padding: 0 2rem;
+        &__container {
+            &--logos {
+                .logo-1 {
+                    padding: 0 0.5rem;
+                    margin-bottom: -20px;
+                    width: 8rem;
+                    margin-left: 1rem;
+                }
+    
+                .logo-2 {
+                    width: 6rem;
+                    padding-right: 0.5rem;
+                }
+            }
+    
+        }
+    
+        &__bottom {
+            @include non-card-text-lg;
+            display: flex;
+            vertical-align: middle;
+            align-items: center;
+            column-gap: 0.5rem;
+    
+            .navbar-button {
+                @include shadow;
+                transition: 0.3s ease-in-out;
+                height: min-content;
+                text-decoration: none;
+                display: flex;
+                vertical-align: middle;
+                align-items: center;
+                background-color: $green-primary;
+                border-radius: $border-radius;
+                border: 3px solid $white;
+                padding: 0.5rem 1rem;
+                column-gap: 0.5rem;
+    
+                img {
+                    height: 1.5rem;
+                }
+    
+                h3 {
+                    color: $yellow-primary;
+                }
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+    
+            .navbar-share {
+                position: relative;
+                transition: 0.3s ease-in-out;
+    
+                &__default {
+                    position: absolute;
+                    top: 50%;
+                    left: 20%;
+                    width: 100%;
+                    transform: translateY(-50%);
+                    display: flex;
+                    vertical-align: middle;
+                    align-items: center;
+                    column-gap: 0.5rem;
+                    opacity: 1;
+                    transition: 0.3s ease-in-out;
+                }
+    
+                &__hover {
+                    transition: 0.3s ease-in-out;
+                    position: relative;
+                    display: flex;
+                    vertical-align: middle;
+                    align-items: center;
+                    column-gap: 0.5rem;
+                    justify-content: center;
+                    opacity: 0;
+    
+                    svg {
+                        fill: $mint-tertiary;
+                    }
+                }
+    
+                &:hover {
+                    transform: scale(1.05);
+                    .navbar-share {
+                        &__default {
+                            opacity: 0;
+                        }
+    
+                        &__hover {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -59,9 +241,10 @@ $edge-cut: 25px;
         display: flex;
         align-items: center;
         justify-content: center;
-        pointer-events: none;
+        pointer-events: auto;
 
         &--icons {
+            @include shadow;
             pointer-events: auto;
             overflow: hidden;
             align-items: center;
@@ -69,7 +252,6 @@ $edge-cut: 25px;
             border: 3px solid $white;
             border-radius: 5rem;
             background-color: $green-primary;
-            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.35);
             transition: .6s;
 
             .icon-container {
@@ -96,7 +278,7 @@ $edge-cut: 25px;
     }
 }
 
-@mixin button{
+@mixin button {
     color: $white;
     border-radius: $border-radius;
     padding: 0.5rem 1rem;
@@ -107,7 +289,7 @@ $edge-cut: 25px;
     transition: 0.3s ease-in-out;
 }
 
-@mixin hover-button{
+@mixin hover-button {
     color: $pink-primary;
     background-color: $white;
     border: 1px solid $pink-primary;

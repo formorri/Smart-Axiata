@@ -3,14 +3,14 @@ gsap.registerPlugin(ScrollTrigger);
 // force reload when resize
 // $(window).on('resize', function () { location.reload(); });
 
-// disappearing navbar when viewport < 960px
+// disappearing navbar when viewport < specified size
 $(window).on('resize', () => {
     var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     var header = $(".navbar-top");
     var lastScroll = 0;
     $(window).scroll(() => {
         var currentScroll = $(this).scrollTop()
-        if (vw < 2060) {
+        if (vw < 960) {
             if (currentScroll > lastScroll && currentScroll > 50) {
                 header.addClass("scrolled");
             } else {

@@ -92,7 +92,7 @@ $border-radius: 10px;
                 justify-content: center;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
                 border-radius: 2rem;
-                transition: 0.4s ease-in-out;
+                transition: 0.4s ease-in;
 
                 a {
                     transition: 0.2s;
@@ -118,6 +118,7 @@ $border-radius: 10px;
                     opacity: 1;
                 }
             }
+
         }
 
         @include lt-md {
@@ -208,12 +209,13 @@ $border-radius: 10px;
     padding: 7rem 0 6rem 0;
 
     &__waves {
+        background-image: url(../assets/images/frontpage-waves.png);
+        background-size: cover;
         background-color: $green-primary;
         position: absolute;
         z-index: 1;
-        width: 100vw;
-        height: inherit;
-        // top: 23vh;
+        width: 100%;
+        height: 100%;
 
         img {
             width: 100vw;
@@ -519,7 +521,7 @@ $border-radius: 10px;
 }
 
 .frontpage-dotnav {
-    $dotnav-size: 14px;
+    $dotnav-size: 10px;
     margin: 0 !important;
     padding: 0.5rem 0 2rem;
 
@@ -733,9 +735,19 @@ $border-radius: 10px;
     }
 }
 
+@include md {
+    .frontpage-grid-column {
+        margin-top: 0;
+        padding-top: 0;
+        padding-right: 1rem;
+    }
+
+}
+
 @include gt-md {
+
     .green-background {
-        height: 100vh;
+        height: auto;
     }
 
     .navigation-container {
@@ -745,6 +757,7 @@ $border-radius: 10px;
     .frontpage-grid-column {
         margin-top: 0;
         padding-top: 1.5rem;
+        padding-left: 0;
     }
 
     .frontpage-dotnav {
@@ -822,13 +835,25 @@ $border-radius: 10px;
         }
     }
 
+    .navigation-card {
+        margin: 0;
+    }
+
+    $card-image-size: 40%;
+    $text-image-size: calc(100% - $card-image-size);
+
+    .card-image,
+    .navigation-card-CEO {
+        height: 23.5rem;
+    }
+
     .card-image {
         @include c.shadow;
         z-index: 5;
         position: relative;
         border-radius: $border-radius 0 0 $border-radius;
         background-size: cover;
-        width: 50%;
+        width: $card-image-size;
         overflow: hidden;
         object-fit: cover;
 
@@ -836,10 +861,6 @@ $border-radius: 10px;
             height: 100%;
             max-width: inherit;
         }
-    }
-
-    .navigation-card {
-        margin: 0;
     }
 
     .navigation-card-CEO {
@@ -851,7 +872,7 @@ $border-radius: 10px;
         position: relative;
         background-color: $mint-tertiary;
         margin: 0;
-        width: 50%;
+        width: $text-image-size;
 
         a {
             text-decoration: none;
@@ -884,25 +905,53 @@ $border-radius: 10px;
         }
     }
 
+    .about-large,
+    .download-large {
+        height: 16rem;
+    }
+
+
     .download-large {
         display: flex;
         padding-left: 1rem;
 
-        .card-image {
-            border-radius: 10px 0 0 10px;
+        .card-download {
             display: flex;
             align-items: center;
+            vertical-align: middle;
+            justify-content: center;
 
             img {
                 height: min-content;
                 width: auto;
             }
         }
+    }
+}
 
-        .navigation-card-CEO {
-            margin: 0;
-            border-radius: 0 10px 10px 0;
-        }
+@include gt-lg {
+    // .frontpage-slider-height {
+    //     height: 29rem;
+    // }
+    $card-image-size: 40%;
+    $text-image-size: calc(100% - $card-image-size);
+
+    .card-image,
+    .navigation-card-CEO {
+        height: 29rem;
+    }
+
+    .card-image {
+        width: $card-image-size;
+    }
+
+    .navigation-card-CEO {
+        width: $text-image-size;
+    }
+
+    .about-large,
+    .download-large {
+        height: 16rem;
     }
 }
 
@@ -1168,7 +1217,7 @@ $border-radius: 10px;
     $grid-height: 42rem;
 
     .about-container {
-        padding: calc($l-top-padding + 2rem) $l-padding 8rem $l-padding;
+        padding: 10rem 4rem 5rem 4rem;
         min-height: 100vh;
         height: auto;
 
@@ -1585,8 +1634,10 @@ $border-radius: 10px;
         background-repeat: no-repeat;
         position: relative;
         border-radius: $border-radius $border-radius 0 0;
-
         width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
             position: relative;
@@ -1623,8 +1674,8 @@ $border-radius: 10px;
 
     &__content {
         @include c.hover;
-        margin-top: -8%;
-        @include c.clip-path;
+        border-radius: 0 0 $border-radius $border-radius;
+        margin-top: 0;
         padding: 2rem;
         z-index: 2;
         width: 100%;
@@ -1831,9 +1882,6 @@ $border-radius: 10px;
         min-height: 100vh;
     }
 
-    .CEO-header {
-        padding-bottom: 1rem;
-    }
 
     .CEO-title {
         @include non-card-text;
@@ -1843,11 +1891,11 @@ $border-radius: 10px;
     .CEO-card {
         padding: 0 1.5rem 0 0;
         position: fixed;
-        width: 35%;
+        width: 44%;
         margin: 0;
 
         .CEO-header {
-            padding-bottom: 1rem;
+            padding-bottom: 2rem;
         }
 
         &__content {
@@ -1928,153 +1976,178 @@ $border-radius: 10px;
     }
 }
 
-@include gt-xl {
+@include lg {
     .CEO-container {
-        padding: $xl-top-padding $xl-padding 15rem $xl-padding;
-        @include non-card-text-lg;
-
+        padding: 7rem 4rem 8rem;
     }
+}
 
-    .CEO-title {
-        @include non-card-text-lg;
-        padding-bottom: 2rem;
+@include gt-lg {
+    .CEO-container {
+        padding: 10rem 4rem 8rem;
     }
 
     .CEO-card {
-        padding: 0 1.5rem 0 0;
-        position: relative;
-        width: auto;
+        @include non-card-text-lg;
 
         .CEO-header {
-            @include non-card-text-lg;
-            padding-bottom: 2rem;
-        }
-
-        &__picture {
-            // background-size: 150%;
-            margin-top: 1rem;
-            height: 24rem;
-
-            img {
-                object-fit: cover;
-                height: 25rem;
-                // width: 100rem;
-            }
-
-            .CEO-video-button {
-                @include c.video-button;
-                $button-size: 8rem;
-                border: 5px solid $white;
-                border-radius: $button-size ;
-                width: $button-size;
-
-                svg {
-                    width: $button-size;
-                }
-
-                .play::before {
-                    font-size: 2rem;
-                }
-
-                .words {
-                    font-size: 1.3rem;
-                }
-            }
+            padding-bottom: 3rem;
         }
 
         &__content {
-            padding: 3rem;
-
-            &--description {
-                border-radius: 0 0 $border-radius $border-radius;
-                height: fit-content;
-                position: relative;
-            }
-        }
-    }
-
-    .CEO-large-flex {
-        display: flex;
-        flex-wrap: wrap;
-        column-gap: 2rem;
-        -webkit-column-gap: 2rem;
-        -moz-column-gap: 2rem;
-
-        .CEO-data {
-            width: 48%;
-            height: auto;
-            padding: 0;
-
-            &__header {
-                @include card-text-lg;
-                width: 70%;
-                padding: 0.8rem;
-            }
-
-            &__icons {
-                width: auto;
-                margin-right: 2rem;
-
-                img {
-                    width: 8rem;
-                }
-            }
-
-            &__info {
-                width: 80%;
-            }
-
-            &__card {
-                @include card-text-xl;
-                height: 18rem;
-                padding: 2rem;
-                margin: 0;
-            }
-
-        }
-    }
-
-    .download {
-        @include c.download;
-        $icon-size: 24px;
-        $padding-top-bottom: 0.5rem;
-        $border-weight: 2px;
-        $spacing-top: 1rem;
-        padding: $padding-top-bottom 0 $padding-top-bottom 0;
-        border-radius: $icon-size;
-        border: $border-weight solid black;
-        margin-top: $spacing-top;
-
-        h2 {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items: center;
-            justify-content: center;
-            font-size: calc($icon-size * 0.7);
-        }
-
-        h2::before {
-            font-size: $icon-size;
-            height: calc($icon-size + 5px);
-            width: calc($icon-size + 5px);
-            border: $border-weight solid black;
-            border-radius: 100%;
-            margin-right: 1rem;
-            padding: 0 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-        }
-
-        &:hover {
-            h2::before {
-                border: $border-weight solid black;
-            }
+            padding: 2rem 2rem 4rem 2rem;
         }
     }
 }
+
+
+// @include gt-xl {
+//     .CEO-container {
+//         padding: $xl-top-padding $xl-padding 15rem $xl-padding;
+//         @include non-card-text-lg;
+
+//     }
+
+//     .CEO-title {
+//         @include non-card-text-lg;
+//         padding-bottom: 2rem;
+//     }
+
+//     .CEO-card {
+//         padding: 0 1.5rem 0 0;
+//         position: relative;
+//         width: auto;
+
+//         .CEO-header {
+//             @include non-card-text-lg;
+//             padding-bottom: 2rem;
+//         }
+
+//         &__picture {
+//             // background-size: 150%;
+//             margin-top: 1rem;
+//             height: 24rem;
+
+//             img {
+//                 object-fit: cover;
+//                 height: 25rem;
+//                 // width: 100rem;
+//             }
+
+//             .CEO-video-button {
+//                 @include c.video-button;
+//                 $button-size: 8rem;
+//                 border: 5px solid $white;
+//                 border-radius: $button-size ;
+//                 width: $button-size;
+
+//                 svg {
+//                     width: $button-size;
+//                 }
+
+//                 .play::before {
+//                     font-size: 2rem;
+//                 }
+
+//                 .words {
+//                     font-size: 1.3rem;
+//                 }
+//             }
+//         }
+
+//         &__content {
+//             padding: 3rem;
+
+//             &--description {
+//                 border-radius: 0 0 $border-radius $border-radius;
+//                 height: fit-content;
+//                 position: relative;
+//             }
+//         }
+//     }
+
+//     .CEO-large-flex {
+//         display: flex;
+//         flex-wrap: wrap;
+//         column-gap: 2rem;
+//         -webkit-column-gap: 2rem;
+//         -moz-column-gap: 2rem;
+
+//         .CEO-data {
+//             width: 48%;
+//             height: auto;
+//             padding: 0;
+
+//             &__header {
+//                 @include card-text-lg;
+//                 width: 70%;
+//                 padding: 0.8rem;
+//             }
+
+//             &__icons {
+//                 width: auto;
+//                 margin-right: 2rem;
+
+//                 img {
+//                     width: 8rem;
+//                 }
+//             }
+
+//             &__info {
+//                 width: 80%;
+//             }
+
+//             &__card {
+//                 @include card-text-xl;
+//                 height: 18rem;
+//                 padding: 2rem;
+//                 margin: 0;
+//             }
+
+//         }
+//     }
+
+//     .download {
+//         @include c.download;
+//         $icon-size: 24px;
+//         $padding-top-bottom: 0.5rem;
+//         $border-weight: 2px;
+//         $spacing-top: 1rem;
+//         padding: $padding-top-bottom 0 $padding-top-bottom 0;
+//         border-radius: $icon-size;
+//         border: $border-weight solid black;
+//         margin-top: $spacing-top;
+
+//         h2 {
+//             display: flex;
+//             flex-direction: row;
+//             flex-wrap: nowrap;
+//             align-items: center;
+//             justify-content: center;
+//             font-size: calc($icon-size * 0.7);
+//         }
+
+//         h2::before {
+//             font-size: $icon-size;
+//             height: calc($icon-size + 5px);
+//             width: calc($icon-size + 5px);
+//             border: $border-weight solid black;
+//             border-radius: 100%;
+//             margin-right: 1rem;
+//             padding: 0 0;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+
+//         }
+
+//         &:hover {
+//             h2::before {
+//                 border: $border-weight solid black;
+//             }
+//         }
+//     }
+// }
 
 // ! ---------------------------------------Message from HOD (SOME OVERLAP WITH CEO)-----------------------------------------------
 
@@ -2113,24 +2186,24 @@ $border-radius: 10px;
     }
 }
 
-.HOD-dotnav {
-    $dotnav-size: 14px;
-    margin: 0 !important;
+// .HOD-dotnav {
+//     $dotnav-size: 14px;
+//     margin: 0 !important;
 
-    li {
-        a {
-            border: 1px solid $dark-text;
-            width: $dotnav-size;
-            height: $dotnav-size;
-        }
-    }
+//     li {
+//         a {
+//             border: 1px solid $dark-text;
+//             width: $dotnav-size;
+//             height: $dotnav-size;
+//         }
+//     }
 
-    .uk-active {
-        * {
-            background-color: $green-primary;
-        }
-    }
-}
+//     .uk-active {
+//         * {
+//             background-color: $green-primary;
+//         }
+//     }
+// }
 
 .HOD-1 {
     background-image: url(../assets/images/about-HOD-background-1.png);
@@ -2586,6 +2659,10 @@ $number-padding: 0.5rem 1rem;
         width: inherit;
         // padding: 0 1rem;
 
+        &__title {
+            margin-left: 1rem;
+        }
+
 
         &__image {
             margin-top: -3rem;
@@ -2737,6 +2814,7 @@ $number-padding: 0.5rem 1rem;
             &__image {
                 position: relative;
                 top: -4rem;
+                width: 100%;
             }
         }
     }
@@ -2777,6 +2855,7 @@ $number-padding: 0.5rem 1rem;
 
             &__image {
                 position: relative;
+                width: 120%;
             }
         }
 
