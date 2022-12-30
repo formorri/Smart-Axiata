@@ -5,7 +5,7 @@
 @use 'media-query' as *;
 
 $s-padding: 1rem;
-$s-top-padding: 10rem;
+$s-top-padding: 8rem;
 $l-padding: 4rem;
 $l-top-padding: 8rem;
 $xl-padding: 10rem;
@@ -14,6 +14,11 @@ $border-radius: 10px;
 
 .green-background {
     background-color: $green-primary;
+    background-image: url(../assets/images/frontpage-waves.png);
+    background-size: cover;
+    background-position: 50% 100%;
+    min-height: 100vh;
+    padding: 7rem 0 6rem 0;
 }
 
 .navbar-top {
@@ -46,11 +51,6 @@ $border-radius: 10px;
 
     &__container {
         padding: 0 0 $bottom-padding 0;
-        // column-gap: $space-between;
-        // -webkit-column-gap: $space-between;
-        // -moz-column-gap: $space-between;
-        // column-gap: $space-between;
-        // gap: $space-between;
 
         &--icons {
             width: $btn-size;
@@ -126,21 +126,21 @@ $border-radius: 10px;
             // vertical share
             .share-button {
                 .share-socmed {
-                    top: -8rem;
+                    top: 0rem;
                     transform: translateX(10%);
                     width: 80%;
                     flex-direction: column;
                     padding: 0.8rem 0;
 
                     a {
-                        padding: 0.4rem;
+                        padding: 0.3rem;
                     }
                 }
 
                 &:hover {
                     .share-socmed {
                         // transform: translateX(200%);
-                        top: -11.5rem;
+                        top: -11rem;
                     }
                 }
             }
@@ -156,6 +156,12 @@ $border-radius: 10px;
                     top: -1rem;
                     transform: translateX(-30%);
                     padding: 0.8rem;
+
+                    .share-adjust{
+                        $adjust: -4px;
+                        margin-left: $adjust;
+                        margin-right: $adjust;
+                    }
 
                     a {
                         padding: 0 0.5rem;
@@ -201,27 +207,6 @@ $border-radius: 10px;
         }
 
     }
-}
-
-
-.absolute-elements {
-    position: relative;
-    padding: 7rem 0 6rem 0;
-
-    &__waves {
-        background-image: url(../assets/images/frontpage-waves.png);
-        background-size: cover;
-        background-color: $green-primary;
-        position: absolute;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-
-        img {
-            width: 100vw;
-        }
-    }
-
 }
 
 .video-sizing {
@@ -613,7 +598,7 @@ $border-radius: 10px;
     // title-text for normal headers, sustainable cards
     h1 {
         color: $dark-text;
-        margin-top: 0;
+        margin: 0.5rem 0;
     }
 
     // normal paragraph text
@@ -745,9 +730,8 @@ $border-radius: 10px;
 }
 
 @include gt-md {
-
     .green-background {
-        height: auto;
+        padding: 7rem 0 3rem 0;
     }
 
     .navigation-container {
@@ -779,8 +763,9 @@ $border-radius: 10px;
 
             img {
                 margin-left: 0;
-                margin-top: 0rem;
-                max-height: 250px;
+                margin-top: -2rem;
+                margin-bottom: -1rem;
+                max-height: 295px;
             }
 
             h1 {
@@ -795,11 +780,11 @@ $border-radius: 10px;
             .sustainable-flex {
                 display: flex;
                 flex-direction: column;
-                // justify-content: space-around;
             }
 
             &--content {
                 column-gap: 0;
+                margin-left: -4rem;
 
                 .sustainable-bubbles:nth-child(1) {
                     $bubble-size: 11.5rem;
@@ -881,7 +866,6 @@ $border-radius: 10px;
         // title-text for normal headers, sustainable cards
         h1 {
             color: $dark-text;
-            margin-top: 0;
         }
 
         // normal paragraph text
@@ -1608,14 +1592,14 @@ $border-radius: 10px;
 }
 
 .CEO-container {
-    padding: $s-top-padding $s-padding $s-top-padding $s-padding;
+    padding: $s-top-padding $s-padding;
     @include non-card-text;
     position: relative;
 
 }
 
 .CEO-large-flex {
-    margin-top: 1rem;
+    margin-top: 0;
 }
 
 .CEO-card {
@@ -1673,7 +1657,6 @@ $border-radius: 10px;
     }
 
     &__content {
-        @include c.hover;
         border-radius: 0 0 $border-radius $border-radius;
         margin-top: 0;
         padding: 2rem;
@@ -1685,7 +1668,7 @@ $border-radius: 10px;
 
         &--description {
             h1 {
-                margin: 1rem 0;
+                margin: 0.5rem 0;
             }
 
             h1,
@@ -1717,7 +1700,6 @@ $border-radius: 10px;
 .CEO-data {
     padding: 0.8rem 0;
     width: 100%;
-    @include c.hover;
 
     &__header {
         @include card-text;
@@ -1759,7 +1741,6 @@ $border-radius: 10px;
 
     &__icons {
         width: auto;
-        margin-right: 1rem;
 
         img {
             width: 5rem;
@@ -1778,6 +1759,7 @@ $border-radius: 10px;
         display: flex;
         vertical-align: middle;
         align-items: center;
+        column-gap: 1rem;
 
         h1 {
             :nth-child(1) {
@@ -1909,31 +1891,6 @@ $border-radius: 10px;
         }
     }
 
-
-    .CEO-large-flex {
-        display: flex;
-        flex-wrap: wrap;
-
-        .CEO-data {
-            margin-bottom: 1rem;
-            width: 100%;
-            height: auto;
-            padding: 0;
-
-            &__header {
-                h3 {
-                    font-size: 95%;
-                }
-            }
-
-            &__card {
-                height: 10rem;
-                margin: 0;
-            }
-
-        }
-    }
-
     .download {
         @include c.download;
         $icon-size: 20px;
@@ -1976,15 +1933,58 @@ $border-radius: 10px;
     }
 }
 
-@include lg {
+@include gt-md {
     .CEO-container {
-        padding: 7rem 4rem 8rem;
+        padding: 10rem 3rem 6rem;
+
+        .download {
+            margin-top: 0;
+        }
+    }
+
+    .CEO-card {
+        position: relative;
+        width: auto;
+    }
+
+    .CEO-large-flex {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+
+        .CEO-data {
+            width: 48%;
+            margin-bottom: 1rem;
+            height: auto;
+            padding: 0;
+
+            &__header {
+                h3 {
+                    font-size: 95%;
+                }
+            }
+
+            &__card {
+                height: 10rem;
+                margin: 0;
+                display: flex;
+            }
+
+            &__info {
+                width: 100%;
+            }
+
+        }
     }
 }
 
 @include gt-lg {
     .CEO-container {
-        padding: 10rem 4rem 8rem;
+        padding: 10rem 4rem 6rem;
+
+        .download {
+            margin-top: 0;
+        }
     }
 
     .CEO-card {
@@ -1995,159 +1995,53 @@ $border-radius: 10px;
         }
 
         &__content {
-            padding: 2rem 2rem 4rem 2rem;
+            padding: 2rem;
+        }
+
+    }
+
+    .CEO-large-flex {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+
+        .CEO-data {
+            width: 48%;
+            margin-bottom: 1rem;
+            height: auto;
+            padding: 0;
+
+            &__header {
+                h3 {
+                    font-size: 95%;
+                }
+            }
+
+            &__icons {
+                width: 8rem;
+
+                img {
+                    width: inherit;
+                }
+
+            }
+
+            &__card {
+                @include card-text-lg;
+                height: 13.5rem;
+                margin: 0;
+                column-gap: 2rem;
+            }
+
+            &__info {
+                width: 100%;
+            }
+
         }
     }
 }
 
 
-// @include gt-xl {
-//     .CEO-container {
-//         padding: $xl-top-padding $xl-padding 15rem $xl-padding;
-//         @include non-card-text-lg;
-
-//     }
-
-//     .CEO-title {
-//         @include non-card-text-lg;
-//         padding-bottom: 2rem;
-//     }
-
-//     .CEO-card {
-//         padding: 0 1.5rem 0 0;
-//         position: relative;
-//         width: auto;
-
-//         .CEO-header {
-//             @include non-card-text-lg;
-//             padding-bottom: 2rem;
-//         }
-
-//         &__picture {
-//             // background-size: 150%;
-//             margin-top: 1rem;
-//             height: 24rem;
-
-//             img {
-//                 object-fit: cover;
-//                 height: 25rem;
-//                 // width: 100rem;
-//             }
-
-//             .CEO-video-button {
-//                 @include c.video-button;
-//                 $button-size: 8rem;
-//                 border: 5px solid $white;
-//                 border-radius: $button-size ;
-//                 width: $button-size;
-
-//                 svg {
-//                     width: $button-size;
-//                 }
-
-//                 .play::before {
-//                     font-size: 2rem;
-//                 }
-
-//                 .words {
-//                     font-size: 1.3rem;
-//                 }
-//             }
-//         }
-
-//         &__content {
-//             padding: 3rem;
-
-//             &--description {
-//                 border-radius: 0 0 $border-radius $border-radius;
-//                 height: fit-content;
-//                 position: relative;
-//             }
-//         }
-//     }
-
-//     .CEO-large-flex {
-//         display: flex;
-//         flex-wrap: wrap;
-//         column-gap: 2rem;
-//         -webkit-column-gap: 2rem;
-//         -moz-column-gap: 2rem;
-
-//         .CEO-data {
-//             width: 48%;
-//             height: auto;
-//             padding: 0;
-
-//             &__header {
-//                 @include card-text-lg;
-//                 width: 70%;
-//                 padding: 0.8rem;
-//             }
-
-//             &__icons {
-//                 width: auto;
-//                 margin-right: 2rem;
-
-//                 img {
-//                     width: 8rem;
-//                 }
-//             }
-
-//             &__info {
-//                 width: 80%;
-//             }
-
-//             &__card {
-//                 @include card-text-xl;
-//                 height: 18rem;
-//                 padding: 2rem;
-//                 margin: 0;
-//             }
-
-//         }
-//     }
-
-//     .download {
-//         @include c.download;
-//         $icon-size: 24px;
-//         $padding-top-bottom: 0.5rem;
-//         $border-weight: 2px;
-//         $spacing-top: 1rem;
-//         padding: $padding-top-bottom 0 $padding-top-bottom 0;
-//         border-radius: $icon-size;
-//         border: $border-weight solid black;
-//         margin-top: $spacing-top;
-
-//         h2 {
-//             display: flex;
-//             flex-direction: row;
-//             flex-wrap: nowrap;
-//             align-items: center;
-//             justify-content: center;
-//             font-size: calc($icon-size * 0.7);
-//         }
-
-//         h2::before {
-//             font-size: $icon-size;
-//             height: calc($icon-size + 5px);
-//             width: calc($icon-size + 5px);
-//             border: $border-weight solid black;
-//             border-radius: 100%;
-//             margin-right: 1rem;
-//             padding: 0 0;
-//             display: flex;
-//             align-items: center;
-//             justify-content: center;
-
-//         }
-
-//         &:hover {
-//             h2::before {
-//                 border: $border-weight solid black;
-//             }
-//         }
-//     }
-// }
 
 // ! ---------------------------------------Message from HOD (SOME OVERLAP WITH CEO)-----------------------------------------------
 
@@ -2646,6 +2540,7 @@ $number-padding: 0.5rem 1rem;
         box-shadow: 0 3px 9px rgba(0, 0, 0, 0.3);
         background-color: $white;
         width: fit-content;
+        max-width: 80%;
         margin: 0;
         padding: 0.3rem 0.8rem;
     }
@@ -2799,7 +2694,7 @@ $number-padding: 0.5rem 1rem;
         .sustainable-header {
             position: fixed;
             display: block;
-            top: 22%;
+            top: 23%;
 
             &__title {
                 position: relative;
@@ -2813,8 +2708,8 @@ $number-padding: 0.5rem 1rem;
 
             &__image {
                 position: relative;
-                top: -4rem;
-                width: 100%;
+                top: -1rem;
+                width: 102%;
             }
         }
     }
