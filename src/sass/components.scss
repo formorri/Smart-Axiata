@@ -3,7 +3,7 @@
 @use 'media-query' as *;
 
 $border-radius: 10px;
-$edge-cut: 25px;
+$edge-cut: 35px;
 
 @mixin shadow {
     filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.2));
@@ -308,7 +308,17 @@ $edge-cut: 25px;
 }
 
 
-@mixin clip-path {
+@mixin clip-path ($color, $size) {
+    background: linear-gradient(-150deg, transparent $size, $color 13px);
+    // clip-path:
+    //     polygon(0 0,
+    //         calc(100% - $edge-cut) 0%,
+    //         100% calc($edge-cut * 0.67),
+    //         100% 100%,
+    //         0 100%);
+}
+
+@mixin clip-path-mask{
     clip-path:
         polygon(0 0,
             calc(100% - $edge-cut) 0%,
@@ -317,8 +327,8 @@ $edge-cut: 25px;
             0 100%);
 }
 
-@mixin clip-path-cards {
-    @include clip-path;
+@mixin clip-path-cards ($color, $size) {
+    background: linear-gradient(-150deg, transparent $size, $color 13px);
     margin: 0 0 1rem 0;
     padding: 2rem;
 }

@@ -157,7 +157,7 @@ $border-radius: 10px;
                     transform: translateX(-30%);
                     padding: 0.8rem;
 
-                    .share-adjust{
+                    .share-adjust {
                         $adjust: -4px;
                         margin-left: $adjust;
                         margin-right: $adjust;
@@ -217,16 +217,18 @@ $border-radius: 10px;
 
 .relative-elements {
     position: relative;
+    margin-bottom: 2rem;
 
     &__artwork {
         @include c.shadow;
+        @include c.clip-path($white, 20px);
         position: relative;
         z-index: 2;
         margin-bottom: 1rem;
         top: 2rem;
-        border-radius: $border-radius;
-        border: 10px solid $white;
         width: 100%;
+        padding: 1rem;
+
     }
 
     .button-positioning {
@@ -259,12 +261,32 @@ $border-radius: 10px;
 
 }
 
+.sustainable-section{
+    &__header{
+        @include sustainable-header;
+        @include c.clip-path($pink-primary, 20px);
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: center;
+        h1{
+            text-transform: uppercase;
+            font-size: 20px;
+            margin: 0;
+            color: $white;
+        }
+    }
+}
+
 .sustainable-pillars-container {
     @include card-text;
-    margin: 1rem 0 2rem;
+    // margin: 0 0 0 2rem;
     position: relative;
-    padding-top: 2rem;
+    // padding-top: 2rem;
     z-index: 2;
+
+    // .slider-counter {
+    //     @include c.clip-path-mask;
+    // }
 
     a {
         text-decoration: none;
@@ -283,7 +305,6 @@ $border-radius: 10px;
         padding: 2rem 0 1rem 0;
         display: flex;
         flex-wrap: wrap;
-        border-radius: $border-radius;
         justify-content: center;
 
 
@@ -313,7 +334,7 @@ $border-radius: 10px;
 
         img {
             margin-left: 0.5rem;
-            margin-top: -2rem;
+            margin-top: -1rem;
             max-height: 450px;
         }
 
@@ -368,6 +389,7 @@ $border-radius: 10px;
     }
 
     .card-1 {
+        // @include c.clip-path($yellow-secondary, 20px);
         background-color: $yellow-secondary;
 
         h1 {
@@ -386,6 +408,7 @@ $border-radius: 10px;
     }
 
     .card-2 {
+        // @include c.clip-path($pink-secondary, 20px);
         background-color: $pink-secondary;
 
         h1 {
@@ -404,6 +427,7 @@ $border-radius: 10px;
     }
 
     .card-3 {
+        // @include c.clip-path($purple-secondary, 20px);
         background-color: $purple-secondary;
 
         h1 {
@@ -422,6 +446,7 @@ $border-radius: 10px;
     }
 
     .card-4 {
+        // @include c.clip-path($mint-tertiary, 20px);
         background-color: $mint-tertiary;
 
         h1 {
@@ -451,11 +476,15 @@ $border-radius: 10px;
 }
 
 .navigation-card {
-    @include c.cards;
+    @include c.clip-path-cards($mint-tertiary, 20px);
     @include non-card-text;
     position: relative;
     z-index: 5;
-    background-color: $mint-tertiary;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    // align-items: center;
 
     // title-text for normal headers, sustainable cards
     h1 {
@@ -527,11 +556,14 @@ $border-radius: 10px;
 
 
 .card-download {
+    @include c.clip-path-mask;
+    // @include c.clip-path($pink-secondary, 20px);
     background-image: url(../assets/images/download-background.png);
-    border-radius: $border-radius;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
     display: flex;
     align-items: center;
-
     flex-direction: column;
 
     @include non-card-text;
@@ -540,6 +572,8 @@ $border-radius: 10px;
         text-decoration: none;
 
         h3 {
+            // max-width: 12rem;
+            text-align: center;
             @include c.button;
 
             &:hover {
@@ -559,6 +593,7 @@ $border-radius: 10px;
 }
 
 .card-image {
+    // @include c.clip-path-mask;
     z-index: 5;
     position: relative;
     border-radius: $border-radius $border-radius 0 0;
@@ -566,6 +601,8 @@ $border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1rem 3rem 0;
+
 }
 
 .frontpage-slider-height {
@@ -585,11 +622,17 @@ $border-radius: 10px;
 
 .navigation-card-CEO {
     z-index: 5;
-    @include c.cards-with-picture;
+    // @include c.cards-with-picture;
+    @include c.clip-path-cards($mint-tertiary, 20px);
     @include non-card-text;
     filter: none;
     position: relative;
-    background-color: $mint-tertiary;
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    // align-items: center;
 
     a {
         text-decoration: none;
@@ -634,9 +677,7 @@ $border-radius: 10px;
 
     .sustainable-pillars-container {
         @include card-text;
-        margin: 1rem 0 2rem;
         position: relative;
-        padding-top: 2rem;
 
         .sustainable-button {
             height: fit-content;
@@ -645,12 +686,11 @@ $border-radius: 10px;
 
         &__card {
             position: relative;
-            padding: 2rem 0 1rem 0;
+            // padding: 2rem 0 1rem 0;
             display: flex;
             flex-wrap: nowrap;
-            border-radius: $border-radius;
             justify-content: center;
-            padding: 2rem 0 0 0;
+            // padding: 2rem 0 0 0;
 
 
             h1 {
@@ -727,11 +767,47 @@ $border-radius: 10px;
         padding-right: 1rem;
     }
 
+    .card-download {
+        img {
+            max-height: 14.5rem;
+            width: auto;
+        }
+    }
+
+    .sustainable-pillars-container {
+        $position: 2rem;
+
+        &__card {
+            h1 {
+                left: $position;
+                top: $position;
+            }
+        }
+
+        .sustainable-button {
+            height: fit-content;
+            position: absolute;
+            bottom: $position;
+            left: $position;
+        }
+    }
+
 }
 
-@include gt-md {
+@media screen and (min-width: 1200px) {
+    $height-row-1: 23.5rem;
+    $height-row-2: 20.4rem;
+    
+
     .green-background {
         padding: 7rem 0 3rem 0;
+    }
+
+    .relative-elements {
+        &__artwork {
+            margin-bottom: 3.4rem;
+            height: $height-row-1;
+        }
     }
 
     .navigation-container {
@@ -748,11 +824,257 @@ $border-radius: 10px;
         padding: 1rem 0 1.8rem;
     }
 
+    .frontpage-flex {
+        display: flex;
+        column-gap: 1rem;
+
+        .download-large {
+            order: 1;
+            height: $height-row-2;
+        }
+
+        .about-large {
+            display: flex;
+            order: 2;
+            flex-direction: column;
+            justify-content: space-between;
+            height: $height-row-2;
+        }
+
+    }
+
+
+    .clip-path {
+        @include c.clip-path-mask;
+    }
+
+
     .sustainable-pillars-container {
         @include card-text;
-        margin: 1rem 0 2rem;
         position: relative;
-        padding-top: 2rem;
+
+        .sustainable-button {
+            height: fit-content;
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+        }
+
+        &__card {
+            img {
+                margin-left: 0;
+                margin-top: -2rem;
+                margin-bottom: -1rem;
+                max-height: 280px;
+            }
+
+            h1 {
+                left: 1rem;
+                top: 1rem;
+                font-weight: normal;
+                font-size: 18px;
+                padding: 0.2rem 0.5rem;
+                z-index: 4;
+
+            }
+
+            .sustainable-flex {
+                display: flex;
+                flex-direction: column;
+            }
+
+            &--content {
+                column-gap: 0;
+                margin-left: -4rem;
+
+                .sustainable-bubbles {
+                    h3 {
+                        font-size: 15px;
+                        line-height: 15px;
+                    }
+
+                    .h1-span,
+                    .h2-span {
+                        font-size: 20px;
+                        line-height: 20px;
+                    }
+                }
+
+                .sustainable-bubbles:nth-child(1) {
+                    $bubble-size: 10rem;
+                    width: $bubble-size;
+                    height: $bubble-size;
+                    margin-top: -3rem;
+                    margin-left: -1rem;
+                }
+
+                .sustainable-bubbles:nth-child(2) {
+                    $bubble-size: 9rem;
+                    width: $bubble-size;
+                    height: $bubble-size;
+                    margin-top: 0rem;
+                }
+
+            }
+        }
+
+    }
+
+    .frontpage-slider-height {
+        display: flex;
+        flex-direction: row;
+
+        .navigation-card-CEO {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+
+            img {
+                width: fit-content;
+            }
+        }
+    }
+
+    .navigation-card {
+        margin: 0;
+    }
+
+    $card-image-size: 40%;
+    $text-image-size: calc(100% - $card-image-size);
+
+    .card-image,
+    .navigation-card-CEO {
+        height: $height-row-1;
+    }
+
+    .card-image {
+        @include c.shadow;
+        z-index: 5;
+        position: relative;
+        border-radius: $border-radius 0 0 $border-radius;
+        background-size: cover;
+        width: $card-image-size;
+        overflow: hidden;
+        object-fit: cover;
+
+        img {
+            height: 100%;
+            max-width: inherit;
+        }
+    }
+
+    .navigation-card-CEO {
+        z-index: 5;
+        // @include c.cards-with-picture;
+        // border-radius: 0 $border-radius $border-radius 0;
+        @include non-card-text;
+        filter: none;
+        position: relative;
+        margin: 0;
+        width: $text-image-size;
+        background-color: $mint-tertiary;
+
+        a {
+            text-decoration: none;
+        }
+
+        // title-text for normal headers, sustainable cards
+        h1 {
+            color: $dark-text;
+        }
+
+        // normal paragraph text
+        h2 {
+            color: $dark-text;
+        }
+
+        // link text, i.e the text that says "more"
+        a {
+            margin-top: 1.5rem;
+            width: max-content;
+
+            h3 {
+                @include c.button;
+
+                &:hover {
+                    @include c.hover-button;
+                }
+            }
+
+        }
+    }
+
+    .about-large,
+    .download-large {
+        height: 16rem;
+    }
+
+
+    .download-large {
+        display: flex;
+
+        .card-download {
+            display: flex;
+            align-items: center;
+            vertical-align: middle;
+            justify-content: center;
+            padding: 1rem;
+
+            img {
+                height: min-content;
+                width: auto;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1320px) {
+    $height-row-2: 21.3rem;
+
+    .global-container{
+        padding: 0 4rem;
+    }
+    .green-background {
+        padding: 7rem 0 5rem 0;
+    }
+
+    .navigation-container {
+        padding-left: 1rem;
+    }
+
+    .frontpage-grid-column {
+        margin-top: 0;
+        padding-top: 1.5rem;
+        padding-left: 0;
+    }
+
+    .frontpage-dotnav {
+        padding: 1rem 0 1.8rem;
+    }
+
+    .frontpage-flex {
+        display: flex;
+        column-gap: 1rem;
+
+        .download-large {
+            order: 1;
+            height: $height-row-2;
+        }
+
+        .about-large {
+            display: flex;
+            order: 2;
+            flex-direction: column;
+            justify-content: space-between;
+            height: $height-row-2;
+        }
+
+    }
+
+
+    .sustainable-pillars-container {
+        @include card-text;
+        position: relative;
 
         .sustainable-button {
             height: fit-content;
@@ -786,11 +1108,26 @@ $border-radius: 10px;
                 column-gap: 0;
                 margin-left: -4rem;
 
+
+                .sustainable-bubbles {
+                    h3 {
+                        font-size: 16px;
+                        line-height: 19.2px;
+                    }
+
+                    .h1-span,
+                    .h2-span {
+                        font-size: 22px;
+                        line-height: 26.4px;
+                    }
+                }
+
                 .sustainable-bubbles:nth-child(1) {
                     $bubble-size: 11.5rem;
                     width: $bubble-size;
                     height: $bubble-size;
                     margin-top: -2rem;
+                    margin-left: 0rem;
                 }
 
                 .sustainable-bubbles:nth-child(2) {
@@ -850,8 +1187,6 @@ $border-radius: 10px;
 
     .navigation-card-CEO {
         z-index: 5;
-        // @include c.cards-with-picture;
-        border-radius: 0 $border-radius $border-radius 0;
         @include non-card-text;
         filter: none;
         position: relative;
@@ -897,13 +1232,13 @@ $border-radius: 10px;
 
     .download-large {
         display: flex;
-        padding-left: 1rem;
 
         .card-download {
             display: flex;
             align-items: center;
             vertical-align: middle;
             justify-content: center;
+            padding: 1rem 2.5rem;
 
             img {
                 height: min-content;
@@ -914,15 +1249,22 @@ $border-radius: 10px;
 }
 
 @include gt-lg {
-    // .frontpage-slider-height {
-    //     height: 29rem;
-    // }
+    $height-row-1: 29rem;
     $card-image-size: 40%;
     $text-image-size: calc(100% - $card-image-size);
+    .global-container{
+        padding: 0 5rem;
+    }
+
+    .relative-elements {
+        &__artwork {
+            height: $height-row-1;
+        }
+    }
 
     .card-image,
     .navigation-card-CEO {
-        height: 29rem;
+        height: $height-row-1;
     }
 
     .card-image {
@@ -950,9 +1292,8 @@ $border-radius: 10px;
 
 .about-title {
     @include non-card-text;
-    @include c.clip-path-cards;
+    @include c.clip-path-cards($green-primary, 12px);
     margin: 1rem 0 1rem 0;
-    background-color: $green-primary;
     position: relative;
     padding: 2.5rem 1rem 0rem;
 
@@ -1088,9 +1429,10 @@ $border-radius: 10px;
 
     &__content {
         margin: 0.5rem 0 0.5rem 0;
-        border-radius: $border-radius;
+        @include c.clip-path($white, 20px);
+        // border-radius: $border-radius;
         padding: 1rem;
-        background-color: $white;
+        // background-color: $white;
         display: flex;
         vertical-align: middle;
         align-items: center;
@@ -1121,7 +1463,6 @@ $border-radius: 10px;
 }
 
 .petal-container {
-    @include c.clip-path;
     padding: 2rem 1rem 1rem;
     background-color: $yellow-secondary;
 
@@ -1657,14 +1998,15 @@ $border-radius: 10px;
     }
 
     &__content {
-        border-radius: 0 0 $border-radius $border-radius;
-        margin-top: 0;
+        // border-radius: 0 0 $border-radius $border-radius;
+        @include c.clip-path($green-primary, 20px);
+        margin-top: -1.4rem;
         padding: 2rem;
         z-index: 2;
         width: 100%;
         height: auto;
         position: relative;
-        background-color: $green-primary;
+        // background-color: $green-primary;
 
         &--description {
             h1 {
@@ -1752,8 +2094,8 @@ $border-radius: 10px;
     }
 
     &__card {
+        @include c.clip-path-mask;
         @include card-text;
-        @include c.clip-path;
         padding: 1.5rem;
         width: 100%;
         display: flex;
@@ -1960,7 +2302,7 @@ $border-radius: 10px;
 
             &__header {
                 h3 {
-                    font-size: 95%;
+                    font-size: 80%;
                 }
             }
 
@@ -2000,6 +2342,8 @@ $border-radius: 10px;
 
     }
 
+
+    
     .CEO-large-flex {
         display: flex;
         flex-wrap: wrap;
@@ -2013,7 +2357,7 @@ $border-radius: 10px;
 
             &__header {
                 h3 {
-                    font-size: 95%;
+                    font-size: 100%;
                 }
             }
 
@@ -2080,24 +2424,6 @@ $border-radius: 10px;
     }
 }
 
-// .HOD-dotnav {
-//     $dotnav-size: 14px;
-//     margin: 0 !important;
-
-//     li {
-//         a {
-//             border: 1px solid $dark-text;
-//             width: $dotnav-size;
-//             height: $dotnav-size;
-//         }
-//     }
-
-//     .uk-active {
-//         * {
-//             background-color: $green-primary;
-//         }
-//     }
-// }
 
 .HOD-1 {
     background-image: url(../assets/images/about-HOD-background-1.png);
@@ -2135,11 +2461,11 @@ $border-radius: 10px;
     }
 
     &__description {
-        @include c.clip-path-cards;
+        @include c.clip-path-cards ($green-primary, 12px);
         // @include c.cards-with-picture;
         @include non-card-text;
         margin-top: calc(-1 * ($card-overflow ) * 1.5);
-        background-color: $green-primary;
+        // background-color: $green-primary;
 
         h1,
         h2 {
@@ -2584,7 +2910,6 @@ $number-padding: 0.5rem 1rem;
     }
 
     &__card {
-        @include c.clip-path-cards;
         @include card-text;
         display: flex;
         vertical-align: middle;
