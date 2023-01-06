@@ -83,7 +83,7 @@ $border-radius: 10px;
             position: relative;
 
             .share-socmed {
-                opacity: 0;
+                opacity: 1;
                 position: absolute;
                 background-color: $white;
                 display: flex;
@@ -126,7 +126,7 @@ $border-radius: 10px;
             // vertical share
             .share-button {
                 .share-socmed {
-                    top: 0rem;
+                    top: -11rem;
                     transform: translateX(10%);
                     width: 80%;
                     flex-direction: column;
@@ -261,14 +261,15 @@ $border-radius: 10px;
 
 }
 
-.sustainable-section{
-    &__header{
+.sustainable-section {
+    &__header {
         @include sustainable-header;
         @include c.clip-path($pink-primary, 20px);
         padding: 0.5rem 1rem;
         display: flex;
         justify-content: center;
-        h1{
+
+        h1 {
             text-transform: uppercase;
             font-size: 20px;
             margin: 0;
@@ -556,17 +557,22 @@ $border-radius: 10px;
 
 
 .card-download {
-    @include c.clip-path-mask;
-    // @include c.clip-path($pink-secondary, 20px);
-    background-image: url(../assets/images/download-background.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
+    @include c.clip-path($mint-tertiary, 20px);
+    // @include c.clip-path-mask;
+    @include non-card-text;
+    // background-image: url(../assets/images/download-background.png);
+    // background-size: cover;
+    // background-position: 50% 50%;
+    padding: 2rem;
     display: flex;
     align-items: center;
     flex-direction: column;
 
-    @include non-card-text;
+    img {
+        height: auto;
+        width: 100%;
+    }
+
 
     a {
         text-decoration: none;
@@ -593,7 +599,6 @@ $border-radius: 10px;
 }
 
 .card-image {
-    // @include c.clip-path-mask;
     z-index: 5;
     position: relative;
     border-radius: $border-radius $border-radius 0 0;
@@ -602,6 +607,33 @@ $border-radius: 10px;
     justify-content: center;
     align-items: center;
     padding: 1rem 3rem 0;
+
+    .button-positioning {
+        position: absolute;
+        z-index: 5;
+        top: 1rem;
+        right: 1rem;
+
+        .video-button {
+            @include c.video-button;
+            $button-size: 6rem;
+            border: 5px solid $white;
+            border-radius: $button-size ;
+            width: $button-size;
+
+            svg {
+                width: $button-size;
+            }
+
+            .play::before {
+                font-size: 1.5rem;
+            }
+
+            .words {
+                font-size: 1.3rem;
+            }
+        }
+    }
 
 }
 
@@ -622,7 +654,6 @@ $border-radius: 10px;
 
 .navigation-card-CEO {
     z-index: 5;
-    // @include c.cards-with-picture;
     @include c.clip-path-cards($mint-tertiary, 20px);
     @include non-card-text;
     filter: none;
@@ -632,7 +663,6 @@ $border-radius: 10px;
     flex-direction: column;
     flex-grow: 1;
     justify-content: space-between;
-    // align-items: center;
 
     a {
         text-decoration: none;
@@ -665,13 +695,15 @@ $border-radius: 10px;
     }
 }
 
-@include gt-sm {
-    .green-background {
-        height: auto;
-    }
-
+@include gt-xs {
     .global-container {
         padding: 0 2rem 0 2rem;
+        height: auto;
+    }
+}
+
+@include gt-sm {
+    .green-background {
         height: auto;
     }
 
@@ -767,13 +799,6 @@ $border-radius: 10px;
         padding-right: 1rem;
     }
 
-    .card-download {
-        img {
-            max-height: 14.5rem;
-            width: auto;
-        }
-    }
-
     .sustainable-pillars-container {
         $position: 2rem;
 
@@ -792,12 +817,38 @@ $border-radius: 10px;
         }
     }
 
+    .card-download {
+        padding: 2rem;
+        display: flex;
+        // align-items: flex-start;
+        flex-direction: column;
+
+        img {
+            max-height: 14rem;
+            margin-top: -2.4rem;
+            height: auto;
+            width: auto;
+        }
+
+
+        a {
+            h3 {
+                text-align: center;
+
+                &:hover {
+                    @include c.hover-button;
+                }
+            }
+
+        }
+    }
+
 }
 
 @media screen and (min-width: 1200px) {
     $height-row-1: 23.5rem;
     $height-row-2: 20.4rem;
-    
+
 
     .green-background {
         padding: 7rem 0 3rem 0;
@@ -856,7 +907,7 @@ $border-radius: 10px;
         .sustainable-button {
             height: fit-content;
             position: absolute;
-            bottom: 1rem;
+            bottom: 2rem;
             left: 1rem;
         }
 
@@ -957,6 +1008,19 @@ $border-radius: 10px;
         overflow: hidden;
         object-fit: cover;
 
+        .button-positioning {
+            position: absolute;
+            z-index: 5;
+            left: 0; 
+            right: 0; 
+            top: 70%;
+            width: 100%;
+            .video-button{
+                margin-left: auto; 
+                margin-right: auto; 
+            }
+        }
+
         img {
             height: 100%;
             max-width: inherit;
@@ -965,8 +1029,6 @@ $border-radius: 10px;
 
     .navigation-card-CEO {
         z-index: 5;
-        // @include c.cards-with-picture;
-        // border-radius: 0 $border-radius $border-radius 0;
         @include non-card-text;
         filter: none;
         position: relative;
@@ -1017,12 +1079,17 @@ $border-radius: 10px;
             display: flex;
             align-items: center;
             vertical-align: middle;
-            justify-content: center;
+            justify-content: space-between;
             padding: 1rem;
 
             img {
-                height: min-content;
-                width: auto;
+                // max-width: 40rem;
+                width: 70rem;
+                height: auto;
+            }
+
+            a {
+                margin-bottom: 1rem;
             }
         }
     }
@@ -1031,41 +1098,17 @@ $border-radius: 10px;
 @media screen and (min-width: 1320px) {
     $height-row-2: 21.3rem;
 
-    .global-container{
+    .global-container {
         padding: 0 4rem;
-    }
-    .green-background {
-        padding: 7rem 0 5rem 0;
-    }
-
-    .navigation-container {
-        padding-left: 1rem;
-    }
-
-    .frontpage-grid-column {
-        margin-top: 0;
-        padding-top: 1.5rem;
-        padding-left: 0;
-    }
-
-    .frontpage-dotnav {
-        padding: 1rem 0 1.8rem;
     }
 
     .frontpage-flex {
-        display: flex;
-        column-gap: 1rem;
 
         .download-large {
-            order: 1;
             height: $height-row-2;
         }
 
         .about-large {
-            display: flex;
-            order: 2;
-            flex-direction: column;
-            justify-content: space-between;
             height: $height-row-2;
         }
 
@@ -1073,13 +1116,6 @@ $border-radius: 10px;
 
 
     .sustainable-pillars-container {
-        @include card-text;
-        position: relative;
-
-        .sustainable-button {
-            height: fit-content;
-        }
-
 
         &__card {
 
@@ -1093,22 +1129,11 @@ $border-radius: 10px;
             h1 {
                 left: 1rem;
                 top: 1rem;
-                font-weight: normal;
                 font-size: 20px;
                 padding: 0.2rem 0.5rem;
-
-            }
-
-            .sustainable-flex {
-                display: flex;
-                flex-direction: column;
             }
 
             &--content {
-                column-gap: 0;
-                margin-left: -4rem;
-
-
                 .sustainable-bubbles {
                     h3 {
                         font-size: 16px;
@@ -1142,25 +1167,6 @@ $border-radius: 10px;
 
     }
 
-    .frontpage-slider-height {
-        display: flex;
-        flex-direction: row;
-
-        .navigation-card-CEO {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-
-            img {
-                width: fit-content;
-            }
-        }
-    }
-
-    .navigation-card {
-        margin: 0;
-    }
-
     $card-image-size: 40%;
     $text-image-size: calc(100% - $card-image-size);
 
@@ -1170,80 +1176,9 @@ $border-radius: 10px;
     }
 
     .card-image {
-        @include c.shadow;
-        z-index: 5;
-        position: relative;
-        border-radius: $border-radius 0 0 $border-radius;
-        background-size: cover;
-        width: $card-image-size;
-        overflow: hidden;
-        object-fit: cover;
-
         img {
             height: 100%;
             max-width: inherit;
-        }
-    }
-
-    .navigation-card-CEO {
-        z-index: 5;
-        @include non-card-text;
-        filter: none;
-        position: relative;
-        background-color: $mint-tertiary;
-        margin: 0;
-        width: $text-image-size;
-
-        a {
-            text-decoration: none;
-        }
-
-        // title-text for normal headers, sustainable cards
-        h1 {
-            color: $dark-text;
-        }
-
-        // normal paragraph text
-        h2 {
-            color: $dark-text;
-        }
-
-        // link text, i.e the text that says "more"
-        a {
-            margin-top: 1.5rem;
-            width: max-content;
-
-            h3 {
-                @include c.button;
-
-                &:hover {
-                    @include c.hover-button;
-                }
-            }
-
-        }
-    }
-
-    .about-large,
-    .download-large {
-        height: 16rem;
-    }
-
-
-    .download-large {
-        display: flex;
-
-        .card-download {
-            display: flex;
-            align-items: center;
-            vertical-align: middle;
-            justify-content: center;
-            padding: 1rem 2.5rem;
-
-            img {
-                height: min-content;
-                width: auto;
-            }
         }
     }
 }
@@ -1252,7 +1187,8 @@ $border-radius: 10px;
     $height-row-1: 29rem;
     $card-image-size: 40%;
     $text-image-size: calc(100% - $card-image-size);
-    .global-container{
+
+    .global-container {
         padding: 0 5rem;
     }
 
@@ -1279,6 +1215,17 @@ $border-radius: 10px;
     .download-large {
         height: 16rem;
     }
+
+    .download-large {
+        .card-download {
+            padding: 1rem 2rem;
+            img{
+                width: 20rem;
+                margin: 0 12rem;
+            }
+        }
+    }
+
 }
 
 
@@ -1395,6 +1342,7 @@ $border-radius: 10px;
             h3,
             .h1-span {
                 color: $green-primary;
+                text-transform: capitalize;
             }
         }
     }
@@ -1405,7 +1353,9 @@ $border-radius: 10px;
         }
 
         &__desc {
-            h1 {
+
+            h3,
+            .h1-span {
                 color: $purple-primary;
                 text-transform: capitalize;
             }
@@ -1479,12 +1429,20 @@ $border-radius: 10px;
 
     &__0 {
         @include card-text;
+        @include c.hover;
         background-color: $green-primary;
         border-radius: $border-radius $border-radius 0 0;
 
         h1 {
             padding: 0.6rem;
             color: $white;
+        }
+
+        &:hover {
+            a {
+                text-decoration: none;
+            }
+
         }
 
     }
@@ -1505,6 +1463,15 @@ $border-radius: 10px;
         background-color: $mint-primary;
     }
 }
+
+// .about-header-content {
+//     @include c.hover;
+//     &:hover {
+//         a {
+//             text-decoration: none;
+//         }
+//     }
+// }
 
 .about-content {
     @include c.cards-no-shadow;
@@ -1893,6 +1860,7 @@ $border-radius: 10px;
                     line-height: 140%;
                     margin: 0;
                 }
+
             }
         }
 
@@ -1949,7 +1917,7 @@ $border-radius: 10px;
 
     .CEO-header {
         @include non-card-text;
-        padding-bottom: 2rem;
+        padding-bottom: 3rem;
     }
 
     &__picture {
@@ -2343,7 +2311,7 @@ $border-radius: 10px;
     }
 
 
-    
+
     .CEO-large-flex {
         display: flex;
         flex-wrap: wrap;
@@ -2559,7 +2527,8 @@ $border-radius: 10px;
 
 //? Focus area cards
 .beyond-focus-1 {
-    background-color: $pink-primary;
+    @include c.clip-path-cards($pink-primary, 20px);
+    // background-color: $pink-primary;
 
     h1,
     h2,
@@ -2570,7 +2539,8 @@ $border-radius: 10px;
 }
 
 .beyond-focus-2 {
-    background-color: $green-primary;
+    @include c.clip-path-cards($green-primary, 20px);
+    // background-color: $green-primary;
 
     h1,
     h2,
@@ -2581,7 +2551,8 @@ $border-radius: 10px;
 }
 
 .beyond-focus-3 {
-    background-color: $purple-primary;
+    @include c.clip-path-cards($purple-primary, 20px);
+    // background-color: $purple-primary;
 
     h1,
     h2,
@@ -2592,7 +2563,8 @@ $border-radius: 10px;
 }
 
 .nurturing-focus-1 {
-    background-color: $yellow-primary;
+    @include c.clip-path-cards($yellow-primary, 20px);
+    // background-color: $yellow-primary;
 
     h1,
     h2,
@@ -2603,7 +2575,8 @@ $border-radius: 10px;
 }
 
 .nurturing-focus-2 {
-    background-color: $green-primary;
+    @include c.clip-path-cards($green-primary, 20px);
+    // background-color: $green-primary;
 
     h1,
     h2,
@@ -2614,7 +2587,8 @@ $border-radius: 10px;
 }
 
 .nurturing-focus-3 {
-    background-color: $purple-primary;
+    @include c.clip-path-cards($purple-primary, 20px);
+    // background-color: $purple-primary;
 
     h1,
     h2,
@@ -2625,7 +2599,8 @@ $border-radius: 10px;
 }
 
 .process-focus-1 {
-    background-color: $yellow-primary;
+    @include c.clip-path-cards($yellow-primary, 20px);
+    // background-color: $yellow-primary;
 
     h1,
     h2,
@@ -2636,7 +2611,8 @@ $border-radius: 10px;
 }
 
 .process-focus-2 {
-    background-color: $green-primary;
+    @include c.clip-path-cards($green-primary, 20px);
+    // background-color: $green-primary;
 
     h1,
     h2,
@@ -2647,7 +2623,8 @@ $border-radius: 10px;
 }
 
 .process-focus-3 {
-    background-color: $purple-primary;
+    @include c.clip-path-cards($purple-primary, 20px);
+    // background-color: $purple-primary;
 
     h1,
     h2,
@@ -2658,7 +2635,8 @@ $border-radius: 10px;
 }
 
 .process-focus-4 {
-    background-color: $pink-primary;
+    @include c.clip-path-cards($pink-primary, 20px);
+    // background-color: $pink-primary;
 
     h1,
     h2,
@@ -2669,7 +2647,8 @@ $border-radius: 10px;
 }
 
 .planet-focus-1 {
-    background-color: $green-primary;
+    @include c.clip-path-cards($green-primary, 20px);
+    // background-color: $green-primary;
 
     h1,
     h2,
@@ -2680,7 +2659,8 @@ $border-radius: 10px;
 }
 
 .planet-focus-2 {
-    background-color: $pink-primary;
+    @include c.clip-path-cards($pink-primary, 20px);
+    // background-color: $pink-primary;
 
     h1,
     h2,
@@ -2691,7 +2671,8 @@ $border-radius: 10px;
 }
 
 .planet-focus-3 {
-    background-color: $purple-primary;
+    @include c.clip-path-cards($purple-primary, 20px);
+    // background-color: $purple-primary;
 
     h1,
     h2,
@@ -2992,6 +2973,7 @@ $number-padding: 0.5rem 1rem;
             }
         }
     }
+    
 
 }
 

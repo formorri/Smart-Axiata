@@ -20,7 +20,10 @@ $edge-cut: 35px;
     background-color: $white;
     display: flex;
     justify-content: space-between;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
+    a{
+        text-decoration: none;
+    }
 
     &__container {
         position: relative;
@@ -96,6 +99,10 @@ $edge-cut: 35px;
                 column-gap: $icon-gap;
                 opacity: 1;
                 transition: 0.3s ease-in-out;
+                fill: $yellow-primary;
+                span {
+                    color: $yellow-primary;
+                }
             }
 
             &__hover {
@@ -141,11 +148,11 @@ $edge-cut: 35px;
     }
 
     @include gt-xs {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
     }
 
     @include gt-lg {
-        padding: 0 2rem;
+        padding: 1rem 2rem;
 
         &__container {
             &--logos {
@@ -226,6 +233,7 @@ $edge-cut: 35px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                color: $yellow-primary;
             }
 
             .shiny {
